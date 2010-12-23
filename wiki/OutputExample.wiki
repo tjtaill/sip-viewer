@@ -1,10 +1,16 @@
-#Example of the callflow for a Back2Back user agent
-
 = Output example =
 
-1 sessions displayed 
+Few comments about the example below:
+* the logs are coming from third actor : bascoe01
+* the call is initiated by "CS2K_Belmont" 
+* it goes through a stateless proxy (sipcoe01)
+* the B2B invites someone else (via a load balancer)
+** the matching of the 2 dialogs is done according to a known common token in the from and to tags managed by the B2B (in that example s1460) . The parser configured in sip-viewer must be aware of this contact.
 
 {{{
+1 sessions displayed 
+
+
 ***** #1460 Mon, 22 Nov 2010 08:30:18 188************************************************************
 #   Time (ms)   CS2K_Belmont:5060          SIPCOE01.ON.BELL.CA:12716      BASCOE01.ON.BELL.CA:12276      VIPCOE03.ON.BELL.CA:5066       UVXCOE21.ON.BELL.CA:5062       VIPCOE03.ON.BELL.CA:12786
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
