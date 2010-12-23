@@ -5,7 +5,7 @@ Few comments about the example below:
 * the call is initiated by "CS2K_Belmont" 
 * it goes through a stateless proxy (sipcoe01)
 * the B2B invites someone else (via a load balancer)
-** the matching of the 2 dialogs is done according to a known common token in the from and to tags managed by the B2B (in that example s1460) . The parser configured in sip-viewer must be aware of this contact.
+* the matching of the 2 dialogs is done according to a known common token in the from and to tags managed by the B2B (in that example s1460) . The parser configured in sip-viewer must be aware of this contact.
 
 {{{
 1 sessions displayed 
