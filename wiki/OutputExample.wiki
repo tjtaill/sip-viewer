@@ -1,6 +1,7 @@
 = Output example =
 
 Few comments about the example below:
+
 * the logs are coming from third actor : bascoe01
 * the call is initiated by "CS2K_Belmont" 
 * it goes through a stateless proxy (sipcoe01)
