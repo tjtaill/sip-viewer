@@ -11,9 +11,8 @@ Few comments about the example below:
 {{{
 1 sessions displayed 
 
-
 ***** #1460 Mon, 22 Nov 2010 08:30:18 188************************************************************
-#   Time (ms)   CS2K_Belmont:5060          SIPCOE01.ON.BELL.CA:12716      BASCOE01.ON.BELL.CA:12276      VIPCOE03.ON.BELL.CA:5066       UVXCOE21.ON.BELL.CA:5062       VIPCOE03.ON.BELL.CA:12786
+#   Time (ms)   PSTN_GATEWAY:5060          SIP_ROUTING_PROXY:12716          MY_B2B_APP:12276                 LOAD_BALANCER_VIP                IVR_PLATFORM               PSTN_ROUTER:12786
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 1   0                 |                              |------INVITE 5143901033------>|                              |                              |                              |
 2   1                 |                              |<---------100 Trying----------|                              |                              |                              |
@@ -50,15 +49,15 @@ Few comments about the example below:
 
 ----- #1 Mon, 22 Nov 2010 08:30:18 188--------------------------------------------------------------------
 INVITE sip:5143901033@142.125.224.25:12276;transport=UDP;user=phone SIP/2.0
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+From: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 To: <sip:5143901033@10.92.244.52:5060;user=phone>
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
 CSeq: 1 INVITE
 User-Agent: CS2000_NGSS/9.0
-Remote-Party-ID: "CEGEP POCATIERE"<sip:4188561561@10.92.10.80;user=phone>; party=calling; privacy=off; screen=yes
+Remote-Party-ID: "my-caller"<sip:4188561561@10.92.10.80;user=phone>; party=calling; privacy=off; screen=yes
 Allow: ACK,BYE,CANCEL,INVITE,OPTIONS,INFO,SUBSCRIBE,REFER,NOTIFY,PRACK,UPDATE
 Via: SIP/2.0/UDP 10.92.244.60:12716;branch=z9hG4bK6yhn455879296,SIP/2.0/UDP MTRLPQ02CAEMGC:5060;maddr=10.92.10.80;branch=z9hG4bK-28a2195-eb932e94-56e6722b;received=10.92.10.80
-P-Asserted-Identity: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80;user=phone>
+P-Asserted-Identity: "my-caller" <sip:4188561561@10.92.10.80;user=phone>
 Max-Forwards: 69
 Contact: <sip:10.92.10.80:5060;transport=UDP>
 Supported: 100rel
@@ -82,7 +81,7 @@ To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
 Via: SIP/2.0/UDP 10.92.244.60:12716;branch=z9hG4bK6yhn455879296,SIP/2.0/UDP MTRLPQ02CAEMGC:5060;maddr=10.92.10.80;branch=z9hG4bK-28a2195-eb932e94-56e6722b;received=10.92.10.80
 CSeq: 1 INVITE
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+From: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 Content-Length: 0
 
 
@@ -91,15 +90,15 @@ Content-Length: 0
 INVITE sip:5143901033@10.92.244.52:5066;transport=udp;voicexml=http%3A%2F%2F142.125.224.36%3A12270%2FRACJQRens%2FStartup.jsp%3FAdmin%3Dfalse%26clid%3D4188561561%26dnis%3D5143901033;nvp-company-name=Bell;nvp-application-name=RACJQRens;caller-number=4188561561 SIP/2.0
 Call-ID: s1460-8345703489627602869@142.125.224.36
 CSeq: 2 INVITE
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 Max-Forwards: 70
 BillingID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
-Remote-Party-ID: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;party=calling;screen=yes;privacy=off
+Remote-Party-ID: "my-caller" <sip:4188561561@10.92.10.80>;party=calling;screen=yes;privacy=off
 To: <sip:5143901033@10.92.244.52:5060;user=phone>
 Content-Type: application/sdp
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-64efd33be2f7853f9edcc4d84c4b71e9
 Contact: <sip:142.125.224.36:12276;transport=udp>
-P-Asserted-Identity: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>
+P-Asserted-Identity: "my-caller" <sip:4188561561@10.92.10.80>
 Content-Length: 187
 
 v=0
@@ -116,7 +115,7 @@ a=fmtp:101 0-15
 ----- #4 Mon, 22 Nov 2010 08:30:18 197--------------------------------------------------------------------
 SIP/2.0 100 Trying
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-64efd33be2f7853f9edcc4d84c4b71e9
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 To: <sip:5143901033@10.92.244.52:5060;user=phone>
 Call-ID: s1460-8345703489627602869@142.125.224.36
 CSeq: 2 INVITE
@@ -128,7 +127,7 @@ Content-Length: 0
 ----- #5 Mon, 22 Nov 2010 08:30:18 197--------------------------------------------------------------------
 SIP/2.0 180 Ringing
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-64efd33be2f7853f9edcc4d84c4b71e9
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=nu-b9ed-bd51
 Call-ID: s1460-8345703489627602869@142.125.224.36
 CSeq: 2 INVITE
@@ -143,7 +142,7 @@ To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
 Via: SIP/2.0/UDP 10.92.244.60:12716;branch=z9hG4bK6yhn455879296,SIP/2.0/UDP MTRLPQ02CAEMGC:5060;maddr=10.92.10.80;branch=z9hG4bK-28a2195-eb932e94-56e6722b;received=10.92.10.80
 CSeq: 1 INVITE
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+From: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 Content-Length: 0
 
 
@@ -151,7 +150,7 @@ Content-Length: 0
 ----- #7 Mon, 22 Nov 2010 08:30:18 247--------------------------------------------------------------------
 SIP/2.0 200 Ok
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-64efd33be2f7853f9edcc4d84c4b71e9
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=nu-b9ed-bd51
 Call-ID: s1460-8345703489627602869@142.125.224.36
 CSeq: 2 INVITE
@@ -174,7 +173,7 @@ To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
 Via: SIP/2.0/UDP 10.92.244.60:12716;branch=z9hG4bK6yhn455879296,SIP/2.0/UDP MTRLPQ02CAEMGC:5060;maddr=10.92.10.80;branch=z9hG4bK-28a2195-eb932e94-56e6722b;received=10.92.10.80
 CSeq: 1 INVITE
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+From: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 Contact: <sip:142.125.224.36:12276;transport=udp>
 Content-Type: application/sdp
 Content-Length: 197
@@ -187,7 +186,7 @@ a=fmtp:101 0-15
 
 ----- #9 Mon, 22 Nov 2010 08:30:18 257--------------------------------------------------------------------
 ACK sip:142.125.224.36:12276;transport=udp SIP/2.0
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+From: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
 CSeq: 1 ACK
@@ -206,7 +205,7 @@ ACK sip:nvp@10.92.244.41:5062 SIP/2.0
 Call-ID: s1460-8345703489627602869@142.125.224.36
 CSeq: 2 ACK
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-5b35660095ee86dfd3f98a30750585a5
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=nu-b9ed-bd51
 Max-Forwards: 70
 Content-Length: 0
@@ -216,7 +215,7 @@ Content-Length: 0
 ----- #11 Mon, 22 Nov 2010 08:31:24 856--------------------------------------------------------------------
 REFER sip:142.125.224.36:12276;transport=udp SIP/2.0
 From: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=nu-b9ed-bd51
-To: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+To: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 Contact: <sip:nvp@10.92.244.41:5062>;transport=udp
 Call-ID: s1460-8345703489627602869@142.125.224.36
 CSeq: 1 REFER
@@ -230,7 +229,7 @@ Content-Length: 0
 
 ----- #12 Mon, 22 Nov 2010 08:31:24 857--------------------------------------------------------------------
 SIP/2.0 202 Accepted
-To: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+To: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 Via: SIP/2.0/UDP 10.92.244.41:5062;branch=z9Hg4Bkcc0eeb84-1dd1-11b2-a1be-bed56fce387b
 CSeq: 1 REFER
 Call-ID: s1460-8345703489627602869@142.125.224.36
@@ -243,14 +242,14 @@ Content-Length: 0
 INVITE sip:4186437880@10.92.244.52:12786;transport=udp SIP/2.0
 Call-ID: s1460-8579646444826495654@142.125.224.36
 CSeq: 2 INVITE
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8579646444826495654
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8579646444826495654
 To: <sip:4186437880@10.92.244.52:12786>
 Max-Forwards: 70
-Remote-Party-ID: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;party=calling;screen=yes;privacy=off
+Remote-Party-ID: "my-caller" <sip:4188561561@10.92.10.80>;party=calling;screen=yes;privacy=off
 Content-Type: application/sdp
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-00ee140445f492f28f032f7dbd17f7a8
 Contact: <sip:142.125.224.36:12276;transport=udp>
-P-Asserted-Identity: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>
+P-Asserted-Identity: "my-caller" <sip:4188561561@10.92.10.80>
 Content-Length: 187
 
 v=0
@@ -270,7 +269,7 @@ To: <sip:4186437880@10.92.244.52:12786>;tag=s961817-5224603105016864521
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-00ee140445f492f28f032f7dbd17f7a8
 CSeq: 2 INVITE
 Call-ID: s1460-8579646444826495654@142.125.224.36
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8579646444826495654
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8579646444826495654
 Contact: <sip:200004186437880@10.92.10.80;transport=udp;user=phone>;q=0.667,<sip:200004186437880@10.92.6.80;transport=udp;user=phone>;q=0.334
 Content-Length: 0
 
@@ -280,7 +279,7 @@ Content-Length: 0
 ACK sip:4186437880@10.92.244.52:12786;transport=udp SIP/2.0
 Call-ID: s1460-8579646444826495654@142.125.224.36
 Max-Forwards: 70
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8579646444826495654
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8579646444826495654
 To: <sip:4186437880@10.92.244.52:12786>;tag=s961817-5224603105016864521
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-00ee140445f492f28f032f7dbd17f7a8
 CSeq: 2 ACK
@@ -292,14 +291,14 @@ Content-Length: 0
 INVITE sip:200004186437880@10.92.10.80;transport=udp;user=phone SIP/2.0
 Call-ID: s1460-6240023739594637478@142.125.224.36
 CSeq: 2 INVITE
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
 Max-Forwards: 70
-Remote-Party-ID: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;party=calling;screen=yes;privacy=off
+Remote-Party-ID: "my-caller" <sip:4188561561@10.92.10.80>;party=calling;screen=yes;privacy=off
 To: <sip:4186437880@10.92.244.52:12786>
 Content-Type: application/sdp
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-54454414b0f080973a6dd97276529e42
 Contact: <sip:142.125.224.36:12276;transport=udp>
-P-Asserted-Identity: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>
+P-Asserted-Identity: "my-caller" <sip:4188561561@10.92.10.80>
 Content-Length: 187
 
 v=0
@@ -315,7 +314,7 @@ a=fmtp:101 0-15
 
 ----- #17 Mon, 22 Nov 2010 08:31:24 876--------------------------------------------------------------------
 SIP/2.0 100 Trying
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
 To: <sip:4186437880@10.92.244.52:12786>;tag=4b1a2306802312010112283125
 Call-ID: s1460-6240023739594637478@142.125.224.36
 CSeq: 2 INVITE
@@ -328,7 +327,7 @@ Content-Length: 0
 
 ----- #18 Mon, 22 Nov 2010 08:31:25 814--------------------------------------------------------------------
 SIP/2.0 183 Session Progress
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
 To: <sip:4186437880@10.92.244.52:12786>;tag=4b1a2306802312010112283125
 Call-ID: s1460-6240023739594637478@142.125.224.36
 CSeq: 2 INVITE
@@ -355,7 +354,7 @@ INVITE sip:10.92.10.80:5060;transport=UDP SIP/2.0
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-e792de2de82f662ecf718a5948150172
 CSeq: 1 INVITE
 From: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
-To: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+To: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
 Max-Forwards: 70
 Contact: <sip:142.125.224.36:12276;transport=udp>
@@ -375,7 +374,7 @@ a=ptime:20
 ----- #20 Mon, 22 Nov 2010 08:31:25 824--------------------------------------------------------------------
 SIP/2.0 100 Trying
 From: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
-To: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+To: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
 CSeq: 1 INVITE
 Server: CS2000_NGSS/9.0
@@ -390,7 +389,7 @@ Content-Length: 0
 ----- #21 Mon, 22 Nov 2010 08:31:25 840--------------------------------------------------------------------
 SIP/2.0 200 OK
 From: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
-To: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+To: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
 CSeq: 1 INVITE
 Server: CS2000_NGSS/9.0
@@ -416,7 +415,7 @@ Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
 CSeq: 1 ACK
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-d3f4005e9a3e9ae88cd1bca298a9c367
 From: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
-To: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+To: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 Max-Forwards: 70
 Content-Length: 0
 
@@ -424,7 +423,7 @@ Content-Length: 0
 
 ----- #23 Mon, 22 Nov 2010 08:31:30 573--------------------------------------------------------------------
 SIP/2.0 200 OK
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
 To: <sip:4186437880@10.92.244.52:12786>;tag=4b1a2306802312010112283125
 Call-ID: s1460-6240023739594637478@142.125.224.36
 CSeq: 2 INVITE
@@ -451,7 +450,7 @@ ACK sip:10.92.10.80 SIP/2.0
 Call-ID: s1460-6240023739594637478@142.125.224.36
 CSeq: 2 ACK
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-ee699ceb7d52de6ddaa1bb6877938a60
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
 To: <sip:4186437880@10.92.244.52:12786>;tag=4b1a2306802312010112283125
 Max-Forwards: 70
 Content-Length: 0
@@ -462,7 +461,7 @@ Content-Length: 0
 NOTIFY sip:nvp@10.92.244.41:5062 SIP/2.0
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-2088101729eb9273c9659d633707b4f1
 CSeq: 3 NOTIFY
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=nu-b9ed-bd51
 Call-ID: s1460-8345703489627602869@142.125.224.36
 Max-Forwards: 70
@@ -477,7 +476,7 @@ SIP/2.0 200 OK
 ----- #26 Mon, 22 Nov 2010 08:31:30 577--------------------------------------------------------------------
 SIP/2.0 200 Ok
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-2088101729eb9273c9659d633707b4f1
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=nu-b9ed-bd51
 Call-ID: s1460-8345703489627602869@142.125.224.36
 CSeq: 3 NOTIFY
@@ -488,7 +487,7 @@ Content-Length: 0
 ----- #27 Mon, 22 Nov 2010 08:31:30 577--------------------------------------------------------------------
 BYE sip:142.125.224.36:12276;transport=udp SIP/2.0
 From: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=nu-b9ed-bd51
-To: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+To: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 Contact: <sip:10.92.244.41:5062;transport=udp>
 Call-ID: s1460-8345703489627602869@142.125.224.36
 CSeq: 2 BYE
@@ -500,7 +499,7 @@ Content-Length: 0
 
 ----- #28 Mon, 22 Nov 2010 08:31:30 578--------------------------------------------------------------------
 SIP/2.0 200 OK
-To: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
+To: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-8345703489627602869
 Via: SIP/2.0/UDP 10.92.244.41:5062;branch=z9Hg4Bkcf77d10a-1dd1-11b2-a0f7-c13677308d7f
 CSeq: 2 BYE
 Call-ID: s1460-8345703489627602869@142.125.224.36
@@ -511,7 +510,7 @@ Content-Length: 0
 
 ----- #29 Mon, 22 Nov 2010 08:31:42 163--------------------------------------------------------------------
 BYE sip:142.125.224.36:12276;transport=udp SIP/2.0
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+From: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
 CSeq: 2 BYE
@@ -531,7 +530,7 @@ To: <sip:5143901033@10.92.244.52:5060;user=phone>;tag=s1460-8525511128105397629
 Via: SIP/2.0/UDP MTRLPQ02CAEMGC:5060;maddr=10.92.10.80;branch=z9hG4bK-28a21e9-eb94769a-77d2e2ea;received=10.92.10.80
 CSeq: 2 BYE
 Call-ID: a626b0d8500a5c0a13c428a2195eb932e94a1e8c7d3c4deaf0-0209-7451
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
+From: "my-caller" <sip:4188561561@10.92.10.80:5060;user=phone>;tag=-45026-28a2195-3bc1429d-28a2195
 Content-Length: 0
 
 
@@ -540,7 +539,7 @@ Content-Length: 0
 BYE sip:10.92.10.80 SIP/2.0
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-b9d24d25a48a000ae72a16211c05be44
 CSeq: 3 BYE
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
 To: <sip:4186437880@10.92.244.52:12786>;tag=4b1a2306802312010112283125
 Call-ID: s1460-6240023739594637478@142.125.224.36
 Max-Forwards: 70
@@ -550,7 +549,7 @@ Content-Length: 0
 
 ----- #32 Mon, 22 Nov 2010 08:31:42 172--------------------------------------------------------------------
 SIP/2.0 200 OK
-From: "CEGEP POCATIERE" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
+From: "my-caller" <sip:4188561561@10.92.10.80>;tag=s1460-6240023739594637478
 To: <sip:4186437880@10.92.244.52:12786>;tag=4b1a2306802312010112283125
 Call-ID: s1460-6240023739594637478@142.125.224.36
 CSeq: 3 BYE
@@ -559,8 +558,5 @@ Supported: 100rel
 Allow: ACK,BYE,CANCEL,INVITE,OPTIONS,INFO,SUBSCRIBE,REFER,NOTIFY,PRACK,UPDATE
 Via: SIP/2.0/UDP 142.125.224.36:12276;branch=z9hG4bK-323031-b9d24d25a48a000ae72a16211c05be44
 Content-Length: 0
-
-
-
 
 }}}
