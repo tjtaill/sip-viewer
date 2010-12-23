@@ -1,12 +1,13 @@
 = Output example =
 
 Few comments about the example below:
-
-* the logs are coming from third actor : bascoe01
-* the call is initiated by "CS2K_Belmont" 
-* it goes through a stateless proxy (sipcoe01)
-* the B2B invites someone else (via a load balancer)
-* the matching of the 2 dialogs is done according to a known common token in the from and to tags managed by the B2B (in that example s1460) . The parser configured in sip-viewer must be aware of this contact.
+  * the logs are coming from third actor : MY_B2B_APP
+  * the call is initiated by the PSTN_GATEWAY
+  * it goes through a stateless routing proxy (SIP_ROUTING_PROXY)
+  * MY_B2B_APP an IVR_PLATFORM (via a LOAD_BALANCER_VIP)
+  * a while after it adds a third dialog by requesting a redirect on a PSTN_ROUTER application
+  * finally it requires a fourth dialog to transfer back the caller to a callee (using the same PSTN_GATEWAY).
+  * the matching of the 4 dialogs is done according to a known common token in the from and to tags managed by the B2B (in that example *s1460*) . The parser configured in sip-viewer must be aware of this contact.
 
 {{{
 1 sessions displayed 
