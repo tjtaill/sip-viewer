@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>javax.sip</groupId>
+	<artifactId>sip-viewer</artifactId>
+	<version>1.0.0</version>
+	<name>sip-viewer</name>
+	<packaging>jar</packaging>
+
+	<scm>
+		<connection>scm:svn:https://sip-viewer.googlecode.com/svn/trunk/</connection>
+		<developerConnection>scm:svn:https://sip-viewer.googlecode.com/svn/trunk/</developerConnection>
+		<url>https://sip-viewer.googlecode.com/svn/trunk/</url>
+	</scm>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>1.7</version>
+		</dependency>
+	</dependencies>
+
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.bell.cts.sipean.viewer.SipTextViewer</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<id>make-assembly</id>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
