@@ -1,6 +1,6 @@
 #Example of the callflow for a Back2Back user agent
 
-= Output exanmple =
+= Output example =
 
 1 sessions displayed 
 
