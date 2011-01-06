@@ -92,7 +92,7 @@ public class SipTextFormatter {
    */
   private String getContactHost(SipMessage pSipMessage) {
     String lResult = null;
-    Matcher lContactMatcher = sContactPattern.matcher(pSipMessage.getContent().toString());
+    Matcher lContactMatcher = sContactPattern.matcher(pSipMessage.getMessageAsText());
     if (lContactMatcher.matches()) {
       AddressHeaderParser lParser = new AddressHeaderParser(lContactMatcher.group(1));
       lResult =  lParser.getUriHost();
@@ -130,7 +130,7 @@ public class SipTextFormatter {
                                    "  " + lSipMessage.getDelay()));
       lResult.append(COLUMN_CHAR);
 
-      lFromID = mActors.get(lSipMessage.getFrom()).getIndex();
+      lFromID = mActors.get(lSipMessage.getSource()).getIndex();
 
       // This code was used to extract the Contact field. It is supposed to be a better information
       // than the FROM/TO field in certain cases. Still needs to be investigated.
@@ -158,7 +158,7 @@ public class SipTextFormatter {
       // }
       // System.out.println("To: " + lSipMessage.getTo() + "\n");
 
-      lToID = mActors.get(lSipMessage.getTo()).getIndex();
+      lToID = mActors.get(lSipMessage.getDestination()).getIndex();
       i = 0;
       lArrowLength = 0;
 
@@ -221,8 +221,9 @@ public class SipTextFormatter {
 
       lResult.append(sDateFormatter.format(new Date(lMessage.getTime())));
       lResult.append(LINE);
-      // lResult += "\n" + lMessage.getFrom() + " -> " + lMessage.getTo() + "\n";
-      lResult.append(lMessage.getContent());
+      lResult.append("\n");
+      lResult.append(lMessage.getMessageAsText());
+      lResult.append("\n\n");
       i++;
     }
     return lResult.toString();
@@ -267,7 +268,7 @@ public class SipTextFormatter {
     // pair of actors.
     for (SipMessage lSipMessage : pSipMessages) {
       // FROM field
-      lFrom = parseActorName(lSipMessage.getFrom());
+      lFrom = parseActorName(lSipMessage.getSource());
       if (!mActors.containsKey(lFrom)) {
         // Add possibly the real uac hidden behind a proxy
         String lContactHost = getContactHost(lSipMessage);
@@ -288,7 +289,7 @@ public class SipTextFormatter {
       }
 
       // TO field
-      lTo = parseActorName(lSipMessage.getTo());
+      lTo = parseActorName(lSipMessage.getDestination());
       if (!mActors.containsKey(lTo)) {
         mActors.put(lTo, new Actor(lActorCount, 0, lTo));
         mActorsName.add(getNameFromIp(lTo));

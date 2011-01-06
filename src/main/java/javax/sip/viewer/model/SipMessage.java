@@ -2,108 +2,55 @@ package javax.sip.viewer.model;
 
 import java.io.Serializable;
 
-/**
- * Représente vaguement un log d'un message SIP.
- */
 public class SipMessage implements Serializable {
+  private String mMessageAsText = "";
+  private String mSource = null;
+  private String mDestination = null;
+  private long mDelay;
+  private long mTime;
 
-  private String messageFrom = null;
-  private String messageTo = null;
-  private long messageDelay;
-  private long time;
-  private String content = "";
-  private String messageFirstLine = null;
-  private String messageStatusInfo = null;
-  private String messageTransactionId = null;
-  private String mCallId;
-  private boolean mSender;
-
-  public SipMessage() {
+  public void setSource(String pSource) {
+    mSource = pSource;
   }
 
-  public void setFrom(String from) {
-    messageFrom = from;
-  }
-
-  public void setTo(String to) {
-    messageTo = to;
+  public void setDestination(String pDestination) {
+    mDestination = pDestination;
   }
 
   public void setDelay(long delay) {
-    messageDelay = delay;
-
+    mDelay = delay;
   }
 
-  public void setMessageString(String str) {
-    content = str;
+  public void setMessageAsText(String pText) {
+    mMessageAsText = pText;
   }
 
-  public void setFirstLine(String FirstLine) {
-    messageFirstLine = FirstLine;
+  public String getSource() {
+    return mSource;
   }
 
-  public void setStatusInfo(String statusInfo) {
-    messageStatusInfo = statusInfo;
-  }
-
-  public void setTransactionId(String transactionId) {
-    messageTransactionId = transactionId;
-  }
-
-  public String getFrom() {
-    return messageFrom;
-  }
-
-  public String getTo() {
-    return messageTo;
+  public String getDestination() {
+    return mDestination;
   }
 
   public long getDelay() {
-    return messageDelay;
+    return mDelay;
   }
 
-  public String getContent() {
-    return content;
+  public String getMessageAsText() {
+    return mMessageAsText;
   }
 
   public String getFirstLine() {
-    return messageFirstLine;
+    return mMessageAsText.split("\n")[0];
   }
 
-  public String getStatusInfo() {
-    return messageStatusInfo;
-  }
-
-  public String getTransactionId() {
-    return messageTransactionId;
-  }
-
-  public void setCallId(String pCallId) {
-    mCallId = pCallId;
-
-  }
-
-  public void setSender(boolean pSender) {
-    mSender = pSender;
-  }
-
-  public boolean isSender() {
-    return mSender;
-  }
-
-  public String getCallId() {
-    return mCallId;
-  }
-
-  public void setContent(String pContent) {
-    content = pContent;
-  }
-  
   public void setTime(long pTime) {
-    time = pTime;
+    mTime = pTime;
   }
-  
+
   public long getTime() {
-    return time;
+    return mTime;
   }
+
 }
