@@ -1,0 +1,1594 @@
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447293362"
+isSender="false" 
+transactionId="z9hg4bk-d8754z-7067071ad52ec201-1---d8754z-" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="INVITE sip:1111111111@142.120.93.197:10096 SIP/2.0" 
+>
+<![CDATA[INVITE sip:1111111111@142.120.93.197:10096 SIP/2.0
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-7067071ad52ec201-1---d8754z-;rport=9814;received=142.180.19.108
+Max-Forwards: 70
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+From: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+CSeq: 1 INVITE
+Allow: INVITE,ACK,CANCEL,OPTIONS,BYE,REFER,NOTIFY,MESSAGE,SUBSCRIBE,INFO
+Content-Type: application/sdp
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 365
+
+v=0
+o=- 0 2 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 22326 RTP/AVP 107 0 8 18 101
+a=alt:1 2 : 7r5xERF1 TzBxrHa0 192.168.2.32 22326
+a=alt:2 1 : DST20Tmi L3ID2ye8 142.180.19.108 22326
+a=fmtp:18 annexb=yes
+a=fmtp:101 0-15
+a=rtpmap:107 BV32/16000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447293812"
+isSender="true" 
+transactionId="z9hg4bk-d8754z-7067071ad52ec201-1---d8754z-" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="SIP/2.0 100 Trying" 
+>
+<![CDATA[SIP/2.0 100 Trying
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-7067071ad52ec201-1---d8754z-;rport=9814;received=142.180.19.108
+CSeq: 1 INVITE
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+From: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447293822"
+isSender="true" 
+transactionId="z9hg4bk94c0e64e64b9a062e1659a8ca2cf3d8a3732" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="INVITE sip:1111111111@142.120.93.237:5060;transport=udp;voicexml=http%3A%2F%2F142.120.93.197%3A10090%2FEPass%2FStartup.jsp%3Fclid%3D4186910154%26dnis%3D1111111111;nvp-company-name=Bell;nvp-application-name=EPass;caller-number=4186910154 SIP/2.0" 
+>
+<![CDATA[INVITE sip:1111111111@142.120.93.237:5060;transport=udp;voicexml=http%3A%2F%2F142.120.93.197%3A10090%2FEPass%2FStartup.jsp%3Fclid%3D4186910154%26dnis%3D1111111111;nvp-company-name=Bell;nvp-application-name=EPass;caller-number=4186910154 SIP/2.0
+Call-ID: s1-6130811581277743667@142.120.93.197
+CSeq: 2 INVITE
+From: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+Max-Forwards: 70
+BillingID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+Remote-Party-ID: "dumb" <sip:4186910154@dumb>;party=calling;screen=yes
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+Content-Type: application/sdp
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK94c0e64e64b9a062e1659a8ca2cf3d8a3732
+Contact: <sip:142.120.93.197:10096;transport=udp>
+P-Asserted-Identity: "dumb" <sip:4186910154@dumb>
+Content-Length: 365
+
+v=0
+o=- 0 2 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 22326 RTP/AVP 107 0 8 18 101
+a=alt:1 2 : 7r5xERF1 TzBxrHa0 192.168.2.32 22326
+a=alt:2 1 : DST20Tmi L3ID2ye8 142.180.19.108 22326
+a=fmtp:18 annexb=yes
+a=fmtp:101 0-15
+a=rtpmap:107 BV32/16000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447293831"
+isSender="false" 
+transactionId="z9hg4bk94c0e64e64b9a062e1659a8ca2cf3d8a3732" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="SIP/2.0 100 Trying" 
+>
+<![CDATA[SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK94c0e64e64b9a062e1659a8ca2cf3d8a3732
+From: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+Call-ID: s1-6130811581277743667@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:142.120.93.237;transport=udp>
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447293833"
+isSender="false" 
+transactionId="z9hg4bk94c0e64e64b9a062e1659a8ca2cf3d8a3732" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="SIP/2.0 180 Ringing" 
+>
+<![CDATA[SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK94c0e64e64b9a062e1659a8ca2cf3d8a3732
+From: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-ed03-daf0
+Call-ID: s1-6130811581277743667@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:142.120.93.237;transport=udp>
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447293839"
+isSender="true" 
+transactionId="z9hg4bk-d8754z-7067071ad52ec201-1---d8754z-" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="SIP/2.0 180 Ringing" 
+>
+<![CDATA[SIP/2.0 180 Ringing
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-7067071ad52ec201-1---d8754z-;rport=9814;received=142.180.19.108
+CSeq: 1 INVITE
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+From: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447293860"
+isSender="false" 
+transactionId="z9hg4bk-d8754z-7067071ad52ec201-1---d8754z-" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="INVITE sip:1111111111@142.120.93.197:10096 SIP/2.0" 
+>
+<![CDATA[INVITE sip:1111111111@142.120.93.197:10096 SIP/2.0
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-7067071ad52ec201-1---d8754z-;rport=9814;received=142.180.19.108
+Max-Forwards: 70
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+From: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+CSeq: 1 INVITE
+Allow: INVITE,ACK,CANCEL,OPTIONS,BYE,REFER,NOTIFY,MESSAGE,SUBSCRIBE,INFO
+Content-Type: application/sdp
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 365
+
+v=0
+o=- 0 2 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 22326 RTP/AVP 107 0 8 18 101
+a=alt:1 2 : 7r5xERF1 TzBxrHa0 192.168.2.32 22326
+a=alt:2 1 : DST20Tmi L3ID2ye8 142.180.19.108 22326
+a=fmtp:18 annexb=yes
+a=fmtp:101 0-15
+a=rtpmap:107 BV32/16000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447293892"
+isSender="false" 
+transactionId="z9hg4bk94c0e64e64b9a062e1659a8ca2cf3d8a3732" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="SIP/2.0 200 Ok" 
+>
+<![CDATA[SIP/2.0 200 Ok
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK94c0e64e64b9a062e1659a8ca2cf3d8a3732
+From: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-ed03-daf0
+Call-ID: s1-6130811581277743667@142.120.93.197
+CSeq: 2 INVITE
+Content-Type: application/sdp
+Contact: <sip:nvp@142.120.93.237:5060>;transport=udp
+Allow: INVITE,ACK,BYE,CANCEL,NOTIFY,INFO,OPTIONS
+Supported:
+User-Agent: Nuance/APSIP-NVP3.1-SP06-B00-NSRD00048944-NSRD00053757
+Content-Length: 201
+
+v=0
+o=- 1278447293 1278447293 IN IP4 142.120.93.237
+s=SIP Call
+t=0 0
+m=audio 57296 RTP/AVP 0 101
+c=IN IP4 142.120.93.237
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447293901"
+isSender="true" 
+transactionId="z9hg4bk-d8754z-7067071ad52ec201-1---d8754z-" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-7067071ad52ec201-1---d8754z-;rport=9814;received=142.180.19.108
+CSeq: 1 INVITE
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+From: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Contact: <sip:142.120.93.197:10096;transport=udp>
+Content-Type: application/sdp
+Content-Length: 201
+
+v=0
+o=- 1278447293 1278447293 IN IP4 142.120.93.237
+s=SIP Call
+t=0 0
+m=audio 57296 RTP/AVP 0 101
+c=IN IP4 142.120.93.237
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447294147"
+isSender="false" 
+transactionId="z9hg4bk-d8754z-c139c7334538a203-1---d8754z-" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="ACK sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[ACK sip:142.120.93.197:10096;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-c139c7334538a203-1---d8754z-;rport=9814;received=142.180.19.108
+Max-Forwards: 70
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+From: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+CSeq: 1 ACK
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447294153"
+isSender="true" 
+transactionId="z9hg4bk98300fbdc02cd8458c64f4f6d917ed4c3732" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="ACK sip:nvp@142.120.93.237:5060 SIP/2.0" 
+>
+<![CDATA[ACK sip:nvp@142.120.93.237:5060 SIP/2.0
+Call-ID: s1-6130811581277743667@142.120.93.197
+CSeq: 2 ACK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK98300fbdc02cd8458c64f4f6d917ed4c3732
+From: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-ed03-daf0
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447315803"
+isSender="false" 
+transactionId="z9hg4bk30c0e27c-1dd2-11b2-9b01-eb1a00819cd7" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="REFER sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[REFER sip:142.120.93.197:10096;transport=udp SIP/2.0
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-ed03-daf0
+To: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+Contact: <sip:nvp@142.120.93.237:5060>;transport=udp
+Call-ID: s1-6130811581277743667@142.120.93.197
+CSeq: 1 REFER
+Refer-To: <sip:4186910154@localhost>;timeout=35s
+Referred-By: <sip:1111111111@142.120.93.197:10096>
+Via: SIP/2.0/UDP 142.120.93.237:5060;branch=z9Hg4Bk30c0e27c-1dd2-11b2-9b01-eb1a00819cd7
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447315809"
+isSender="true" 
+transactionId="z9hg4bk30c0e27c-1dd2-11b2-9b01-eb1a00819cd7" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="SIP/2.0 202 Accepted" 
+>
+<![CDATA[SIP/2.0 202 Accepted
+To: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+Via: SIP/2.0/UDP 142.120.93.237:5060;branch=z9Hg4Bk30c0e27c-1dd2-11b2-9b01-eb1a00819cd7
+CSeq: 1 REFER
+Call-ID: s1-6130811581277743667@142.120.93.197
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-ed03-daf0
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.111:5060" 
+time="1278447315818"
+isSender="true" 
+transactionId="z9hg4bkf47d5ad2fc3ed1336c67dabb197416033732" 
+callId="s1-7440640214033972133@142.120.93.197" 
+firstLine="INVITE sip:4186910154@142.120.93.111;transport=udp SIP/2.0" 
+>
+<![CDATA[INVITE sip:4186910154@142.120.93.111;transport=udp SIP/2.0
+Call-ID: s1-7440640214033972133@142.120.93.197
+CSeq: 2 INVITE
+From: "dumb" <sip:4186910154@dumb>;tag=s1-7440640214033972133
+Max-Forwards: 70
+Remote-Party-ID: "dumb" <sip:4186910154@dumb>;party=calling;screen=yes
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+Content-Type: application/sdp
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKf47d5ad2fc3ed1336c67dabb197416033732
+Contact: <sip:142.120.93.197:10096;transport=udp>
+P-Asserted-Identity: "dumb" <sip:4186910154@dumb>
+Content-Length: 365
+
+v=0
+o=- 0 2 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 22326 RTP/AVP 107 0 8 18 101
+a=alt:1 2 : 7r5xERF1 TzBxrHa0 192.168.2.32 22326
+a=alt:2 1 : DST20Tmi L3ID2ye8 142.180.19.108 22326
+a=fmtp:18 annexb=yes
+a=fmtp:101 0-15
+a=rtpmap:107 BV32/16000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+]]>
+</message>
+<message
+from="142.120.93.111:5060" 
+to="142.120.93.197:10096" 
+time="1278447315866"
+isSender="false" 
+transactionId="z9hg4bkf47d5ad2fc3ed1336c67dabb197416033732" 
+callId="s1-7440640214033972133@142.120.93.197" 
+firstLine="SIP/2.0 100 Trying" 
+>
+<![CDATA[SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKf47d5ad2fc3ed1336c67dabb197416033732
+From: "dumb" <sip:4186910154@dumb>;tag=s1-7440640214033972133
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0000-009D-E226F0E1
+Call-ID: s1-7440640214033972133@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111>
+User-Agent: Vega100-T1E1/08.02.04.1aT028a
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.111:5060" 
+to="142.120.93.197:10096" 
+time="1278447316643"
+isSender="false" 
+transactionId="z9hg4bkf47d5ad2fc3ed1336c67dabb197416033732" 
+callId="s1-7440640214033972133@142.120.93.197" 
+firstLine="SIP/2.0 183 Progress With Media" 
+>
+<![CDATA[SIP/2.0 183 Progress With Media
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKf47d5ad2fc3ed1336c67dabb197416033732
+From: "dumb" <sip:4186910154@dumb>;tag=s1-7440640214033972133
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0000-009D-E226F0E1
+Call-ID: s1-7440640214033972133@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111>
+User-Agent: Vega100-T1E1/08.02.04.1aT028a
+Content-Type: application/sdp
+Content-Length: 193
+
+v=0
+o=Vega50 264 1 IN IP4 142.120.93.111
+s=Sip Call
+t=0 0
+m=audio 10250 RTP/AVP 0 101
+c=IN IP4 142.120.93.111
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15,16
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447316647"
+isSender="true" 
+transactionId="z9hg4bk955b7e03c510acd33c085c2bcc1133033732" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="INVITE sip:4186910154@142.180.19.108:9814 SIP/2.0" 
+>
+<![CDATA[INVITE sip:4186910154@142.180.19.108:9814 SIP/2.0
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK955b7e03c510acd33c085c2bcc1133033732
+CSeq: 1 INVITE
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+To: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+Max-Forwards: 70
+Contact: <sip:142.120.93.197:10096;transport=udp>
+Content-Type: application/sdp
+Content-Length: 193
+
+v=0
+o=Vega50 264 1 IN IP4 142.120.93.111
+s=Sip Call
+t=0 0
+m=audio 10250 RTP/AVP 0 101
+c=IN IP4 142.120.93.111
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15,16
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447316795"
+isSender="false" 
+transactionId="z9hg4bk955b7e03c510acd33c085c2bcc1133033732" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="SIP/2.0 100 Trying" 
+>
+<![CDATA[SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK955b7e03c510acd33c085c2bcc1133033732
+To: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+CSeq: 1 INVITE
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447316898"
+isSender="false" 
+transactionId="z9hg4bk955b7e03c510acd33c085c2bcc1133033732" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK955b7e03c510acd33c085c2bcc1133033732
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+CSeq: 1 INVITE
+Allow: INVITE,ACK,CANCEL,OPTIONS,BYE,REFER,NOTIFY,MESSAGE,SUBSCRIBE,INFO
+Content-Type: application/sdp
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 184
+
+v=0
+o=- 0 3 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 22326 RTP/AVP 0 101
+a=fmtp:101 0-15
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447316901"
+isSender="true" 
+transactionId="z9hg4bk06170d1c0f9b52b3e000f4af760cd4c93732" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="ACK sip:4186910154@142.180.19.108:9814 SIP/2.0" 
+>
+<![CDATA[ACK sip:4186910154@142.180.19.108:9814 SIP/2.0
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+CSeq: 1 ACK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK06170d1c0f9b52b3e000f4af760cd4c93732
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+To: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447319572"
+isSender="false" 
+transactionId="z9hg4bk-d8754z-9b46655685608822-1---d8754z-" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="INVITE sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[INVITE sip:142.120.93.197:10096;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-9b46655685608822-1---d8754z-;rport=9814;received=142.180.19.108
+Max-Forwards: 70
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+From: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+CSeq: 2 INVITE
+Allow: INVITE,ACK,CANCEL,OPTIONS,BYE,REFER,NOTIFY,MESSAGE,SUBSCRIBE,INFO
+Content-Type: application/sdp
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 179
+
+v=0
+o=- 0 4 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 0.0.0.0
+t=0 0
+m=audio 22326 RTP/AVP 0 101
+a=fmtp:101 0-15
+a=rtpmap:101 telephone-event/8000
+a=sendonly
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447319592"
+isSender="true" 
+transactionId="z9hg4bk-d8754z-9b46655685608822-1---d8754z-" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-9b46655685608822-1---d8754z-;rport=9814;received=142.180.19.108
+CSeq: 2 INVITE
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+From: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Contact: <sip:142.120.93.197:10096;transport=udp>
+Content-Type: application/sdp
+Content-Length: 193
+
+v=0
+o=Vega50 264 1 IN IP4 142.120.93.111
+s=Sip Call
+t=0 0
+m=audio 10250 RTP/AVP 0 101
+c=IN IP4 142.120.93.111
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15,16
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447319744"
+isSender="false" 
+transactionId="z9hg4bk-d8754z-235dcf689b47b178-1---d8754z-" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="ACK sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[ACK sip:142.120.93.197:10096;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-235dcf689b47b178-1---d8754z-;rport=9814;received=142.180.19.108
+Max-Forwards: 70
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+From: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+CSeq: 2 ACK
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.111:5060" 
+to="142.120.93.197:10096" 
+time="1278447319847"
+isSender="false" 
+transactionId="z9hg4bkf47d5ad2fc3ed1336c67dabb197416033732" 
+callId="s1-7440640214033972133@142.120.93.197" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKf47d5ad2fc3ed1336c67dabb197416033732
+From: "dumb" <sip:4186910154@dumb>;tag=s1-7440640214033972133
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0000-009D-E226F0E1
+Call-ID: s1-7440640214033972133@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111>
+Allow: INVITE,ACK,BYE,CANCEL,INFO,NOTIFY,OPTIONS,REFER
+Accept: application/sdp,application/none
+Accept-Language: en
+User-Agent: Vega100-T1E1/08.02.04.1aT028a
+Content-Type: application/sdp
+Content-Length: 193
+
+v=0
+o=Vega50 265 1 IN IP4 142.120.93.111
+s=Sip Call
+t=0 0
+m=audio 10250 RTP/AVP 0 101
+c=IN IP4 142.120.93.111
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15,16
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.111:5060" 
+time="1278447319848"
+isSender="true" 
+transactionId="z9hg4bk0229245da0228ce13b50bd378f29b08f3732" 
+callId="s1-7440640214033972133@142.120.93.197" 
+firstLine="ACK sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111 SIP/2.0" 
+>
+<![CDATA[ACK sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111 SIP/2.0
+Call-ID: s1-7440640214033972133@142.120.93.197
+CSeq: 2 ACK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK0229245da0228ce13b50bd378f29b08f3732
+From: "dumb" <sip:4186910154@dumb>;tag=s1-7440640214033972133
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0000-009D-E226F0E1
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447319853"
+isSender="true" 
+transactionId="z9hg4bk629c056c565f17d4cc1c05dae4b975a83732" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="NOTIFY sip:nvp@142.120.93.237:5060 SIP/2.0" 
+>
+<![CDATA[NOTIFY sip:nvp@142.120.93.237:5060 SIP/2.0
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK629c056c565f17d4cc1c05dae4b975a83732
+CSeq: 3 NOTIFY
+From: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-ed03-daf0
+Call-ID: s1-6130811581277743667@142.120.93.197
+Max-Forwards: 70
+Contact: <sip:142.120.93.197:10096;transport=udp>
+Subscription-State: Terminated
+Event: refer
+Content-Type: message/sipfrag
+Content-Length: 14
+
+SIP/2.0 200 OK]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447319855"
+isSender="false" 
+transactionId="z9hg4bk629c056c565f17d4cc1c05dae4b975a83732" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="SIP/2.0 200 Ok" 
+>
+<![CDATA[SIP/2.0 200 Ok
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK629c056c565f17d4cc1c05dae4b975a83732
+From: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-ed03-daf0
+Call-ID: s1-6130811581277743667@142.120.93.197
+CSeq: 3 NOTIFY
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447319856"
+isSender="false" 
+transactionId="z9hg4bk332b1532-1dd2-11b2-be1c-a1fc8b4c1cb0" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="BYE sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[BYE sip:142.120.93.197:10096;transport=udp SIP/2.0
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-ed03-daf0
+To: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+Contact: <sip:142.120.93.237;transport=udp>
+Call-ID: s1-6130811581277743667@142.120.93.197
+CSeq: 2 BYE
+Via: SIP/2.0/UDP 142.120.93.237:5060;branch=z9Hg4Bk332b1532-1dd2-11b2-be1c-a1fc8b4c1cb0
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447319860"
+isSender="true" 
+transactionId="z9hg4bk332b1532-1dd2-11b2-be1c-a1fc8b4c1cb0" 
+callId="s1-6130811581277743667@142.120.93.197" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+To: "dumb" <sip:4186910154@dumb>;tag=s1-6130811581277743667
+Via: SIP/2.0/UDP 142.120.93.237:5060;branch=z9Hg4Bk332b1532-1dd2-11b2-be1c-a1fc8b4c1cb0
+CSeq: 2 BYE
+Call-ID: s1-6130811581277743667@142.120.93.197
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-ed03-daf0
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.111:5060" 
+to="142.120.93.197:10096" 
+time="1278447323357"
+isSender="false" 
+transactionId="z9hg4bk-vega1-0007-0001-0071-e7cc20fc" 
+callId="s1-7440640214033972133@142.120.93.197" 
+firstLine="BYE sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[BYE sip:142.120.93.197:10096;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.120.93.111:5060;branch=z9hG4bK-vega1-0007-0001-0071-E7CC20FC
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0000-009D-E226F0E1
+To: "dumb" <sip:4186910154@dumb>;tag=s1-7440640214033972133
+Max-Forwards: 70
+Call-ID: s1-7440640214033972133@142.120.93.197
+CSeq: 648035235 BYE
+User-Agent: Vega100-T1E1/08.02.04.1aT028a
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.111:5060" 
+time="1278447323359"
+isSender="true" 
+transactionId="z9hg4bk-vega1-0007-0001-0071-e7cc20fc" 
+callId="s1-7440640214033972133@142.120.93.197" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+To: "dumb" <sip:4186910154@dumb>;tag=s1-7440640214033972133
+Via: SIP/2.0/UDP 142.120.93.111:5060;branch=z9hG4bK-vega1-0007-0001-0071-E7CC20FC
+CSeq: 648035235 BYE
+Call-ID: s1-7440640214033972133@142.120.93.197
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0000-009D-E226F0E1
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447323366"
+isSender="true" 
+transactionId="z9hg4bk465c57497b7fc017db2398adf8087ecb3732" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="BYE sip:4186910154@142.180.19.108:9814 SIP/2.0" 
+>
+<![CDATA[BYE sip:4186910154@142.180.19.108:9814 SIP/2.0
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK465c57497b7fc017db2398adf8087ecb3732
+CSeq: 2 BYE
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+To: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447323520"
+isSender="false" 
+transactionId="z9hg4bk465c57497b7fc017db2398adf8087ecb3732" 
+callId="NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU." 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK465c57497b7fc017db2398adf8087ecb3732
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "dumb" <sip:4186910154@dumb>;tag=585e4b38
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s1-8764892981122059793
+Call-ID: NzY5NmU3YWZmZjUxZGIyMGVmNzFlZDc1NmIyYTAyZjU.
+CSeq: 2 BYE
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447368488"
+isSender="false" 
+transactionId="z9hg4bk-d8754z-0177e73d6c22ed6f-1---d8754z-" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="INVITE sip:1111111111@142.120.93.197:10096 SIP/2.0" 
+>
+<![CDATA[INVITE sip:1111111111@142.120.93.197:10096 SIP/2.0
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-0177e73d6c22ed6f-1---d8754z-;rport=9814;received=142.180.19.108
+Max-Forwards: 70
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+From: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+CSeq: 1 INVITE
+Allow: INVITE,ACK,CANCEL,OPTIONS,BYE,REFER,NOTIFY,MESSAGE,SUBSCRIBE,INFO
+Content-Type: application/sdp
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 365
+
+v=0
+o=- 0 2 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 39162 RTP/AVP 107 0 8 18 101
+a=alt:1 2 : sd5+9VKp hjJmkdcY 192.168.2.32 39162
+a=alt:2 1 : QeaEfMRl En4hBuAo 142.180.19.108 39162
+a=fmtp:18 annexb=yes
+a=fmtp:101 0-15
+a=rtpmap:107 BV32/16000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447368499"
+isSender="true" 
+transactionId="z9hg4bkf641a1ad436c53f38059daf04ba921573732" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="INVITE sip:1111111111@142.120.93.237:5060;transport=udp;voicexml=http%3A%2F%2F142.120.93.197%3A10090%2FEPass%2FStartup.jsp%3Fclid%3D4186910154%26dnis%3D1111111111;nvp-company-name=Bell;nvp-application-name=EPass;caller-number=4186910154 SIP/2.0" 
+>
+<![CDATA[INVITE sip:1111111111@142.120.93.237:5060;transport=udp;voicexml=http%3A%2F%2F142.120.93.197%3A10090%2FEPass%2FStartup.jsp%3Fclid%3D4186910154%26dnis%3D1111111111;nvp-company-name=Bell;nvp-application-name=EPass;caller-number=4186910154 SIP/2.0
+Call-ID: s2-7666284065592459577@142.120.93.197
+CSeq: 2 INVITE
+From: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+Max-Forwards: 70
+BillingID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+Remote-Party-ID: "dumb" <sip:4186910154@dumb>;party=calling;screen=yes
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+Content-Type: application/sdp
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKf641a1ad436c53f38059daf04ba921573732
+Contact: <sip:142.120.93.197:10096;transport=udp>
+P-Asserted-Identity: "dumb" <sip:4186910154@dumb>
+Content-Length: 365
+
+v=0
+o=- 0 2 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 39162 RTP/AVP 107 0 8 18 101
+a=alt:1 2 : sd5+9VKp hjJmkdcY 192.168.2.32 39162
+a=alt:2 1 : QeaEfMRl En4hBuAo 142.180.19.108 39162
+a=fmtp:18 annexb=yes
+a=fmtp:101 0-15
+a=rtpmap:107 BV32/16000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447368502"
+isSender="false" 
+transactionId="z9hg4bkf641a1ad436c53f38059daf04ba921573732" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="SIP/2.0 100 Trying" 
+>
+<![CDATA[SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKf641a1ad436c53f38059daf04ba921573732
+From: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+Call-ID: s2-7666284065592459577@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:142.120.93.237;transport=udp>
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447368504"
+isSender="false" 
+transactionId="z9hg4bkf641a1ad436c53f38059daf04ba921573732" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="SIP/2.0 180 Ringing" 
+>
+<![CDATA[SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKf641a1ad436c53f38059daf04ba921573732
+From: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-d921-db3b
+Call-ID: s2-7666284065592459577@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:142.120.93.237;transport=udp>
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447368505"
+isSender="true" 
+transactionId="z9hg4bk-d8754z-0177e73d6c22ed6f-1---d8754z-" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="SIP/2.0 180 Ringing" 
+>
+<![CDATA[SIP/2.0 180 Ringing
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-0177e73d6c22ed6f-1---d8754z-;rport=9814;received=142.180.19.108
+CSeq: 1 INVITE
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+From: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447368523"
+isSender="false" 
+transactionId="z9hg4bkf641a1ad436c53f38059daf04ba921573732" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="SIP/2.0 200 Ok" 
+>
+<![CDATA[SIP/2.0 200 Ok
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKf641a1ad436c53f38059daf04ba921573732
+From: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-d921-db3b
+Call-ID: s2-7666284065592459577@142.120.93.197
+CSeq: 2 INVITE
+Content-Type: application/sdp
+Contact: <sip:nvp@142.120.93.237:5060>;transport=udp
+Allow: INVITE,ACK,BYE,CANCEL,NOTIFY,INFO,OPTIONS
+Supported:
+User-Agent: Nuance/APSIP-NVP3.1-SP06-B00-NSRD00048944-NSRD00053757
+Content-Length: 201
+
+v=0
+o=- 1278447368 1278447368 IN IP4 142.120.93.237
+s=SIP Call
+t=0 0
+m=audio 28428 RTP/AVP 0 101
+c=IN IP4 142.120.93.237
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447368525"
+isSender="true" 
+transactionId="z9hg4bk-d8754z-0177e73d6c22ed6f-1---d8754z-" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-0177e73d6c22ed6f-1---d8754z-;rport=9814;received=142.180.19.108
+CSeq: 1 INVITE
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+From: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Contact: <sip:142.120.93.197:10096;transport=udp>
+Content-Type: application/sdp
+Content-Length: 201
+
+v=0
+o=- 1278447368 1278447368 IN IP4 142.120.93.237
+s=SIP Call
+t=0 0
+m=audio 28428 RTP/AVP 0 101
+c=IN IP4 142.120.93.237
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447368773"
+isSender="false" 
+transactionId="z9hg4bk-d8754z-467d2b38ec746433-1---d8754z-" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="ACK sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[ACK sip:142.120.93.197:10096;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-467d2b38ec746433-1---d8754z-;rport=9814;received=142.180.19.108
+Max-Forwards: 70
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+From: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+CSeq: 1 ACK
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447368775"
+isSender="true" 
+transactionId="z9hg4bk86f687e9d67a39b69d38dd773c52ab033732" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="ACK sip:nvp@142.120.93.237:5060 SIP/2.0" 
+>
+<![CDATA[ACK sip:nvp@142.120.93.237:5060 SIP/2.0
+Call-ID: s2-7666284065592459577@142.120.93.197
+CSeq: 2 ACK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK86f687e9d67a39b69d38dd773c52ab033732
+From: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-d921-db3b
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447390433"
+isSender="false" 
+transactionId="z9hg4bk5d3bbd40-1dd2-11b2-b6a4-d849737ab155" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="REFER sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[REFER sip:142.120.93.197:10096;transport=udp SIP/2.0
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-d921-db3b
+To: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+Contact: <sip:nvp@142.120.93.237:5060>;transport=udp
+Call-ID: s2-7666284065592459577@142.120.93.197
+CSeq: 1 REFER
+Refer-To: <sip:4186910154@localhost>;timeout=35s
+Referred-By: <sip:1111111111@142.120.93.197:10096>
+Via: SIP/2.0/UDP 142.120.93.237:5060;branch=z9Hg4Bk5d3bbd40-1dd2-11b2-b6a4-d849737ab155
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447390435"
+isSender="true" 
+transactionId="z9hg4bk5d3bbd40-1dd2-11b2-b6a4-d849737ab155" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="SIP/2.0 202 Accepted" 
+>
+<![CDATA[SIP/2.0 202 Accepted
+To: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+Via: SIP/2.0/UDP 142.120.93.237:5060;branch=z9Hg4Bk5d3bbd40-1dd2-11b2-b6a4-d849737ab155
+CSeq: 1 REFER
+Call-ID: s2-7666284065592459577@142.120.93.197
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-d921-db3b
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.111:5060" 
+time="1278447390438"
+isSender="true" 
+transactionId="z9hg4bkd0ee3692e52593e4ac4395b25a59de553732" 
+callId="s2-5428492419922573817@142.120.93.197" 
+firstLine="INVITE sip:4186910154@142.120.93.111;transport=udp SIP/2.0" 
+>
+<![CDATA[INVITE sip:4186910154@142.120.93.111;transport=udp SIP/2.0
+Call-ID: s2-5428492419922573817@142.120.93.197
+CSeq: 2 INVITE
+From: "dumb" <sip:4186910154@dumb>;tag=s2-5428492419922573817
+Max-Forwards: 70
+Remote-Party-ID: "dumb" <sip:4186910154@dumb>;party=calling;screen=yes
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>
+Content-Type: application/sdp
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKd0ee3692e52593e4ac4395b25a59de553732
+Contact: <sip:142.120.93.197:10096;transport=udp>
+P-Asserted-Identity: "dumb" <sip:4186910154@dumb>
+Content-Length: 365
+
+v=0
+o=- 0 2 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 39162 RTP/AVP 107 0 8 18 101
+a=alt:1 2 : sd5+9VKp hjJmkdcY 192.168.2.32 39162
+a=alt:2 1 : QeaEfMRl En4hBuAo 142.180.19.108 39162
+a=fmtp:18 annexb=yes
+a=fmtp:101 0-15
+a=rtpmap:107 BV32/16000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+]]>
+</message>
+<message
+from="142.120.93.111:5060" 
+to="142.120.93.197:10096" 
+time="1278447390487"
+isSender="false" 
+transactionId="z9hg4bkd0ee3692e52593e4ac4395b25a59de553732" 
+callId="s2-5428492419922573817@142.120.93.197" 
+firstLine="SIP/2.0 100 Trying" 
+>
+<![CDATA[SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKd0ee3692e52593e4ac4395b25a59de553732
+From: "dumb" <sip:4186910154@dumb>;tag=s2-5428492419922573817
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0001-00DF-E370CEB1
+Call-ID: s2-5428492419922573817@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111>
+User-Agent: Vega100-T1E1/08.02.04.1aT028a
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.111:5060" 
+to="142.120.93.197:10096" 
+time="1278447391339"
+isSender="false" 
+transactionId="z9hg4bkd0ee3692e52593e4ac4395b25a59de553732" 
+callId="s2-5428492419922573817@142.120.93.197" 
+firstLine="SIP/2.0 183 Progress With Media" 
+>
+<![CDATA[SIP/2.0 183 Progress With Media
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKd0ee3692e52593e4ac4395b25a59de553732
+From: "dumb" <sip:4186910154@dumb>;tag=s2-5428492419922573817
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0001-00DF-E370CEB1
+Call-ID: s2-5428492419922573817@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111>
+User-Agent: Vega100-T1E1/08.02.04.1aT028a
+Content-Type: application/sdp
+Content-Length: 193
+
+v=0
+o=Vega50 267 1 IN IP4 142.120.93.111
+s=Sip Call
+t=0 0
+m=audio 10252 RTP/AVP 0 101
+c=IN IP4 142.120.93.111
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15,16
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447391341"
+isSender="true" 
+transactionId="z9hg4bk2c8836c3a8b8f43967244fc2ff69c46d3732" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="INVITE sip:4186910154@142.180.19.108:9814 SIP/2.0" 
+>
+<![CDATA[INVITE sip:4186910154@142.180.19.108:9814 SIP/2.0
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK2c8836c3a8b8f43967244fc2ff69c46d3732
+CSeq: 1 INVITE
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+To: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+Max-Forwards: 70
+Contact: <sip:142.120.93.197:10096;transport=udp>
+Content-Type: application/sdp
+Content-Length: 193
+
+v=0
+o=Vega50 267 1 IN IP4 142.120.93.111
+s=Sip Call
+t=0 0
+m=audio 10252 RTP/AVP 0 101
+c=IN IP4 142.120.93.111
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15,16
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447391496"
+isSender="false" 
+transactionId="z9hg4bk2c8836c3a8b8f43967244fc2ff69c46d3732" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK2c8836c3a8b8f43967244fc2ff69c46d3732
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+CSeq: 1 INVITE
+Allow: INVITE,ACK,CANCEL,OPTIONS,BYE,REFER,NOTIFY,MESSAGE,SUBSCRIBE,INFO
+Content-Type: application/sdp
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 184
+
+v=0
+o=- 0 3 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 39162 RTP/AVP 0 101
+a=fmtp:101 0-15
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447391497"
+isSender="true" 
+transactionId="z9hg4bk55920ee71b825cd32291caba0ee64d133732" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="ACK sip:4186910154@142.180.19.108:9814 SIP/2.0" 
+>
+<![CDATA[ACK sip:4186910154@142.180.19.108:9814 SIP/2.0
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+CSeq: 1 ACK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK55920ee71b825cd32291caba0ee64d133732
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+To: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447394163"
+isSender="false" 
+transactionId="z9hg4bk-d8754z-fc2bcb7c30355619-1---d8754z-" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="INVITE sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[INVITE sip:142.120.93.197:10096;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-fc2bcb7c30355619-1---d8754z-;rport=9814;received=142.180.19.108
+Max-Forwards: 70
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+From: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+CSeq: 2 INVITE
+Allow: INVITE,ACK,CANCEL,OPTIONS,BYE,REFER,NOTIFY,MESSAGE,SUBSCRIBE,INFO
+Content-Type: application/sdp
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 179
+
+v=0
+o=- 0 4 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 0.0.0.0
+t=0 0
+m=audio 39162 RTP/AVP 0 101
+a=fmtp:101 0-15
+a=rtpmap:101 telephone-event/8000
+a=sendonly
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447394168"
+isSender="true" 
+transactionId="z9hg4bk-d8754z-fc2bcb7c30355619-1---d8754z-" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-fc2bcb7c30355619-1---d8754z-;rport=9814;received=142.180.19.108
+CSeq: 2 INVITE
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+From: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Contact: <sip:142.120.93.197:10096;transport=udp>
+Content-Type: application/sdp
+Content-Length: 193
+
+v=0
+o=Vega50 267 1 IN IP4 142.120.93.111
+s=Sip Call
+t=0 0
+m=audio 10252 RTP/AVP 0 101
+c=IN IP4 142.120.93.111
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15,16
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447394347"
+isSender="false" 
+transactionId="z9hg4bk-d8754z-721cc60d392bea07-1---d8754z-" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="ACK sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[ACK sip:142.120.93.197:10096;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.180.19.108:9814;branch=z9hG4bK-d8754z-721cc60d392bea07-1---d8754z-;rport=9814;received=142.180.19.108
+Max-Forwards: 70
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+From: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+CSeq: 2 ACK
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.111:5060" 
+to="142.120.93.197:10096" 
+time="1278447394441"
+isSender="false" 
+transactionId="z9hg4bkd0ee3692e52593e4ac4395b25a59de553732" 
+callId="s2-5428492419922573817@142.120.93.197" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKd0ee3692e52593e4ac4395b25a59de553732
+From: "dumb" <sip:4186910154@dumb>;tag=s2-5428492419922573817
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0001-00DF-E370CEB1
+Call-ID: s2-5428492419922573817@142.120.93.197
+CSeq: 2 INVITE
+Contact: <sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111>
+Allow: INVITE,ACK,BYE,CANCEL,INFO,NOTIFY,OPTIONS,REFER
+Accept: application/sdp,application/none
+Accept-Language: en
+User-Agent: Vega100-T1E1/08.02.04.1aT028a
+Content-Type: application/sdp
+Content-Length: 193
+
+v=0
+o=Vega50 268 1 IN IP4 142.120.93.111
+s=Sip Call
+t=0 0
+m=audio 10252 RTP/AVP 0 101
+c=IN IP4 142.120.93.111
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15,16
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.111:5060" 
+time="1278447394442"
+isSender="true" 
+transactionId="z9hg4bkad64d17637f4a28eed434813249455f93732" 
+callId="s2-5428492419922573817@142.120.93.197" 
+firstLine="ACK sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111 SIP/2.0" 
+>
+<![CDATA[ACK sip:4186910154@142.120.93.111:5060;maddr=142.120.93.111 SIP/2.0
+Call-ID: s2-5428492419922573817@142.120.93.197
+CSeq: 2 ACK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKad64d17637f4a28eed434813249455f93732
+From: "dumb" <sip:4186910154@dumb>;tag=s2-5428492419922573817
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0001-00DF-E370CEB1
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447394444"
+isSender="true" 
+transactionId="z9hg4bk67fe584e3b1df35222a118e1f51afbcf3732" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="NOTIFY sip:nvp@142.120.93.237:5060 SIP/2.0" 
+>
+<![CDATA[NOTIFY sip:nvp@142.120.93.237:5060 SIP/2.0
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK67fe584e3b1df35222a118e1f51afbcf3732
+CSeq: 3 NOTIFY
+From: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-d921-db3b
+Call-ID: s2-7666284065592459577@142.120.93.197
+Max-Forwards: 70
+Contact: <sip:142.120.93.197:10096;transport=udp>
+Subscription-State: Terminated
+Event: refer
+Content-Type: message/sipfrag
+Content-Length: 14
+
+SIP/2.0 200 OK]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447394446"
+isSender="false" 
+transactionId="z9hg4bk67fe584e3b1df35222a118e1f51afbcf3732" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="SIP/2.0 200 Ok" 
+>
+<![CDATA[SIP/2.0 200 Ok
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bK67fe584e3b1df35222a118e1f51afbcf3732
+From: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+To: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-d921-db3b
+Call-ID: s2-7666284065592459577@142.120.93.197
+CSeq: 3 NOTIFY
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.237:5060" 
+to="142.120.93.197:10096" 
+time="1278447394446"
+isSender="false" 
+transactionId="z9hg4bk5f9ff916-1dd2-11b2-8333-c50a76d8761d" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="BYE sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[BYE sip:142.120.93.197:10096;transport=udp SIP/2.0
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-d921-db3b
+To: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+Contact: <sip:142.120.93.237;transport=udp>
+Call-ID: s2-7666284065592459577@142.120.93.197
+CSeq: 2 BYE
+Via: SIP/2.0/UDP 142.120.93.237:5060;branch=z9Hg4Bk5f9ff916-1dd2-11b2-8333-c50a76d8761d
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.237:5060" 
+time="1278447394448"
+isSender="true" 
+transactionId="z9hg4bk5f9ff916-1dd2-11b2-8333-c50a76d8761d" 
+callId="s2-7666284065592459577@142.120.93.197" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+To: "dumb" <sip:4186910154@dumb>;tag=s2-7666284065592459577
+Via: SIP/2.0/UDP 142.120.93.237:5060;branch=z9Hg4Bk5f9ff916-1dd2-11b2-8333-c50a76d8761d
+CSeq: 2 BYE
+Call-ID: s2-7666284065592459577@142.120.93.197
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=nu-d921-db3b
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.111:5060" 
+to="142.120.93.197:10096" 
+time="1278447399452"
+isSender="false" 
+transactionId="z9hg4bk-vega1-0007-0001-0072-7f4936fc" 
+callId="s2-5428492419922573817@142.120.93.197" 
+firstLine="BYE sip:142.120.93.197:10096;transport=udp SIP/2.0" 
+>
+<![CDATA[BYE sip:142.120.93.197:10096;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.120.93.111:5060;branch=z9hG4bK-vega1-0007-0001-0072-7F4936FC
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0001-00DF-E370CEB1
+To: "dumb" <sip:4186910154@dumb>;tag=s2-5428492419922573817
+Max-Forwards: 70
+Call-ID: s2-5428492419922573817@142.120.93.197
+CSeq: 648065674 BYE
+User-Agent: Vega100-T1E1/08.02.04.1aT028a
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.120.93.111:5060" 
+time="1278447399454"
+isSender="true" 
+transactionId="z9hg4bk-vega1-0007-0001-0072-7f4936fc" 
+callId="s2-5428492419922573817@142.120.93.197" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+To: "dumb" <sip:4186910154@dumb>;tag=s2-5428492419922573817
+Via: SIP/2.0/UDP 142.120.93.111:5060;branch=z9hG4bK-vega1-0007-0001-0072-7F4936FC
+CSeq: 648065674 BYE
+Call-ID: s2-5428492419922573817@142.120.93.197
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=0001-00DF-E370CEB1
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.120.93.197:10096" 
+to="142.180.19.108:9814" 
+time="1278447399456"
+isSender="true" 
+transactionId="z9hg4bke531fa2ec31982c2c2cd062038e07f4a3732" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="BYE sip:4186910154@142.180.19.108:9814 SIP/2.0" 
+>
+<![CDATA[BYE sip:4186910154@142.180.19.108:9814 SIP/2.0
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKe531fa2ec31982c2c2cd062038e07f4a3732
+CSeq: 2 BYE
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+To: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+Max-Forwards: 70
+Content-Length: 0
+
+]]>
+</message>
+<message
+from="142.180.19.108:9814" 
+to="142.120.93.197:10096" 
+time="1278447399601"
+isSender="false" 
+transactionId="z9hg4bke531fa2ec31982c2c2cd062038e07f4a3732" 
+callId="ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY." 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+Via: SIP/2.0/UDP 142.120.93.197:10096;branch=z9hG4bKe531fa2ec31982c2c2cd062038e07f4a3732
+Contact: <sip:4186910154@142.180.19.108:9814>
+To: "dumb" <sip:4186910154@dumb>;tag=e24bca7b
+From: "sip:1111111111@142.120.93.197:10096" <sip:1111111111@142.120.93.197:10096>;tag=s2-6396792359926692063
+Call-ID: ZjFiZDI5Y2EwMDJlMmJkNzYyNTA4MjVlNDczY2VlZjY.
+CSeq: 2 BYE
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 0
+
+]]>
+</message>
