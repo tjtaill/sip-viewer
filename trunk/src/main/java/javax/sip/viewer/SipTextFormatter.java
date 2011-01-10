@@ -49,9 +49,11 @@ public class SipTextFormatter {
   private static final int MAX_NUMBER_OF_ACTORS = 100;
 
   private boolean mVerbose = false;
+  private final boolean mResolveIpNames;
 
-  public SipTextFormatter(boolean pVerbose) {
+  public SipTextFormatter(boolean pVerbose, boolean pResolveIpNames) {
     mVerbose = pVerbose;
+    mResolveIpNames = pResolveIpNames;
   }
 
   /**
@@ -238,11 +240,13 @@ public class SipTextFormatter {
     }
     String lHostName = lHost;
     if (!sHostNameCache.containsKey(lHost)) {
-      try {
-        InetAddress inetAddress = InetAddress.getByName(lHost);
-        lHostName = inetAddress.getHostName();
-      } catch (UnknownHostException e) {
-        lHostName = lHost;
+      if (mResolveIpNames) {
+        try {
+          InetAddress inetAddress = InetAddress.getByName(lHost);
+          lHostName = inetAddress.getHostName();
+        } catch (UnknownHostException e) {
+          lHostName = lHost;
+        }
       }
       sHostNameCache.put(lHost, lHostName);
     }
