@@ -15,6 +15,7 @@ import javax.sip.viewer.model.TracesSession;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.apache.commons.io.IOUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -54,6 +55,7 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
       InputStream lFormattedStream = new SequenceInputStream(new SequenceInputStream(lPreFile,
                                                                                      pInputStream),
                                                              lPostFile);
+//      System.out.println(IOUtils.toString(lFormattedStream));
       InputSource inputSource = new InputSource(lFormattedStream);
       inputSource.setEncoding("UTF-8");
       xmlReader.parse(inputSource);
