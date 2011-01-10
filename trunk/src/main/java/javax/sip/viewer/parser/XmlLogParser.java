@@ -55,7 +55,6 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
       InputStream lFormattedStream = new SequenceInputStream(new SequenceInputStream(lPreFile,
                                                                                      pInputStream),
                                                              lPostFile);
-//      System.out.println(IOUtils.toString(lFormattedStream));
       InputSource inputSource = new InputSource(lFormattedStream);
       inputSource.setEncoding("UTF-8");
       xmlReader.parse(inputSource);
@@ -97,7 +96,6 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
       TracesSession lTraceSession;
 
       // populate variables
-      System.out.println(sipMessage.getMessageAsText());
       lCallIdMatcher.matches();
       if (lCallIdMatcher.matches()) {
         lCallId = lCallIdMatcher.group(1);
