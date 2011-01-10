@@ -31,6 +31,8 @@ public class SipTextViewer {
   private boolean mHideSipLog = false;
   @Parameter(names = { "-h", "--help" }, description = "Displays this help context")
   private boolean mShowHelp;
+  @Parameter(names = { "-rin", "--resolve-ip-name" }, description = "Make a reverse dns query to resolve a pretty name associated with the ip. If reverse dns misses the query, it might delay parsing (default: false)")
+  private boolean mResolveIpNames = false;
   @Parameter(names = { "-p", "--parser" }, description = "Class to be used to parse the given log files (default is javax.sip.viewer.parser.TextLogParser)")
   private String mParserClassName;
   @Parameter(names = { "-pb2bt", "--parser-b2b-token-regex" }, description = "if using the default textParser which can correlate many dialogs in a same session based on a token found in from and to tags, this key overrides the regex to match that token (default : s(\\d*)-.*)")
@@ -63,7 +65,7 @@ public class SipTextViewer {
 
     System.out.println(String.format("%d sessions displayed \n\n", lFilteredTSList.size()));
     for (TracesSession lTS : lFilteredTSList) {
-      SipTextFormatter lSipTextFormatter = new SipTextFormatter(mVerbose);
+      SipTextFormatter lSipTextFormatter = new SipTextFormatter(mVerbose, mResolveIpNames);
       System.out.println(lSipTextFormatter.format(lTS));
       if (!mHideSipLog) {
         System.out.println(lSipTextFormatter.generateCallStack(lTS));
