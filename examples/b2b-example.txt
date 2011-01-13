@@ -1,0 +1,230 @@
+[2011/01/13 08:55:56.109] IN 172.24.65.206:4040 --> 142.120.93.129:11156
+
+INVITE sip:4182222222@142.120.93.129:11156;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 172.24.65.206:4040;branch=z9hG4bK-d8754z-e40ea25832501b5a-1---d8754z-;rport=4040;received=172.24.65.206
+Max-Forwards: 70
+Contact: <sip:4186910154@172.24.65.206:4040;transport=udp>
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=8179520e
+Call-ID: NzlkN2UwMmUwYmNiNzdlNGYwMGRiYmJmZmE0ZTI3NGI.
+CSeq: 1 INVITE
+Allow: INVITE,ACK,CANCEL,OPTIONS,BYE,REFER,NOTIFY,MESSAGE,SUBSCRIBE,INFO
+Content-Type: application/sdp
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 361
+
+v=0
+o=- 3 2 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 4042 RTP/AVP 107 0 8 18 101
+a=alt:1 2 : jP3z09N/ QA8hf55C 192.168.2.32 4042
+a=alt:2 1 : E3BGfizn qjp6TiAC 172.24.65.206 4042
+a=fmtp:18 annexb=yes
+a=fmtp:101 0-15
+a=rtpmap:107 BV32/16000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+
+-----------------------
+[2011/01/13 08:55:56.322] OUT 142.120.93.129:11156 --> 172.24.65.206:4040
+
+SIP/2.0 100 Trying
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>
+Via: SIP/2.0/UDP 172.24.65.206:4040;branch=z9hG4bK-d8754z-e40ea25832501b5a-1---d8754z-;rport=4040;received=172.24.65.206
+CSeq: 1 INVITE
+Call-ID: NzlkN2UwMmUwYmNiNzdlNGYwMGRiYmJmZmE0ZTI3NGI.
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=8179520e
+Content-Length: 0
+
+-----------------------
+[2011/01/13 08:55:57.463] OUT 142.120.93.129:11156 --> 142.120.93.103:5066
+
+INVITE sip:4182222222@142.120.93.103:5066;transport=udp;voicexml=http%3A%2F%2F142.120.93.129%3A11150%2Fits-ivr%2FStartup.jsp%3Fdnis%3D4182222222%26InstitutionIrisScanRequirement%3Dfalse%26clid%3D4186910154%26TelephoneSetStatus%3DDB_PHONE_IN_SERVICE%26TelephoneSetCardReaderPort%3D31300%26browserurl%3Dhttp%253A%252F%252F142.120.93.129%253A11150%252Fits-ivr%252Fbasichttp%26InstitutionServiceTimeLeft%3D0%26sessionid%3Dccxml%253A1294926956365_1%26sipClid%3Dsip%253A4186910154%2540dumb%26TelephoneSetCardReaderIP%3D142.120.93.99%26InstitutionCardRequirement%3Dtrue;nvp-company-name=Bell_Canada;nvp-application-name=Inmates SIP/2.0
+Call-ID: s2-5662848906844372752@142.120.93.129
+CSeq: 2 INVITE
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=s2-5662848906844372752
+Max-Forwards: 70
+Remote-Party-ID: "Frédéric Tardif" <sip:4186910154@dumb>;party=calling;screen=yes
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>
+Content-Type: application/sdp
+Via: SIP/2.0/UDP 142.120.93.129:11156;branch=z9hG4bK-363237-8383e5395c2a5a1afa6bf402f98c4543
+Contact: <sip:142.120.93.129:11156;transport=udp>
+P-Asserted-Identity: "Frédéric Tardif" <sip:4186910154@dumb>
+Content-Length: 361
+
+v=0
+o=- 3 2 IN IP4 192.168.2.32
+s=CounterPath eyeBeam 1.5
+c=IN IP4 192.168.2.32
+t=0 0
+m=audio 4042 RTP/AVP 107 0 8 18 101
+a=alt:1 2 : jP3z09N/ QA8hf55C 192.168.2.32 4042
+a=alt:2 1 : E3BGfizn qjp6TiAC 172.24.65.206 4042
+a=fmtp:18 annexb=yes
+a=fmtp:101 0-15
+a=rtpmap:107 BV32/16000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=sendrecv
+
+-----------------------
+[2011/01/13 08:55:57.471] IN 142.120.93.103:5066 --> 142.120.93.129:11156
+
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 142.120.93.129:11156;branch=z9hG4bK-363237-8383e5395c2a5a1afa6bf402f98c4543
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=s2-5662848906844372752
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>
+Call-ID: s2-5662848906844372752@142.120.93.129
+CSeq: 2 INVITE
+Contact: <sip:142.120.93.237:5062;transport=udp>
+Content-Length: 0
+
+-----------------------
+[2011/01/13 08:55:57.476] IN 142.120.93.103:5066 --> 142.120.93.129:11156
+
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 142.120.93.129:11156;branch=z9hG4bK-363237-8383e5395c2a5a1afa6bf402f98c4543
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=s2-5662848906844372752
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=nu-b37e-519b
+Call-ID: s2-5662848906844372752@142.120.93.129
+CSeq: 2 INVITE
+Contact: <sip:142.120.93.237:5062;transport=udp>
+Content-Length: 0
+
+-----------------------
+[2011/01/13 08:55:57.484] OUT 142.120.93.129:11156 --> 172.24.65.206:4040
+
+SIP/2.0 180 Ringing
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=s2-6639458032025697882
+Via: SIP/2.0/UDP 172.24.65.206:4040;branch=z9hG4bK-d8754z-e40ea25832501b5a-1---d8754z-;rport=4040;received=172.24.65.206
+CSeq: 1 INVITE
+Call-ID: NzlkN2UwMmUwYmNiNzdlNGYwMGRiYmJmZmE0ZTI3NGI.
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=8179520e
+Content-Length: 0
+
+-----------------------
+[2011/01/13 08:55:57.563] IN 142.120.93.103:5066 --> 142.120.93.129:11156
+
+SIP/2.0 200 Ok
+Via: SIP/2.0/UDP 142.120.93.129:11156;branch=z9hG4bK-363237-8383e5395c2a5a1afa6bf402f98c4543
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=s2-5662848906844372752
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=nu-b37e-519b
+Call-ID: s2-5662848906844372752@142.120.93.129
+CSeq: 2 INVITE
+Content-Type: application/sdp
+Contact: <sip:nvp@142.120.93.237:5062>;transport=udp
+Allow: INVITE,ACK,BYE,CANCEL,NOTIFY,INFO,OPTIONS
+Supported:
+User-Agent: Nuance/APSIP-NVP3.1-SP06-B00-NSRD00048944-NSRD00053757
+Content-Length: 201
+
+v=0
+o=- 1294926956 1294926956 IN IP4 142.120.93.237
+s=SIP Call
+t=0 0
+m=audio 20554 RTP/AVP 0 101
+c=IN IP4 142.120.93.237
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15
+
+-----------------------
+[2011/01/13 08:55:57.571] OUT 142.120.93.129:11156 --> 172.24.65.206:4040
+
+SIP/2.0 200 OK
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=s2-6639458032025697882
+Via: SIP/2.0/UDP 172.24.65.206:4040;branch=z9hG4bK-d8754z-e40ea25832501b5a-1---d8754z-;rport=4040;received=172.24.65.206
+CSeq: 1 INVITE
+Call-ID: NzlkN2UwMmUwYmNiNzdlNGYwMGRiYmJmZmE0ZTI3NGI.
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=8179520e
+Content-Type: application/sdp
+Contact: <sip:142.120.93.129:11156;transport=udp>
+Content-Length: 201
+
+v=0
+o=- 1294926956 1294926956 IN IP4 142.120.93.237
+s=SIP Call
+t=0 0
+m=audio 20554 RTP/AVP 0 101
+c=IN IP4 142.120.93.237
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15
+
+-----------------------
+[2011/01/13 08:55:57.830] IN 172.24.65.206:4040 --> 142.120.93.129:11156
+
+ACK sip:142.120.93.129:11156;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 172.24.65.206:4040;branch=z9hG4bK-d8754z-19584438f6159d09-1---d8754z-;rport=4040;received=172.24.65.206
+Max-Forwards: 70
+Contact: <sip:4186910154@172.24.65.206:4040;transport=udp>
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=s2-6639458032025697882
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=8179520e
+Call-ID: NzlkN2UwMmUwYmNiNzdlNGYwMGRiYmJmZmE0ZTI3NGI.
+CSeq: 1 ACK
+User-Agent: eyeBeam release 1104a stamp 55947
+Content-Length: 0
+
+-----------------------
+[2011/01/13 08:55:57.838] OUT 142.120.93.129:11156 --> 142.120.93.237:5062
+
+ACK sip:nvp@142.120.93.237:5062 SIP/2.0
+Call-ID: s2-5662848906844372752@142.120.93.129
+CSeq: 2 ACK
+Via: SIP/2.0/UDP 142.120.93.129:11156;branch=z9hG4bK-363237-ae394935a2aca201cc2815e72824e5f4
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=s2-5662848906844372752
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=nu-b37e-519b
+Max-Forwards: 70
+Content-Length: 0
+
+-----------------------
+[2011/01/13 08:56:42.696] IN 172.24.65.206:4040 --> 142.120.93.129:11156
+
+BYE sip:142.120.93.129:11156;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 172.24.65.206:4040;branch=z9hG4bK-d8754z-3b1f5a4f1e16297d-1---d8754z-;rport=4040;received=172.24.65.206
+Max-Forwards: 70
+Contact: <sip:4186910154@172.24.65.206:4040;transport=udp>
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=s2-6639458032025697882
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=8179520e
+Call-ID: NzlkN2UwMmUwYmNiNzdlNGYwMGRiYmJmZmE0ZTI3NGI.
+CSeq: 2 BYE
+User-Agent: eyeBeam release 1104a stamp 55947
+Reason: SIP;description="User Hung Up"
+Content-Length: 0
+
+-----------------------
+[2011/01/13 08:56:42.704] OUT 142.120.93.129:11156 --> 172.24.65.206:4040
+
+SIP/2.0 200 OK
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=s2-6639458032025697882
+Via: SIP/2.0/UDP 172.24.65.206:4040;branch=z9hG4bK-d8754z-3b1f5a4f1e16297d-1---d8754z-;rport=4040;received=172.24.65.206
+CSeq: 2 BYE
+Call-ID: NzlkN2UwMmUwYmNiNzdlNGYwMGRiYmJmZmE0ZTI3NGI.
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=8179520e
+Content-Length: 0
+
+-----------------------
+[2011/01/13 08:56:42.740] OUT 142.120.93.129:11156 --> 142.120.93.237:5062
+
+BYE sip:nvp@142.120.93.237:5062 SIP/2.0
+Via: SIP/2.0/UDP 142.120.93.129:11156;branch=z9hG4bK-363237-c1c939511776534087d8cb3dcf242f84
+CSeq: 3 BYE
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=s2-5662848906844372752
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=nu-b37e-519b
+Call-ID: s2-5662848906844372752@142.120.93.129
+Max-Forwards: 70
+Content-Length: 0
+
+-----------------------
+[2011/01/13 08:56:42.743] IN 142.120.93.237:5062 --> 142.120.93.129:11156
+
+SIP/2.0 200 Ok
+Via: SIP/2.0/UDP 142.120.93.129:11156;branch=z9hG4bK-363237-c1c939511776534087d8cb3dcf242f84
+From: "Frédéric Tardif" <sip:4186910154@dumb>;tag=s2-5662848906844372752
+To: "sip:4182222222@142.120.93.129:11156" <sip:4182222222@142.120.93.129:11156>;tag=nu-b37e-519b
+Call-ID: s2-5662848906844372752@142.120.93.129
+CSeq: 3 BYE
+Content-Length: 0
