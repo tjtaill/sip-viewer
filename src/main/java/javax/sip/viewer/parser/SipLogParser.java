@@ -3,7 +3,7 @@ package javax.sip.viewer.parser;
 import java.io.InputStream;
 import java.util.List;
 
-import javax.sip.viewer.model.TracesSession;
+import javax.sip.viewer.model.TraceSession;
 
 public interface SipLogParser {
   
@@ -13,6 +13,6 @@ public interface SipLogParser {
    * @param pInputStream
    * @return A List of aggregated session representing logical calls.
    */
-  public List<TracesSession> parseLogs(InputStream pInputStream);
+  public List<TraceSession> parseLogs(InputStream pInputStream);
   
 }

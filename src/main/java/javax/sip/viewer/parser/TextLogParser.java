@@ -2,18 +2,15 @@ package javax.sip.viewer.parser;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.sip.viewer.model.SipMessage;
-import javax.sip.viewer.model.TracesSession;
+import javax.sip.viewer.model.TraceSession;
+import javax.sip.viewer.model.TraceSessionIndexer;
 import javax.sip.viewer.utils.AddressHeaderParser;
 
 public class TextLogParser implements SipLogParser {
@@ -25,14 +22,14 @@ public class TextLogParser implements SipLogParser {
   private static Pattern sFromPattern = Pattern.compile(".*^From:[ ]?(.*?)$.*", Pattern.DOTALL
                                                                                 | Pattern.MULTILINE);
   private static Pattern sTagPattern = Pattern.compile("s(\\d*)-.*");
+  
+  private TraceSessionIndexer mTraceSessionIndexer = new TraceSessionIndexer();
 
-  private List<TracesSession> mTraceSessions = new ArrayList<TracesSession>(100000);
-  private Map<String, TracesSession> mTraceSessionIndex = new TreeMap<String, TracesSession>();
 
   /**
    * @see javax.sip.viewer.parser.SipLogParser#parseLogs(java.io.InputStream)
    */
-  public List<TracesSession> parseLogs(InputStream pInputStream) {
+  public List<TraceSession> parseLogs(InputStream pInputStream) {
     Scanner lMessageScanner = new Scanner(pInputStream);
 
     lMessageScanner.useDelimiter(Pattern.compile("-----------------------"));
@@ -48,7 +45,7 @@ public class TextLogParser implements SipLogParser {
       }
     }
 
-    return mTraceSessions;
+    return mTraceSessionIndexer.getTraceSessions();
   }
 
   private SipMessage parseMessageDetails(String pDetails) {
@@ -96,30 +93,10 @@ public class TextLogParser implements SipLogParser {
     String lToTagToken = searchTagToken(lTo);
 
     // look for existing session (or create one)
-    List<TracesSession> lTraceSessions = findTraceSessions(lToTagToken, lFromTagToken, lCallId);
+    mTraceSessionIndexer.indexSipMessage(pSipMessage, lToTagToken, lFromTagToken, lCallId);
 
-    TracesSession lTraceSession;
-    
-    if (lTraceSessions.size() > 1)  {
-      lTraceSession = mergeSessions(lTraceSessions);  
-    } else {
-      lTraceSession  = lTraceSessions.get(0);
-    }      
-    
-    // add the sip message in the session
-    lTraceSession.attach(pSipMessage);
 
-    // leverage session's indices
-    lTraceSession.addCallId(lCallId);
-    mTraceSessionIndex.put(lCallId, lTraceSession);
-    if (lFromTagToken != null) {
-      lTraceSession.addB2BTagTokens(lFromTagToken);
-      mTraceSessionIndex.put(lFromTagToken, lTraceSession);
-    }
-    if (lToTagToken != null) {
-      lTraceSession.addB2BTagTokens(lToTagToken);
-      mTraceSessionIndex.put(lToTagToken, lTraceSession);
-    }
+
   }
 
   /**
@@ -141,77 +118,7 @@ public class TextLogParser implements SipLogParser {
     return lResult;
   }
 
-  /**
-   * According to session indices (callid, to-tag and from-tag),
-   * search for an already existing session. If none is found, a new session is created.
-   * 
-   * @param pToTagToken
-   * @param pFromTagToken
-   * @param pCallId
-   * @return a TraceSessionList that contains at least 1 session.
-   */
-  private List<TracesSession> findTraceSessions(String pToTagToken, String pFromTagToken, String pCallId) {
-    List<TracesSession> lResult = new ArrayList<TracesSession>();
-    
-    if (pToTagToken != null && mTraceSessionIndex.containsKey(pToTagToken)) {
-      if (!lResult.contains(mTraceSessionIndex.get(pToTagToken))) {
-        lResult.add(mTraceSessionIndex.get(pToTagToken));
-      }
-    }
-    if (pFromTagToken != null && mTraceSessionIndex.containsKey(pFromTagToken)) {
-      if (!lResult.contains(mTraceSessionIndex.get(pFromTagToken))) {
-        lResult.add(mTraceSessionIndex.get(pFromTagToken));
-      }
-    }
-    if (pCallId != null && mTraceSessionIndex.containsKey(pCallId)) {
-      if (!lResult.contains(mTraceSessionIndex.get(pCallId))) {
-        lResult.add(mTraceSessionIndex.get(pCallId));
-      }
-    }
-    
-    if (lResult.size() == 0) {
-      lResult.add(new TracesSession());
-      mTraceSessions.add(lResult.get(0));
-    }
-    return lResult;
-  }
-
-  /**
-   * @param pFromTagSession
-   * @param pToTagSession
-   */
-  private TracesSession mergeSessions(List<TracesSession> pTracesSessions) {
-    
-    if (pTracesSessions.size() < 1) {
-      throw new IllegalArgumentException("Can't merge empty session list");
-    }
-    
-    TracesSession lResult;
-    
-    // sort session from oldest to newest
-    Collections.sort(pTracesSessions);
-    
-    lResult = pTracesSessions.get(0);
-    // add all messages from the newer sessions to the oldest session 
-    for (TracesSession lTracesSession : pTracesSessions.subList(1, pTracesSessions.size())) {
-      
-      lResult.mergeSession(lTracesSession);
-
-      // remove newest session from the session list.
-      mTraceSessions.remove(lTracesSession);
-    }
-    
-    // update indexes
-    for (String lCallId : lResult.getCallIds()) {
-      mTraceSessionIndex.put(lCallId, lResult);
-    }
-    for (String lB2BTagToken : lResult.getB2BTagTokens()) {
-      mTraceSessionIndex.put(lB2BTagToken, lResult);
-    }
-    
-    return lResult;
-
-  }
+  
 
   /**
    * Optionally, the pattern to find a token in the tag parameter of the from and to header to aggregate dialogs in a logical session can be configured. <p>Default is <code>s(\\d*)-.*</code>

@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import javax.sip.viewer.filters.SessionIdFilter;
-import javax.sip.viewer.model.TracesSession;
+import javax.sip.viewer.model.TraceSession;
 import javax.sip.viewer.parser.SipLogParser;
 import javax.sip.viewer.parser.TextLogParser;
 import javax.sip.viewer.utils.ListOfFiles;
@@ -54,16 +54,16 @@ public class SipTextViewer {
   public void display() throws Exception {
     SipLogParser lLogParser = setupParser();
     
-    List<TracesSession> lAllSessions = null;
+    List<TraceSession> lAllSessions = null;
 
     String[] lFiles = mFiles.toArray(new String[mFiles.size()]);
     SequenceInputStream sInputStream = new SequenceInputStream(new ListOfFiles(lFiles));
     lAllSessions = lLogParser.parseLogs(sInputStream);
     Collections.sort(lAllSessions);
-    List<TracesSession> lFilteredTSList = applyFilters(lAllSessions);
+    List<TraceSession> lFilteredTSList = applyFilters(lAllSessions);
 
     System.out.println(String.format("%d sessions displayed \n\n", lFilteredTSList.size()));
-    for (TracesSession lTS : lFilteredTSList) {
+    for (TraceSession lTS : lFilteredTSList) {
       SipTextFormatter lSipTextFormatter = new SipTextFormatter(mVerbose, mResolveIpNames);
       System.out.println(lSipTextFormatter.format(lTS));
       if (!mHideSipLog) {
@@ -90,8 +90,8 @@ public class SipTextViewer {
   }
   
 
-  private List<TracesSession> applyFilters(List<TracesSession> pTraceSessions) {
-    List<TracesSession> lResult = pTraceSessions;
+  private List<TraceSession> applyFilters(List<TraceSession> pTraceSessions) {
+    List<TraceSession> lResult = pTraceSessions;
     if (mSessionId != null) {
       lResult = new SessionIdFilter(pTraceSessions, mSessionId).process();
     }
