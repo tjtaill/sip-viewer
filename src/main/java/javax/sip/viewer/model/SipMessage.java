@@ -2,7 +2,7 @@ package javax.sip.viewer.model;
 
 import java.io.Serializable;
 
-public class SipMessage implements Serializable {
+public class SipMessage implements Serializable, Comparable<SipMessage> {
   private String mMessageAsText = "";
   private String mSource = null;
   private String mDestination = null;
@@ -53,4 +53,30 @@ public class SipMessage implements Serializable {
     return mTime;
   }
 
+  /**
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  public int compareTo(SipMessage pSipMessage) {
+    if (pSipMessage != null) {
+      return (int) (this.getDelay() - pSipMessage.getDelay());
+    } else {
+      return 1;
+    }
+  }
+  
+  /**
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  public boolean equals(Object obj2) {
+    return super.equals(obj2);
+  }
+  
+  /**
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return "" + hashCode();
+  }
 }
