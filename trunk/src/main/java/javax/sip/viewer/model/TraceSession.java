@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class TracesSession implements Comparable<TracesSession>{
+public class TraceSession implements Comparable<TraceSession>{
   private List<SipMessage> mSipMessageList = new ArrayList<SipMessage>();
   private List<String> mB2BTagTokens = new ArrayList<String>();
   private List<String> mCallIds = new ArrayList<String>();
 
   private long mTime;
 
-  public TracesSession() {
+  public TraceSession() {
     super();
   }
 
@@ -84,7 +84,7 @@ public class TracesSession implements Comparable<TracesSession>{
   /**
    * @see java.lang.Comparable#compareTo(java.lang.Object)
    */
-  public int compareTo(TracesSession pTracesSession) {
+  public int compareTo(TraceSession pTracesSession) {
     return (int)(this.getTime() - pTracesSession.getTime());
   }
 
@@ -100,7 +100,7 @@ public class TracesSession implements Comparable<TracesSession>{
   /**
    * @param pTracesSession
    */
-  public void mergeSession(TracesSession pTracesSession) {
+  public void mergeSession(TraceSession pTracesSession) {
     attachAll(pTracesSession.getSipMessageList());
     // change all newest session index to point to the old session.
     mCallIds.addAll(pTracesSession.getCallIds());

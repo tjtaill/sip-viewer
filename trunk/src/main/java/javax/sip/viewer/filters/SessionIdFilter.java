@@ -3,20 +3,20 @@ package javax.sip.viewer.filters;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sip.viewer.model.TracesSession;
+import javax.sip.viewer.model.TraceSession;
 
 
 public class SessionIdFilter extends AbstractFilter {
   private final String mSessionId;
 
-  public SessionIdFilter(List<TracesSession> pTraceSessions, String pSessionId) {
+  public SessionIdFilter(List<TraceSession> pTraceSessions, String pSessionId) {
     super(pTraceSessions);
     mSessionId = pSessionId;
   }
   
-  public List<TracesSession> process() {
-    List<TracesSession> lResult = new ArrayList<TracesSession>();
-    for (TracesSession lTracesSession : mTraceSessions) {
+  public List<TraceSession> process() {
+    List<TraceSession> lResult = new ArrayList<TraceSession>();
+    for (TraceSession lTracesSession : mTraceSessions) {
       if (lTracesSession.getB2BTagTokens().contains(mSessionId)
           || lTracesSession.getCallIds().contains(mSessionId))
       {

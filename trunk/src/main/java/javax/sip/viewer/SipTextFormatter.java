@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 import javax.sip.viewer.model.Actor;
 import javax.sip.viewer.model.SipMessage;
-import javax.sip.viewer.model.TracesSession;
+import javax.sip.viewer.model.TraceSession;
 import javax.sip.viewer.utils.AddressHeaderParser;
 
 
@@ -62,7 +62,7 @@ public class SipTextFormatter {
    * @param pTracesSession Traces of the call session
    * @return String that contains the sequence diagram
    */
-  public String format(TracesSession pTracesSession) {
+  public String format(TraceSession pTracesSession) {
     StringBuilder lOutput = new StringBuilder();
     mActors = new HashMap<String, Actor>();
     mActorsName = new ArrayList<String>();
@@ -215,7 +215,7 @@ public class SipTextFormatter {
    * @param pTracesSession Session traces
    * @return The session traces concatenated in a string
    */
-  public String generateCallStack(TracesSession pTracesSession) {
+  public String generateCallStack(TraceSession pTracesSession) {
     StringBuilder lResult = new StringBuilder("\n");
     int i = 1;
     for (SipMessage lMessage : pTracesSession.getSipMessageList()) {

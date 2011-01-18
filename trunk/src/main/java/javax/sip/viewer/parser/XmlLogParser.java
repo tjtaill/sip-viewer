@@ -3,19 +3,16 @@ package javax.sip.viewer.parser;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.SequenceInputStream;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.sip.viewer.model.SipMessage;
-import javax.sip.viewer.model.TracesSession;
+import javax.sip.viewer.model.TraceSession;
+import javax.sip.viewer.model.TraceSessionIndexer;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.commons.io.IOUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -30,8 +27,7 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
   private static Pattern sFromTagPattern = Pattern.compile(".*^From:[ ]?.*;tag=s(\\d*)-.*?$.*",
                                                            Pattern.DOTALL | Pattern.MULTILINE);
 
-  private List<TracesSession> mTraceSessions = new ArrayList<TracesSession>(100000);
-  private Map<String, TracesSession> mTraceSessionIndex = new TreeMap<String, TracesSession>();
+  private TraceSessionIndexer mTraceSessionIndexer = new TraceSessionIndexer();
 
   private XMLReader xmlReader;
 
@@ -47,7 +43,7 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
     }
   }
 
-  public List<TracesSession> parseLogs(InputStream pInputStream) {
+  public List<TraceSession> parseLogs(InputStream pInputStream) {
     try {
       InputStream lPreFile = new ByteArrayInputStream("<?xml version='1.0' encoding='UTF-8'?>\n<messages>\n".getBytes("UTF-8"));
       InputStream lPostFile = new ByteArrayInputStream("</messages>\n".getBytes("UTF-8"));
@@ -58,7 +54,7 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
       InputSource inputSource = new InputSource(lFormattedStream);
       inputSource.setEncoding("UTF-8");
       xmlReader.parse(inputSource);
-      return mTraceSessions;
+      return mTraceSessionIndexer.getTraceSessions();
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
@@ -93,7 +89,6 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
       String lCallId = null;
       String lFromTag = null;
       String lToTag = null;
-      TracesSession lTraceSession;
 
       // populate variables
       lCallIdMatcher.matches();
@@ -106,44 +101,8 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
       if (lToTagMatcher.matches()) {
         lToTag = lToTagMatcher.group(1);
       }
-
-      // look for existing session
-      lTraceSession = getTraceSession(lToTag, lFromTag, lCallId);
-      lTraceSession.attach(sipMessage);
-
-      if (lCallId != null) {
-        lTraceSession.addCallId(lCallId);
-        mTraceSessionIndex.put(lCallId, lTraceSession);
-      }
-      if (lFromTag != null) {
-        lTraceSession.addB2BTagTokens(lFromTag);
-        mTraceSessionIndex.put(lFromTag, lTraceSession);
-      }
-      if (lToTag != null) {
-        lTraceSession.addB2BTagTokens(lToTag);
-        mTraceSessionIndex.put(lToTag, lTraceSession);
-      }
-    }
-
-    /**
-     * @param pToTag
-     * @param pFromTag
-     * @param pCallId
-     * @return
-     */
-    private TracesSession getTraceSession(String pToTag, String pFromTag, String pCallId) {
-      TracesSession lResult;
-      if (pToTag != null && mTraceSessionIndex.containsKey(pToTag)) {
-        lResult = mTraceSessionIndex.get(pToTag);
-      } else if (pFromTag != null && mTraceSessionIndex.containsKey(pFromTag)) {
-        lResult = mTraceSessionIndex.get(pFromTag);
-      } else if (pCallId != null && mTraceSessionIndex.containsKey(pCallId)) {
-        lResult = mTraceSessionIndex.get(pCallId);
-      } else {
-        lResult = new TracesSession();
-        mTraceSessions.add(lResult);
-      }
-      return lResult;
+      
+      mTraceSessionIndexer.indexSipMessage(sipMessage, lToTag, lFromTag, lCallId);
     }
 
     public void characters(char[] buf, int offset, int len) throws SAXException {
@@ -152,7 +111,8 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
       }
       if (buf == null)
         return;
-      String str = new String(buf, offset, len); // s.toString().trim();
+      String str = new String(buf, offset, len);
+      str = str.trim();
 
       if (str.equals(""))
         return;
@@ -161,18 +121,7 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
     }
 
     public void endDocument() throws SAXException {
-      // Updates all the delays of messages and the time of the trace session
-      for (TracesSession traceSession : mTraceSessions) {
-        SipMessage lFirstSipMessage = (SipMessage) traceSession.getSipMessageList().get(0);
-        long lInitTime = lFirstSipMessage.getDelay();
-        traceSession.setTime(lFirstSipMessage.getDelay());
-        for (SipMessage lSipMessage : traceSession.getSipMessageList()) {
-          long lTime = lSipMessage.getDelay();
-          lSipMessage.setDelay(lTime - lInitTime);
-          lSipMessage.setMessageAsText(lSipMessage.getMessageAsText().trim());
-        }
-      }
-
+      // Nothing to do.
     }
   }
 

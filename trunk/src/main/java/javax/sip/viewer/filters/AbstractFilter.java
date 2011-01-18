@@ -2,16 +2,16 @@ package javax.sip.viewer.filters;
 
 import java.util.List;
 
-import javax.sip.viewer.model.TracesSession;
+import javax.sip.viewer.model.TraceSession;
 
 
 public abstract class AbstractFilter {
-  protected List<TracesSession> mTraceSessions;
+  protected List<TraceSession> mTraceSessions;
   
-  public AbstractFilter(List<TracesSession> pTraceSessions) {
+  public AbstractFilter(List<TraceSession> pTraceSessions) {
     mTraceSessions = pTraceSessions;
   }
   
-  public abstract List<TracesSession> process();
+  public abstract List<TraceSession> process();
   
 }
