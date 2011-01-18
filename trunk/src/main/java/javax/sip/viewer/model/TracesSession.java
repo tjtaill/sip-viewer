@@ -1,12 +1,14 @@
 package javax.sip.viewer.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class TracesSession {
-  private Set<SipMessage> mSipMessageList = new TreeSet<SipMessage>(new LogComparator());
+public class TracesSession implements Comparable<TracesSession>{
+  private List<SipMessage> mSipMessageList = new ArrayList<SipMessage>();
   private List<String> mB2BTagTokens = new ArrayList<String>();
   private List<String> mCallIds = new ArrayList<String>();
 
@@ -17,15 +19,20 @@ public class TracesSession {
   }
 
   public List<SipMessage> getSipMessageList() {
-    return new ArrayList<SipMessage>(mSipMessageList);
+    return mSipMessageList;
   }
 
-  public void add(SipMessage pSipMessage) {
+  public void attach(SipMessage pSipMessage) {
+    if (mSipMessageList.isEmpty()) {
+      mTime = pSipMessage.getTime();
+    }
+    pSipMessage.setDelay(pSipMessage.getTime() - mTime);
     mSipMessageList.add(pSipMessage);
   }
 
-  public void addAll(List<SipMessage> pSipMessages) {
+  public void attachAll(List<SipMessage> pSipMessages) {
     mSipMessageList.addAll(pSipMessages);
+    calculateMessageDelay();
   }
 
   /**
@@ -60,11 +67,44 @@ public class TracesSession {
     }
   }
 
-  public void setTime(long pTime) {
-    mTime = pTime;
-  }
-
+  /**
+   * @return the time of the first message
+   */
   public long getTime() {
     return mTime;
   }
+
+  /**
+   * @param pDelay
+   */
+  public void setTime(long pDelay) {
+    mTime = pDelay;
+  }
+
+  /**
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  public int compareTo(TracesSession pTracesSession) {
+    return (int)(this.getTime() - pTracesSession.getTime());
+  }
+
+  /**
+   * calculate message delay
+   */
+  public void calculateMessageDelay() {
+    for (SipMessage lSipMessage : mSipMessageList) {
+      lSipMessage.setDelay(lSipMessage.getTime() - mTime);
+    }
+  }
+
+  /**
+   * @param pTracesSession
+   */
+  public void mergeSession(TracesSession pTracesSession) {
+    attachAll(pTracesSession.getSipMessageList());
+    // change all newest session index to point to the old session.
+    mCallIds.addAll(pTracesSession.getCallIds());
+    mB2BTagTokens.addAll(pTracesSession.getB2BTagTokens());
+  }
+
 }

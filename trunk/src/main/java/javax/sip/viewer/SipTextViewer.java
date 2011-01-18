@@ -11,7 +11,6 @@ import javax.sip.viewer.model.TracesSession;
 import javax.sip.viewer.parser.SipLogParser;
 import javax.sip.viewer.parser.TextLogParser;
 import javax.sip.viewer.utils.ListOfFiles;
-import javax.sip.viewer.utils.TraceSessionComparator;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
@@ -60,7 +59,7 @@ public class SipTextViewer {
     String[] lFiles = mFiles.toArray(new String[mFiles.size()]);
     SequenceInputStream sInputStream = new SequenceInputStream(new ListOfFiles(lFiles));
     lAllSessions = lLogParser.parseLogs(sInputStream);
-    Collections.sort(lAllSessions, new TraceSessionComparator());
+    Collections.sort(lAllSessions);
     List<TracesSession> lFilteredTSList = applyFilters(lAllSessions);
 
     System.out.println(String.format("%d sessions displayed \n\n", lFilteredTSList.size()));

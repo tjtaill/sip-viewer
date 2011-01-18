@@ -109,7 +109,7 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
 
       // look for existing session
       lTraceSession = getTraceSession(lToTag, lFromTag, lCallId);
-      lTraceSession.add(sipMessage);
+      lTraceSession.attach(sipMessage);
 
       if (lCallId != null) {
         lTraceSession.addCallId(lCallId);

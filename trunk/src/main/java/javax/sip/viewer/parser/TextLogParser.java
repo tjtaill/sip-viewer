@@ -3,6 +3,7 @@ package javax.sip.viewer.parser;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -91,31 +92,33 @@ public class TextLogParser implements SipLogParser {
     }
 
     // check for B2B dialog correlation tokens
-    String lFromTag = searchTagToken(lFrom);
-    String lToTag = searchTagToken(lTo);
+    String lFromTagToken = searchTagToken(lFrom);
+    String lToTagToken = searchTagToken(lTo);
 
     // look for existing session (or create one)
-    TracesSession lTraceSession = getTraceSession(lToTag, lFromTag, lCallId);
+    List<TracesSession> lTraceSessions = findTraceSessions(lToTagToken, lFromTagToken, lCallId);
 
-    // calculate message delay
-    if (lTraceSession.getSipMessageList().isEmpty()) {
-      lTraceSession.setTime(pSipMessage.getTime());
-    }
-    pSipMessage.setDelay(pSipMessage.getTime() - lTraceSession.getTime());
-
+    TracesSession lTraceSession;
+    
+    if (lTraceSessions.size() > 1)  {
+      lTraceSession = mergeSessions(lTraceSessions);  
+    } else {
+      lTraceSession  = lTraceSessions.get(0);
+    }      
+    
     // add the sip message in the session
-    lTraceSession.add(pSipMessage);
+    lTraceSession.attach(pSipMessage);
 
     // leverage session's indices
     lTraceSession.addCallId(lCallId);
     mTraceSessionIndex.put(lCallId, lTraceSession);
-    if (lFromTag != null) {
-      lTraceSession.addB2BTagTokens(lFromTag);
-      mTraceSessionIndex.put(lFromTag, lTraceSession);
+    if (lFromTagToken != null) {
+      lTraceSession.addB2BTagTokens(lFromTagToken);
+      mTraceSessionIndex.put(lFromTagToken, lTraceSession);
     }
-    if (lToTag != null) {
-      lTraceSession.addB2BTagTokens(lToTag);
-      mTraceSessionIndex.put(lToTag, lTraceSession);
+    if (lToTagToken != null) {
+      lTraceSession.addB2BTagTokens(lToTagToken);
+      mTraceSessionIndex.put(lToTagToken, lTraceSession);
     }
   }
 
@@ -139,30 +142,79 @@ public class TextLogParser implements SipLogParser {
   }
 
   /**
-   * According to session indices (callid, to-tag and from-tag), search for an already existing session. If none is found, a new session is created.
+   * According to session indices (callid, to-tag and from-tag),
+   * search for an already existing session. If none is found, a new session is created.
    * 
-   * @param pToTag
-   * @param pFromTag
+   * @param pToTagToken
+   * @param pFromTagToken
    * @param pCallId
-   * @return a TraceSession (non null).
+   * @return a TraceSessionList that contains at least 1 session.
    */
-  private TracesSession getTraceSession(String pToTag, String pFromTag, String pCallId) {
-    TracesSession lResult;
-    if (pToTag != null && mTraceSessionIndex.containsKey(pToTag)) {
-      lResult = mTraceSessionIndex.get(pToTag);
-    } else if (pFromTag != null && mTraceSessionIndex.containsKey(pFromTag)) {
-      lResult = mTraceSessionIndex.get(pFromTag);
-    } else if (pCallId != null && mTraceSessionIndex.containsKey(pCallId)) {
-      lResult = mTraceSessionIndex.get(pCallId);
-    } else {
-      lResult = new TracesSession();
-      mTraceSessions.add(lResult);
+  private List<TracesSession> findTraceSessions(String pToTagToken, String pFromTagToken, String pCallId) {
+    List<TracesSession> lResult = new ArrayList<TracesSession>();
+    
+    if (pToTagToken != null && mTraceSessionIndex.containsKey(pToTagToken)) {
+      if (!lResult.contains(mTraceSessionIndex.get(pToTagToken))) {
+        lResult.add(mTraceSessionIndex.get(pToTagToken));
+      }
+    }
+    if (pFromTagToken != null && mTraceSessionIndex.containsKey(pFromTagToken)) {
+      if (!lResult.contains(mTraceSessionIndex.get(pFromTagToken))) {
+        lResult.add(mTraceSessionIndex.get(pFromTagToken));
+      }
+    }
+    if (pCallId != null && mTraceSessionIndex.containsKey(pCallId)) {
+      if (!lResult.contains(mTraceSessionIndex.get(pCallId))) {
+        lResult.add(mTraceSessionIndex.get(pCallId));
+      }
+    }
+    
+    if (lResult.size() == 0) {
+      lResult.add(new TracesSession());
+      mTraceSessions.add(lResult.get(0));
     }
     return lResult;
   }
 
   /**
-   * Optionaly, the pattern to find a token in the tag parameter of the from and to header to aggregate dialogs in a logical session can be configured. <p>Default is <code>s(\\d*)-.*</code>
+   * @param pFromTagSession
+   * @param pToTagSession
+   */
+  private TracesSession mergeSessions(List<TracesSession> pTracesSessions) {
+    
+    if (pTracesSessions.size() < 1) {
+      throw new IllegalArgumentException("Can't merge empty session list");
+    }
+    
+    TracesSession lResult;
+    
+    // sort session from oldest to newest
+    Collections.sort(pTracesSessions);
+    
+    lResult = pTracesSessions.get(0);
+    // add all messages from the newer sessions to the oldest session 
+    for (TracesSession lTracesSession : pTracesSessions.subList(1, pTracesSessions.size())) {
+      
+      lResult.mergeSession(lTracesSession);
+
+      // remove newest session from the session list.
+      mTraceSessions.remove(lTracesSession);
+    }
+    
+    // update indexes
+    for (String lCallId : lResult.getCallIds()) {
+      mTraceSessionIndex.put(lCallId, lResult);
+    }
+    for (String lB2BTagToken : lResult.getB2BTagTokens()) {
+      mTraceSessionIndex.put(lB2BTagToken, lResult);
+    }
+    
+    return lResult;
+
+  }
+
+  /**
+   * Optionally, the pattern to find a token in the tag parameter of the from and to header to aggregate dialogs in a logical session can be configured. <p>Default is <code>s(\\d*)-.*</code>
    * 
    * @param pTagPattern
    */
