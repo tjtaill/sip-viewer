@@ -18,13 +18,13 @@ import javax.sip.viewer.model.SipMessage;
 import javax.sip.viewer.model.TraceSession;
 import javax.sip.viewer.utils.AddressHeaderParser;
 
-
 public class SipTextFormatter {
   private static final String CLASS_NAME = SipTextFormatter.class.getName();
   private static final String PACKAGE_NAME = CLASS_NAME.substring(0, CLASS_NAME.lastIndexOf("."));
   private static final Logger sLogger = Logger.getLogger(PACKAGE_NAME);
 
-  private static final int TIME_STR_LENGTH = 12;
+  private static final int TIME_STR_LENGTH = 14;
+  private static final int DELAY_STR_LENGTH = 11;
   private static final String COLUMN_CHAR = "|";
   private static final int DEFAULT_LENGTH = 20;
   private static final int ARROW_PADDING_LEN = 10;
@@ -34,12 +34,14 @@ public class SipTextFormatter {
   private static final String ARROW_LEFT = "<----";
   private static final String ARROW_RIGHT = "---->";
   private static final String PAD_CHAR = "-";
-  private static final String TIME_COLUMN = "Time (ms)";
+  private static final String TIME_COLUMN = "Time";
+  private static final String DELAY_COLUMN = "Delay (ms)";
   private static final String SIP_MSG = "SIP/2.0";
   private static final Pattern sContactPattern = Pattern.compile(".*^Contact:\\s*(.*?)\\s*$.*",
                                                                  Pattern.DOTALL | Pattern.MULTILINE);
 
   private static final SimpleDateFormat sDateFormatter = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss SSS");
+  private static final SimpleDateFormat sSmallDateFormatter = new SimpleDateFormat("HH:mm:ss.SSS");
   private static Map<String, String> sHostNameCache = new HashMap<String, String>();
   private static Map<Integer, String> sEmptyArrowCache = new HashMap<Integer, String>();
   private HashMap<String, Actor> mActors;
@@ -97,15 +99,14 @@ public class SipTextFormatter {
     Matcher lContactMatcher = sContactPattern.matcher(pSipMessage.getMessageAsText());
     if (lContactMatcher.matches()) {
       AddressHeaderParser lParser = new AddressHeaderParser(lContactMatcher.group(1));
-      lResult =  lParser.getUriHost();
+      lResult = lParser.getUriHost();
     }
     return lResult;
   }
 
   /**
-   * Prints a line that contains the index of each SIP message, the moment it occured (Time (ms))
-   * and an arrow that goes from one actor to another using the correct formatting. Each arrow
-   * contains the message that was sent between the actors.
+   * Prints a line that contains the index of each SIP message, the moment it occured (Time (ms)) and an arrow that goes from one actor to another using the correct formatting. Each arrow contains the
+   * message that was sent between the actors.
    * 
    * @param pSipMessages List of SIP messages
    * @return String that contains one line per SIP message.
@@ -128,8 +129,13 @@ public class SipTextFormatter {
       k++;
       // Message index and time
       lResult.append(String.format("%-" + lNbMsg + "d", lNoMsg++));
-      lResult.append(String.format("%-" + (TIME_STR_LENGTH + mActorsName.get(0).length() / 2) + "s",
+      lResult.append(String.format("%-" + TIME_STR_LENGTH + "s",
+                                   "  "
+                                     + sSmallDateFormatter.format(new Date(lSipMessage.getTime()))));
+
+      lResult.append(String.format("%-" + (DELAY_STR_LENGTH + mActorsName.get(0).length() / 2) + "s",
                                    "  " + lSipMessage.getDelay()));
+      
       lResult.append(COLUMN_CHAR);
 
       lFromID = mActors.get(lSipMessage.getSource()).getIndex();
@@ -256,8 +262,7 @@ public class SipTextFormatter {
   }
 
   /**
-   * Executes a first pass to retrieve the maximum message length for each actors pair. Keeps also
-   * in memory the actors details.
+   * Executes a first pass to retrieve the maximum message length for each actors pair. Keeps also in memory the actors details.
    * 
    * @param pSipMessages List of SIP messages
    */
@@ -318,8 +323,7 @@ public class SipTextFormatter {
   }
 
   /**
-   * Creates the headers printed at the top of the diagram using the actor's name. The gap between
-   * each actor is calculated using the maximum messages length.
+   * Creates the headers printed at the top of the diagram using the actor's name. The gap between each actor is calculated using the maximum messages length.
    * 
    * @param pNbSipMessages Number of SIP messages
    * @return Headers of the diagram
@@ -336,6 +340,7 @@ public class SipTextFormatter {
     // First columns: Line number and time
     lResult.append(String.format("%-" + (lNbMsg.length() + 2) + "s", "# "));
     lResult.append(String.format("%-" + TIME_STR_LENGTH + "s", TIME_COLUMN));
+    lResult.append(String.format("%-" + DELAY_STR_LENGTH + "s", DELAY_COLUMN));
 
     // Concatening the actor's name (usually an IP address)
     for (int i = 0; i < mActorsName.size() - 1; i++) {
@@ -438,8 +443,7 @@ public class SipTextFormatter {
   }
 
   /**
-   * Builds an ASCII arrow of a dynamic length using the maximum possible length for the column(s)
-   * that the arrow needs to get across.
+   * Builds an ASCII arrow of a dynamic length using the maximum possible length for the column(s) that the arrow needs to get across.
    * 
    * @param pMessage Message to include in the middle of the arrow
    * @param pFromID The arrow starting point
@@ -484,8 +488,7 @@ public class SipTextFormatter {
   }
 
   /**
-   * Using the matrix of maximum messages length, returns the required length to go from FromID to
-   * ToID.
+   * Using the matrix of maximum messages length, returns the required length to go from FromID to ToID.
    * 
    * @param pFromID Index of the request initiator
    * @param pToID Index of the request receiver
