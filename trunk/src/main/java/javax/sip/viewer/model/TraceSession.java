@@ -1,14 +1,12 @@
 package javax.sip.viewer.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class TraceSession implements Comparable<TraceSession>{
-  private List<SipMessage> mSipMessageList = new ArrayList<SipMessage>();
+  private Set<SipMessage> mSipMessageList = new TreeSet<SipMessage>();
   private List<String> mB2BTagTokens = new ArrayList<String>();
   private List<String> mCallIds = new ArrayList<String>();
 
@@ -18,7 +16,7 @@ public class TraceSession implements Comparable<TraceSession>{
     super();
   }
 
-  public List<SipMessage> getSipMessageList() {
+  public Set<SipMessage> getSipMessageList() {
     return mSipMessageList;
   }
 
@@ -30,7 +28,7 @@ public class TraceSession implements Comparable<TraceSession>{
     mSipMessageList.add(pSipMessage);
   }
 
-  public void attachAll(List<SipMessage> pSipMessages) {
+  public void attachAll(Set<SipMessage> pSipMessages) {
     mSipMessageList.addAll(pSipMessages);
     calculateMessageDelay();
   }

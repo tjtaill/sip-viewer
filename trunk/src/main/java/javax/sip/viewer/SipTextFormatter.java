@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -111,7 +112,7 @@ public class SipTextFormatter {
    * @param pSipMessages List of SIP messages
    * @return String that contains one line per SIP message.
    */
-  private String parseSipMessages(List<SipMessage> pSipMessages) {
+  private String parseSipMessages(Set<SipMessage> pSipMessages) {
     int lToID = 0;
     int lFromID = 0;
     int i = 0;
@@ -266,7 +267,7 @@ public class SipTextFormatter {
    * 
    * @param pSipMessages List of SIP messages
    */
-  private void prepareVariables(List<SipMessage> pSipMessages) {
+  private void prepareVariables(Set<SipMessage> pSipMessages) {
     int lActorCount = 0;
     int lIndexTo = 0;
     int lIndexFrom = 0;
