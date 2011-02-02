@@ -58,11 +58,15 @@ public class SipMessage implements Serializable, Comparable<SipMessage> {
    * @see java.lang.Comparable#compareTo(java.lang.Object)
    */
   public int compareTo(SipMessage pSipMessage) {
+    int lResult = 1;
     if (pSipMessage != null) {
-      return (int) (this.getDelay() - pSipMessage.getDelay());
-    } else {
-      return 1;
+      lResult = (int) (this.getDelay() - pSipMessage.getDelay());
+      // hack to allow duplicate items
+      if (lResult == 0) {
+        lResult = 1;
+      }
     }
+    return lResult;
   }
   
   /**
