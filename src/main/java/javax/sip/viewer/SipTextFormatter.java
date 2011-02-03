@@ -31,9 +31,9 @@ public class SipTextFormatter {
   private static final int ARROW_PADDING_LEN = 10;
   private static final String SESSION_LINE = "************************************************************";
   private static final String LINE = "--------------------------------------------------------------------";
-  private static final String ARROW_LINE = "----";  // 4 dash instead of 5 because a call-id flag will be prefixed
-  private static final String ARROW_LEFT = "<----";
-  private static final String ARROW_RIGHT = "---->";
+  private static final String ARROW_LINE = "---";  // this will be prefixed with the call id flag. ex.:(a)---
+  private static final String ARROW_LEFT = "<---";
+  private static final String ARROW_RIGHT = "--->";
   private static final String PAD_CHAR = "-";
   private static final String TIME_COLUMN = "Time";
   private static final String DELAY_COLUMN = "Delay (ms)";
@@ -470,11 +470,11 @@ public class SipTextFormatter {
     }
 
     // Adding final padding
-    String lLeftPadding = pCallIdFlag + ARROW_LINE;
+    String lLeftPadding = "(" + pCallIdFlag + ")" + ARROW_LINE;
     String lRightPadding = ARROW_RIGHT;
     if (pFromID > pToID) {
       lLeftPadding = ARROW_LEFT;
-      lRightPadding = ARROW_LINE + pCallIdFlag;
+      lRightPadding = ARROW_LINE + "(" + pCallIdFlag + ")";
     }
     lResult = lLeftPadding + lResult + lRightPadding;
 
