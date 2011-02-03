@@ -31,13 +31,18 @@ public class SipTextFormatter {
   private static final int ARROW_PADDING_LEN = 10;
   private static final String SESSION_LINE = "************************************************************";
   private static final String LINE = "--------------------------------------------------------------------";
-  private static final String ARROW_LINE = "-----";
+  private static final String ARROW_LINE = "----";  // 4 dash instead of 5 because a call-id flag will be prefixed
   private static final String ARROW_LEFT = "<----";
   private static final String ARROW_RIGHT = "---->";
   private static final String PAD_CHAR = "-";
   private static final String TIME_COLUMN = "Time";
   private static final String DELAY_COLUMN = "Delay (ms)";
   private static final String SIP_MSG = "SIP/2.0";
+  private static String[] sCallIdFlags = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+                                          "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+                                          "w", "x", "y", "z" };
+  private static Pattern sCallIdPattern = Pattern.compile(".*^Call-ID:[ ]?(.*?)$.*",
+                                                          Pattern.DOTALL | Pattern.MULTILINE);
   private static final Pattern sContactPattern = Pattern.compile(".*^Contact:\\s*(.*?)\\s*$.*",
                                                                  Pattern.DOTALL | Pattern.MULTILINE);
 
@@ -45,7 +50,8 @@ public class SipTextFormatter {
   private static final SimpleDateFormat sSmallDateFormatter = new SimpleDateFormat("HH:mm:ss.SSS");
   private static Map<String, String> sHostNameCache = new HashMap<String, String>();
   private static Map<Integer, String> sEmptyArrowCache = new HashMap<Integer, String>();
-  private HashMap<String, Actor> mActors;
+  private Map<String, String> mCallIdFlag;
+  private Map<String, Actor> mActors;
   private List<String> mActorsName;
   private int mMessagesLength[][];
 
@@ -69,6 +75,7 @@ public class SipTextFormatter {
     StringBuilder lOutput = new StringBuilder();
     mActors = new HashMap<String, Actor>();
     mActorsName = new ArrayList<String>();
+    mCallIdFlag = new HashMap<String, String>();
     mMessagesLength = new int[MAX_NUMBER_OF_ACTORS][MAX_NUMBER_OF_ACTORS];
 
     // First pass in SipMessages
@@ -88,6 +95,7 @@ public class SipTextFormatter {
     lOutput.append(lHeaders);
     lOutput.append(lFlow);
 
+    
     return lOutput.toString();
   }
 
@@ -134,48 +142,22 @@ public class SipTextFormatter {
                                    "  "
                                      + sSmallDateFormatter.format(new Date(lSipMessage.getTime()))));
 
-      lResult.append(String.format("%-" + (DELAY_STR_LENGTH + mActorsName.get(0).length() / 2) + "s",
-                                   "  " + lSipMessage.getDelay()));
-      
+      lResult.append(String.format("%-" + (DELAY_STR_LENGTH + mActorsName.get(0).length() / 2)
+                                   + "s", "  " + lSipMessage.getDelay()));
+
       lResult.append(COLUMN_CHAR);
 
       lFromID = mActors.get(lSipMessage.getSource()).getIndex();
-
-      // This code was used to extract the Contact field. It is supposed to be a better information
-      // than the FROM/TO field in certain cases. Still needs to be investigated.
-      //
-      // System.out.println("From: " + lSipMessage.getFrom());
-      // if (mUseContactInfoWhenProvided) {
-      // Pattern lContactPattern = Pattern.compile(".*^Contact:\\s(<.*>)\\s.*$.*",
-      // Pattern.DOTALL | Pattern.MULTILINE);
-      // Matcher lContactMatcher = lContactPattern.matcher(lSipMessage.getContent().toString());
-      // if (lContactMatcher.matches()) {
-      // String lKey = lContactMatcher.group(1).replace("<", "").replace(">", "");
-      // int lAtPos = lKey.indexOf("@");
-      // if (lAtPos != -1)
-      // lKey = lKey.substring(lAtPos + 1);
-      //
-      // int lSemiColonPos = lKey.indexOf(";");
-      // if (lSemiColonPos != -1)
-      // lKey = lKey.substring(0, lSemiColonPos);
-      // System.out.println("Contact: " + lKey);
-      // if (mActors.get(lKey) != null) {
-      // System.out.println("Contact: " + lKey);
-      // lFromID = mActors.get(lKey).getIndex();
-      // }
-      // }
-      // }
-      // System.out.println("To: " + lSipMessage.getTo() + "\n");
-
       lToID = mActors.get(lSipMessage.getDestination()).getIndex();
       i = 0;
       lArrowLength = 0;
 
       // We start from the lowest index
-      if (lFromID > lToID)
+      if (lFromID > lToID) {
         lID = lToID;
-      else
+      } else {
         lID = lFromID;
+      }
 
       // Concatening empty arrow until we reached the ID
       for (i = 0; i < lID; i++) {
@@ -189,8 +171,19 @@ public class SipTextFormatter {
         lResult.append(COLUMN_CHAR);
       }
 
+      Matcher lCallIdMatcher = sCallIdPattern.matcher(lSipMessage.getMessageAsText());
+      String lCallIdFlag = null;
+      if (lCallIdMatcher.matches()) {
+        String lCallId = lCallIdMatcher.group(1);
+        if (!mCallIdFlag.containsKey(lCallId)) {
+          int lIndex = mCallIdFlag.size() % sCallIdFlags.length;
+          mCallIdFlag.put(lCallId, sCallIdFlags[lIndex]);
+        }
+        lCallIdFlag = mCallIdFlag.get(lCallId);
+      }
+
       // Building the arrow
-      lResult.append(buildArrow(parseSipFirstLine(lSipMessage.getFirstLine()), lFromID, lToID));
+      lResult.append(buildArrow(parseSipFirstLine(lSipMessage.getFirstLine()), lFromID, lToID, lCallIdFlag));
       lResult.append(COLUMN_CHAR);
 
       // We continue with the lowest index
@@ -451,7 +444,7 @@ public class SipTextFormatter {
    * @param pToID The arrow ending point
    * @return An horizontal ASCII arrow
    */
-  private String buildArrow(String pMessage, int pFromID, int pToID) {
+  private String buildArrow(String pMessage, int pFromID, int pToID, String pCallIdFlag) {
     int lArrowLength = 0;
     int lCompensationPadding = 0; // Used when an arrow passes across multiple columns
     int i = 0;
@@ -477,11 +470,11 @@ public class SipTextFormatter {
     }
 
     // Adding final padding
-    String lLeftPadding = ARROW_LINE;
+    String lLeftPadding = pCallIdFlag + ARROW_LINE;
     String lRightPadding = ARROW_RIGHT;
     if (pFromID > pToID) {
       lLeftPadding = ARROW_LEFT;
-      lRightPadding = ARROW_LINE;
+      lRightPadding = ARROW_LINE + pCallIdFlag;
     }
     lResult = lLeftPadding + lResult + lRightPadding;
 
