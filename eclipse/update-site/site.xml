@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/sip_viewer_feature_1.0.0.201102171628.jar" id="sip_viewer_feature" version="1.0.0.201102171628"/>
+   <feature url="features/sip_viewer_feature_1.0.1.jar" id="sip_viewer_feature" version="1.0.1"/>
 </site>
