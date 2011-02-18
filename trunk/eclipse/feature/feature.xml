@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="sip_viewer_feature"
+      label="Sip-viewer-feature"
+      version="1.0.1">
+
+   <description url="https://sip-viewer.googlecode.com">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="sip-viewer" url="https://sip-viewer.googlecode.com/svn/trunk/eclipse/update-site/"/>
+   </url>
+
+   <plugin
+         id="javax.sip.viewer.eclipse.plugins"
+         download-size="0"
+         install-size="0"
+         version="1.0.1"
+         unpack="false"/>
+
+</feature>
