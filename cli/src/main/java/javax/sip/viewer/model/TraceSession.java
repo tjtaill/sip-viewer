@@ -29,8 +29,8 @@ public class TraceSession implements Comparable<TraceSession>{
   }
 
   public void attachAll(Set<SipMessage> pSipMessages) {
-    calculateMessageDelay(pSipMessages);
     mSipMessageList.addAll(pSipMessages);
+    calculateMessageDelay();
   }
 
   /**
@@ -88,10 +88,9 @@ public class TraceSession implements Comparable<TraceSession>{
 
   /**
    * calculate message delay
-   * @param pSipMessages 
    */
-  public void calculateMessageDelay(Set<SipMessage> pSipMessages) {
-    for (SipMessage lSipMessage : pSipMessages) {
+  public void calculateMessageDelay() {
+    for (SipMessage lSipMessage : mSipMessageList) {
       lSipMessage.setDelay(lSipMessage.getTime() - mTime);
     }
   }

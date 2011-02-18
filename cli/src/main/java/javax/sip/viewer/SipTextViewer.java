@@ -1,6 +1,14 @@
 package javax.sip.viewer;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.io.SequenceInputStream;
+import java.io.Writer;
+import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
@@ -21,7 +29,7 @@ public class SipTextViewer {
   private static final Logger sLogger = Logger.getLogger(PACKAGE_NAME);
 
   @Parameter
-  private List<String> mFiles;
+  private List<String> mFileNames;
   @Parameter(names = { "-s", "--index" }, description = "find by indices")
   private String mSessionId;
   @Parameter(names = { "-v", "--verbose" }, description = "Verbose diagram mode (default false)")
@@ -51,29 +59,31 @@ public class SipTextViewer {
     mShowHelp = pShowHelp;
   }
 
-  public void display() throws Exception {
+  public void display(OutputStream pOut) throws Exception {
     SipLogParser lLogParser = setupParser();
-    
-    List<TraceSession> lAllSessions = null;
+    Writer lWriter = new BufferedWriter(new OutputStreamWriter(pOut));
 
-    String[] lFiles = mFiles.toArray(new String[mFiles.size()]);
+    String[] lFiles = mFileNames.toArray(new String[mFileNames.size()]);
+
     SequenceInputStream sInputStream = new SequenceInputStream(new ListOfFiles(lFiles));
-    lAllSessions = lLogParser.parseLogs(sInputStream);
+    List<TraceSession> lAllSessions = lLogParser.parseLogs(sInputStream);
     Collections.sort(lAllSessions);
     List<TraceSession> lFilteredTSList = applyFilters(lAllSessions);
 
-    System.out.println(String.format("%d sessions displayed \n\n", lFilteredTSList.size()));
+    lWriter.write(String.format("%d sessions displayed \n\n", lFilteredTSList.size()));
     for (TraceSession lTS : lFilteredTSList) {
       SipTextFormatter lSipTextFormatter = new SipTextFormatter(mVerbose, mResolveIpNames);
-      System.out.println(lSipTextFormatter.format(lTS));
+      lWriter.write(lSipTextFormatter.format(lTS));
       if (!mHideSipLog) {
-        System.out.println(lSipTextFormatter.generateCallStack(lTS));
+        lWriter.write(lSipTextFormatter.generateCallStack(lTS));
       }
+      lWriter.flush();
     }
+    lWriter.close();
   }
 
   public boolean isFileProvided() {
-    return mFiles != null;
+    return mFileNames != null;
   }
 
   private SipLogParser setupParser() throws Exception {
@@ -84,11 +94,10 @@ public class SipTextViewer {
       if (mParserB2BTokenRegex != null) {
         TextLogParser.setTagPattern(Pattern.compile(mParserB2BTokenRegex));
       }
-      return  new TextLogParser();
+      return new TextLogParser();
     }
-    
+
   }
-  
 
   private List<TraceSession> applyFilters(List<TraceSession> pTraceSessions) {
     List<TraceSession> lResult = pTraceSessions;
@@ -97,6 +106,14 @@ public class SipTextViewer {
     }
     // TODO here we should be able to apply many filters
     return lResult;
+  }
+
+  public void setFileNames(List<String> pFiles) {
+    mFileNames = pFiles;
+  }
+
+  public void setParserClassName(String pParserClassName) {
+    mParserClassName = pParserClassName;
   }
 
   /**
@@ -111,13 +128,12 @@ public class SipTextViewer {
     // Parsing command-line arguments
     JCommander lJCommander = new JCommander(lTF, args);
     lJCommander.setProgramName("SipTextViewer");
-
     if (lTF.isShowHelp()) {
       // Displays help
       lJCommander.usage();
     } else {
       if (lTF.isFileProvided()) {
-        lTF.display();
+        lTF.display(System.out);
       } else {
         System.err.println("You must specify a log file.");
         lJCommander.usage();
