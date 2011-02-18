@@ -2,7 +2,7 @@
 <feature
       id="sip_viewer_feature"
       label="Sip-viewer-feature"
-      version="1.0.2">
+      version="1.0.4">
 
    <description url="https://sip-viewer.googlecode.com">
       [Enter Feature Description here.]
