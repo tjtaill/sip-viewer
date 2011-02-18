@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="javax.sip.viewer.eclipse.plugins.contribution1">
+         <menu
+               label="SIP Viewer"
+               path="additions"
+               id="javax.sip.viewer.eclipse.plugins.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Display"
+               class="javax.sip.viewer.eclipse.plugins.popup.actions.SipViewerPlugin"
+               menubarPath="javax.sip.viewer.eclipse.plugins.menu1/group1"
+               enablesFor="1"
+               id="javax.sip.viewer.eclipse.plugins.SipViewerPlugin">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
