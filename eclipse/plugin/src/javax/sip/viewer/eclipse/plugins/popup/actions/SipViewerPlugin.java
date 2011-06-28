@@ -65,7 +65,7 @@ public class SipViewerPlugin implements IObjectActionDelegate {
       view.display(console);
       MessageConsoleStream output = console.newMessageStream();
       console.clearConsole();
-      lSipTextViewer.display(console.newMessageStream());
+      lSipTextViewer.display(output);
       output.close();
     } catch (Exception e) {
       e.printStackTrace();
