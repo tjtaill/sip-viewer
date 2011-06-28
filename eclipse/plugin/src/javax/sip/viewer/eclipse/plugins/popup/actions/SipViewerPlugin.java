@@ -1,6 +1,7 @@
 package javax.sip.viewer.eclipse.plugins.popup.actions;
 
 import java.io.File;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,14 +60,18 @@ public class SipViewerPlugin implements IObjectActionDelegate {
       lSipTextViewer.setFileNames(lFilesURIs);
 
       MessageConsole console = findConsole("sip-viewer");
+//      console.clearConsole();  // bug with clear console....
+      if (console.getDocument() != null) {
+        console.getDocument().set("");
+      }
       IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
       String id = IConsoleConstants.ID_CONSOLE_VIEW;
       IConsoleView view = (IConsoleView) page.showView(id);
+      view.setScrollLock(true);
+      
       view.display(console);
-      MessageConsoleStream output = console.newMessageStream();
-      console.clearConsole();
+      OutputStream output = console.newOutputStream();
       lSipTextViewer.display(output);
-      output.close();
     } catch (Exception e) {
       e.printStackTrace();
       MessageDialog.openInformation(shell, "sip-viewer-plugin", e.toString());
