@@ -140,7 +140,7 @@ public class SipTextViewer {
       lResult = new DestinationPhoneNumberFilter(lResult, mDestPhoneNumber).process();
     }
     if (mDateBegin != null || mDateEnd != null) {
-      SimpleDateFormat lDateFormatter = new SimpleDateFormat("dd/MM/YY");
+      SimpleDateFormat lDateFormatter = new SimpleDateFormat("dd/MM/yy");
       Date lDateBegin = null;
       Date lDateEnd = null;
       try {
