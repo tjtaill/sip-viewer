@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 import java.util.zip.GZIPInputStream;
 
 public class ListOfFiles implements Enumeration {
-
+// test
   private String[] listOfFiles;
   private int current = 0;
 
