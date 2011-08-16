@@ -1,19 +1,25 @@
 package javax.sip.viewer;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.io.SequenceInputStream;
 import java.io.Writer;
-import java.net.URI;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
+import javax.sip.viewer.filters.B2BSipTagTokenFilter;
+import javax.sip.viewer.filters.CallIdFilter;
+import javax.sip.viewer.filters.CallerNameFilter;
+import javax.sip.viewer.filters.CallerPhoneNumberFilter;
+import javax.sip.viewer.filters.DateFilter;
+import javax.sip.viewer.filters.DestinationPhoneNumberFilter;
 import javax.sip.viewer.filters.SessionIdFilter;
 import javax.sip.viewer.model.TraceSession;
 import javax.sip.viewer.parser.SipLogParser;
@@ -32,6 +38,20 @@ public class SipTextViewer {
   private List<String> mFileNames;
   @Parameter(names = { "-s", "--index" }, description = "find by indices")
   private String mSessionId;
+  @Parameter(names = { "-ci", "-callId" }, description = "find by call ID")
+  private String mCallId;
+  @Parameter(names = { "-b2b", "-b2bSipTagToken" }, description = "find by B2B sip tag token")
+  private String mB2BSipTagToken;
+  @Parameter(names = { "-cn", "-callerName" }, description = "find by caller name")
+  private String mCallerName;
+  @Parameter(names = { "-cpn", "-callerPhoneNumber" }, description = "find by caller phone number")
+  private String mCallerPhoneNumber;
+  @Parameter(names = { "-dpn", "-destPhoneNumber" }, description = "find by destination phone number")
+  private String mDestPhoneNumber;
+  @Parameter(names = { "-db", "-dateBegin" }, description = "find by date interval. This date is the beginning of the interval. Ending of the interval is \"-de\" or \"-dateEnd\"")
+  private String mDateBegin;
+  @Parameter(names = { "-de", "-dateEnd" }, description = "find by date interval. This date is the end of the interval. Beginning of the interval is \"-db\" or \"-dateBegin\"")
+  private String mDateEnd;
   @Parameter(names = { "-v", "--verbose" }, description = "Verbose diagram mode (default false)")
   private boolean mVerbose = false;
   @Parameter(names = { "-hsl", "--hideSipLog" }, description = "Outputs the call stack after the sequence diagram (default true)")
@@ -102,7 +122,39 @@ public class SipTextViewer {
   private List<TraceSession> applyFilters(List<TraceSession> pTraceSessions) {
     List<TraceSession> lResult = pTraceSessions;
     if (mSessionId != null) {
-      lResult = new SessionIdFilter(pTraceSessions, mSessionId).process();
+      lResult = new SessionIdFilter(lResult, mSessionId).process();
+    }
+    if (mCallId != null) {
+      lResult = new CallIdFilter(lResult, mCallId).process();
+    }
+    if (mB2BSipTagToken != null) {
+      lResult = new B2BSipTagTokenFilter(lResult, mB2BSipTagToken).process();
+    }
+    if (mCallerPhoneNumber != null) {
+      lResult = new CallerPhoneNumberFilter(lResult, mCallerPhoneNumber).process();
+    }
+    if (mCallerName != null) {
+      lResult = new CallerNameFilter(lResult, mCallerName).process();
+    }
+    if (mDestPhoneNumber != null) {
+      lResult = new DestinationPhoneNumberFilter(lResult, mDestPhoneNumber).process();
+    }
+    if (mDateBegin != null || mDateEnd != null) {
+      SimpleDateFormat lDateFormatter = new SimpleDateFormat("dd/MM/YY");
+      Date lDateBegin = null;
+      Date lDateEnd = null;
+      try {
+        if (mDateBegin != null) {
+          lDateBegin = lDateFormatter.parse(mDateBegin);
+        }
+        if (mDateEnd != null) {
+          lDateEnd = lDateFormatter.parse(mDateEnd);
+        }
+        lResult = new DateFilter(lResult, lDateBegin, lDateEnd).process();
+      } catch (ParseException e) {
+        sLogger.log(Level.SEVERE, "Error in the date format", e);
+        System.err.println("The entered date format in incorrect.");
+      }
     }
     // TODO here we should be able to apply many filters
     return lResult;
@@ -117,7 +169,8 @@ public class SipTextViewer {
   }
 
   /**
-   * Creates an ASCII sequence diagram from a call session log file. The arguments that can be passed are parsed using JCommander and annotations.
+   * Creates an ASCII sequence diagram from a call session log file. The arguments that can be
+   * passed are parsed using JCommander and annotations.
    * 
    * @param args
    * @throws Exception
