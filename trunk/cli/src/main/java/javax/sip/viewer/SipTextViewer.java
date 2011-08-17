@@ -20,6 +20,7 @@ import javax.sip.viewer.filters.CallerNameFilter;
 import javax.sip.viewer.filters.CallerPhoneNumberFilter;
 import javax.sip.viewer.filters.DateFilter;
 import javax.sip.viewer.filters.DestinationPhoneNumberFilter;
+import javax.sip.viewer.filters.ErrorFilter;
 import javax.sip.viewer.filters.SessionIdFilter;
 import javax.sip.viewer.model.TraceSession;
 import javax.sip.viewer.parser.SipLogParser;
@@ -52,6 +53,8 @@ public class SipTextViewer {
   private String mDateBegin;
   @Parameter(names = { "-de", "-dateEnd" }, description = "find by date interval. This date is the end of the interval. Beginning of the interval is \"-db\" or \"-dateBegin\"")
   private String mDateEnd;
+  @Parameter(names = { "-eo", "--errorOnly" }, description = "display only the sessions with error in the response code (default false")
+  private boolean mErrorOnly = false;
   @Parameter(names = { "-v", "--verbose" }, description = "Verbose diagram mode (default false)")
   private boolean mVerbose = false;
   @Parameter(names = { "-hsl", "--hideSipLog" }, description = "Outputs the call stack after the sequence diagram (default true)")
@@ -155,6 +158,9 @@ public class SipTextViewer {
         sLogger.log(Level.SEVERE, "Error in the date format", e);
         System.err.println("The entered date format in incorrect.");
       }
+    }
+    if (mErrorOnly) {
+      lResult = new ErrorFilter(lResult).process();
     }
     // TODO here we should be able to apply many filters
     return lResult;
