@@ -5,12 +5,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.SequenceInputStream;
 import java.io.Writer;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
@@ -18,7 +14,6 @@ import javax.sip.viewer.filters.B2BSipTagTokenFilter;
 import javax.sip.viewer.filters.CallIdFilter;
 import javax.sip.viewer.filters.CallerNameFilter;
 import javax.sip.viewer.filters.CallerPhoneNumberFilter;
-import javax.sip.viewer.filters.DateFilter;
 import javax.sip.viewer.filters.DestinationPhoneNumberFilter;
 import javax.sip.viewer.filters.ErrorFilter;
 import javax.sip.viewer.filters.SessionIdFilter;
@@ -49,10 +44,6 @@ public class SipTextViewer {
   private String mCallerPhoneNumber;
   @Parameter(names = { "-dpn", "-destPhoneNumber" }, description = "find by destination phone number")
   private String mDestPhoneNumber;
-  @Parameter(names = { "-db", "-dateBegin" }, description = "find by date interval. This date is the beginning of the interval. Ending of the interval is \"-de\" or \"-dateEnd\"")
-  private String mDateBegin;
-  @Parameter(names = { "-de", "-dateEnd" }, description = "find by date interval. This date is the end of the interval. Beginning of the interval is \"-db\" or \"-dateBegin\"")
-  private String mDateEnd;
   @Parameter(names = { "-eo", "--errorOnly" }, description = "display only the sessions with error in the response code (default false")
   private boolean mErrorOnly = false;
   @Parameter(names = { "-v", "--verbose" }, description = "Verbose diagram mode (default false)")
@@ -141,23 +132,6 @@ public class SipTextViewer {
     }
     if (mDestPhoneNumber != null) {
       lResult = new DestinationPhoneNumberFilter(lResult, mDestPhoneNumber).process();
-    }
-    if (mDateBegin != null || mDateEnd != null) {
-      SimpleDateFormat lDateFormatter = new SimpleDateFormat("dd/MM/yy");
-      Date lDateBegin = null;
-      Date lDateEnd = null;
-      try {
-        if (mDateBegin != null) {
-          lDateBegin = lDateFormatter.parse(mDateBegin);
-        }
-        if (mDateEnd != null) {
-          lDateEnd = lDateFormatter.parse(mDateEnd);
-        }
-        lResult = new DateFilter(lResult, lDateBegin, lDateEnd).process();
-      } catch (ParseException e) {
-        sLogger.log(Level.SEVERE, "Error in the date format", e);
-        System.err.println("The entered date format in incorrect.");
-      }
     }
     if (mErrorOnly) {
       lResult = new ErrorFilter(lResult).process();
