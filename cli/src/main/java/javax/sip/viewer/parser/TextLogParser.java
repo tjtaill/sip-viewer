@@ -11,52 +11,55 @@ import java.util.regex.Pattern;
 import javax.sip.viewer.model.SipMessage;
 import javax.sip.viewer.model.TraceSession;
 import javax.sip.viewer.model.TraceSessionIndexer;
-import javax.sip.viewer.utils.AddressHeaderParser;
 
 public class TextLogParser implements SipLogParser {
   private static Pattern sDetailsPattern = Pattern.compile("\\[(.*)\\] (IN|OUT) (.*) --> (.*)");
-  private static Pattern sCallIdPattern = Pattern.compile(".*^Call-ID:[ ]?(.*?)$.*",
-                                                          Pattern.DOTALL | Pattern.MULTILINE);
-  private static Pattern sToPattern = Pattern.compile(".*^To:[ ]?(.*?)$.*", Pattern.DOTALL
-                                                                            | Pattern.MULTILINE);
-  private static Pattern sFromPattern = Pattern.compile(".*^From:[ ]?(.*?)$.*", Pattern.DOTALL
-                                                                                | Pattern.MULTILINE);
   private static Pattern sTagPattern = Pattern.compile("s(\\d*)-.*");
   
   private TraceSessionIndexer mTraceSessionIndexer = new TraceSessionIndexer();
 
+  private SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
+  
 
   /**
    * @see javax.sip.viewer.parser.SipLogParser#parseLogs(java.io.InputStream)
    */
   public List<TraceSession> parseLogs(InputStream pInputStream) {
+        
     Scanner lMessageScanner = new Scanner(pInputStream);
-
+    
     lMessageScanner.useDelimiter(Pattern.compile("-----------------------"));
     while (lMessageScanner.hasNext()) {
+      
       String lData = lMessageScanner.next().trim();
+      
       if (!lData.isEmpty()) {
-        Scanner lDataScanner = new Scanner(lData);
-        lDataScanner.useDelimiter("\\Z");
-        SipMessage lSipMessage = parseMessageDetails(lDataScanner.nextLine());
-        lDataScanner.nextLine(); // skip empty delimiter line
-        lSipMessage.setMessageAsText(lDataScanner.next());
+        String[] lSplitData = TextLogMessageParser.splitIn2Parts(lData);
+        SipMessage lSipMessage = parseMessageDetails(lSplitData[0]);
+        lSipMessage.setMessageAsText(lSplitData[1]);
         parseMessage(lSipMessage);
       }
     }
-
+    
     return mTraceSessionIndexer.getTraceSessions();
   }
 
   private SipMessage parseMessageDetails(String pDetails) {
     SipMessage lResult = new SipMessage();
-    Matcher lDetailsMatcher = sDetailsPattern.matcher(pDetails);
-    if (lDetailsMatcher.matches()) {
+    
+    if (pDetails.startsWith("[")) {
+      StringBuilder lDateStr = new StringBuilder();
+      StringBuilder lOrigin = new StringBuilder();
+      StringBuilder lDestination = new StringBuilder();
+      
+      TextLogMessageParser.parseDetails(pDetails, lDateStr, lOrigin, lDestination);
+
       try {
-        Date lDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").parse(lDetailsMatcher.group(1));
+        Date lDate = mDateFormat.parse(lDateStr.toString());
+                
         lResult.setTime(lDate.getTime());
-        lResult.setSource(lDetailsMatcher.group(3));
-        lResult.setDestination(lDetailsMatcher.group(4));
+        lResult.setSource(lOrigin.toString());
+        lResult.setDestination(lDestination.toString());
       } catch (Exception e) {
         throw new RuntimeException(pDetails + " is not having the right format", e);
       }
@@ -72,31 +75,20 @@ public class TextLogParser implements SipLogParser {
    * @param pMessageAsText
    */
   private void parseMessage(SipMessage pSipMessage) {
-    Matcher lCallIdMatcher = sCallIdPattern.matcher(pSipMessage.getMessageAsText());
-    Matcher lFromMatcher = sFromPattern.matcher(pSipMessage.getMessageAsText());
-    Matcher lToMatcher = sToPattern.matcher(pSipMessage.getMessageAsText());
-    String lCallId = null;
-    String lFrom = null;
-    String lTo = null;
-    if (lCallIdMatcher.matches()) {
-      lCallId = lCallIdMatcher.group(1);
-    }
-    if (lFromMatcher.matches()) {
-      lFrom = lFromMatcher.group(1);
-    }
-    if (lToMatcher.matches()) {
-      lTo = lToMatcher.group(1);
-    }
-
+        
+    String lAsString = pSipMessage.getMessageAsText();
+    
+    StringBuilder lCallId = new StringBuilder();
+    StringBuilder lFrom = new StringBuilder();
+    StringBuilder lTo = new StringBuilder();
+    TextLogMessageParser.parse(pSipMessage.getMessageAsText(), lCallId, lFrom, lTo);
+    
     // check for B2B dialog correlation tokens
-    String lFromTagToken = searchTagToken(lFrom);
-    String lToTagToken = searchTagToken(lTo);
-
+    String lFromTagToken = searchTagToken(lFrom.toString());
+    String lToTagToken = searchTagToken(lTo.toString());
+    
     // look for existing session (or create one)
-    mTraceSessionIndexer.indexSipMessage(pSipMessage, lToTagToken, lFromTagToken, lCallId);
-
-
-
+    mTraceSessionIndexer.indexSipMessage(pSipMessage, lToTagToken, lFromTagToken, lCallId.toString());
   }
 
   /**
@@ -106,9 +98,11 @@ public class TextLogParser implements SipLogParser {
    * @return
    */
   private String searchTagToken(String pHeaderValue) {
+    
     String lResult = null;
-    AddressHeaderParser lAddressHeaderParser = new AddressHeaderParser(pHeaderValue);
-    String lTag = lAddressHeaderParser.getHeaderParams().get("tag");
+    
+    String lTag = pHeaderValue.substring(pHeaderValue.indexOf("tag=") + 4);
+    
     if (lTag != null) {
       Matcher lTagMatcher = sTagPattern.matcher(lTag);
       if (lTagMatcher.matches()) {
