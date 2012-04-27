@@ -31,20 +31,18 @@ public class SipTextFormatter {
   private static final int ARROW_PADDING_LEN = 11;
   private static final String SESSION_LINE = "************************************************************";
   private static final String LINE = "--------------------------------------------------------------------";
-  private static final String ARROW_LINE = "---";  // this will be prefixed with the call id flag. ex.:(a)---
+  private static final String ARROW_LINE = "---"; // this will be prefixed with the call id flag.
+                                                  // ex.:(a)---
   private static final String ARROW_LEFT = "<----";
   private static final String ARROW_RIGHT = "---->";
   private static final String PAD_CHAR = "-";
   private static final String TIME_COLUMN = "Time";
   private static final String DELAY_COLUMN = "Delay (ms)";
   private static final String SIP_MSG = "SIP/2.0";
-  private static String[] sCallIdFlags = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
-                                          "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
-                                          "w", "x", "y", "z" };
-  private static Pattern sCallIdPattern = Pattern.compile(".*^Call-ID:[ ]?(.*?)$.*",
-                                                          Pattern.DOTALL | Pattern.MULTILINE);
-  private static final Pattern sContactPattern = Pattern.compile(".*^Contact:\\s*(.*?)\\s*$.*",
-                                                                 Pattern.DOTALL | Pattern.MULTILINE);
+  private static String[] sCallIdFlags = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+                                          "t", "u", "v", "w", "x", "y", "z" };
+  private static Pattern sCallIdPattern = Pattern.compile(".*^Call-ID:[ ]?(.*?)$.*", Pattern.DOTALL | Pattern.MULTILINE);
+  private static final Pattern sContactPattern = Pattern.compile(".*^Contact:\\s*(.*?)\\s*$.*", Pattern.DOTALL | Pattern.MULTILINE);
 
   private static final SimpleDateFormat sDateFormatter = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss SSS");
   private static final SimpleDateFormat sSmallDateFormatter = new SimpleDateFormat("HH:mm:ss.SSS");
@@ -95,7 +93,6 @@ public class SipTextFormatter {
     lOutput.append(lHeaders);
     lOutput.append(lFlow);
 
-    
     return lOutput.toString();
   }
 
@@ -114,7 +111,9 @@ public class SipTextFormatter {
   }
 
   /**
-   * Prints a line that contains the index of each SIP message, the moment it occured (Time (ms)) and an arrow that goes from one actor to another using the correct formatting. Each arrow contains the
+   * Prints a line that contains the index of each SIP message, the moment it occured (Time (ms))
+   * and an arrow that goes from one actor to another using the correct formatting. Each arrow
+   * contains the
    * message that was sent between the actors.
    * 
    * @param pSipMessages List of SIP messages
@@ -138,12 +137,9 @@ public class SipTextFormatter {
       k++;
       // Message index and time
       lResult.append(String.format("%-" + lNbMsg + "d", lNoMsg++));
-      lResult.append(String.format("%-" + TIME_STR_LENGTH + "s",
-                                   "  "
-                                     + sSmallDateFormatter.format(new Date(lSipMessage.getTime()))));
+      lResult.append(String.format("%-" + TIME_STR_LENGTH + "s", "  " + sSmallDateFormatter.format(new Date(lSipMessage.getTime()))));
 
-      lResult.append(String.format("%-" + (DELAY_STR_LENGTH + mActorsName.get(0).length() / 2)
-                                   + "s", "  " + lSipMessage.getDelay()));
+      lResult.append(String.format("%-" + (DELAY_STR_LENGTH + mActorsName.get(0).length() / 2) + "s", "  " + lSipMessage.getDelay()));
 
       lResult.append(COLUMN_CHAR);
 
@@ -256,7 +252,8 @@ public class SipTextFormatter {
   }
 
   /**
-   * Executes a first pass to retrieve the maximum message length for each actors pair. Keeps also in memory the actors details.
+   * Executes a first pass to retrieve the maximum message length for each actors pair. Keeps also
+   * in memory the actors details.
    * 
    * @param pSipMessages List of SIP messages
    */
@@ -317,7 +314,8 @@ public class SipTextFormatter {
   }
 
   /**
-   * Creates the headers printed at the top of the diagram using the actor's name. The gap between each actor is calculated using the maximum messages length.
+   * Creates the headers printed at the top of the diagram using the actor's name. The gap between
+   * each actor is calculated using the maximum messages length.
    * 
    * @param pNbSipMessages Number of SIP messages
    * @return Headers of the diagram
@@ -396,12 +394,18 @@ public class SipTextFormatter {
         }
       } else {
         lResult.append(lParts[0]); // Command
-        lParts[1] = lParts[1].replace("sip:", "");
-        int lAtPos = lParts[1].indexOf("@");
+        if (lParts[1].contains("sip")) {
+          lParts[1] = lParts[1].replace("sip:", "");
+          int lAtPos = lParts[1].indexOf("@");
+          if (lAtPos != -1) {
+            lParts[1] = lParts[1].substring(0, lAtPos);
+          }
+        } else if (lParts[1].contains("urn")) {
+          lParts[1] = lParts[1].replaceAll("urn:", "");
+        }
 
         // Keeping only the sip identificator
-        if (lAtPos != -1)
-          lResult.append(" ").append(lParts[1].substring(0, lAtPos));
+        lResult.append(" ").append(lParts[1]);
       }
     } else {
       lResult.append(lLine);
@@ -437,7 +441,8 @@ public class SipTextFormatter {
   }
 
   /**
-   * Builds an ASCII arrow of a dynamic length using the maximum possible length for the column(s) that the arrow needs to get across.
+   * Builds an ASCII arrow of a dynamic length using the maximum possible length for the column(s)
+   * that the arrow needs to get across.
    * 
    * @param pMessage Message to include in the middle of the arrow
    * @param pFromID The arrow starting point
@@ -482,7 +487,8 @@ public class SipTextFormatter {
   }
 
   /**
-   * Using the matrix of maximum messages length, returns the required length to go from FromID to ToID.
+   * Using the matrix of maximum messages length, returns the required length to go from FromID to
+   * ToID.
    * 
    * @param pFromID Index of the request initiator
    * @param pToID Index of the request receiver
