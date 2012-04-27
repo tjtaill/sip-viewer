@@ -1,8 +1,8 @@
 package javax.sip.viewer.eclipse.plugins.popup.actions;
 
-import java.io.File;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.sip.viewer.SipTextViewer;
@@ -24,7 +24,6 @@ import org.eclipse.ui.console.IConsoleConstants;
 import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.console.IConsoleView;
 import org.eclipse.ui.console.MessageConsole;
-import org.eclipse.ui.console.MessageConsoleStream;
 
 public class SipViewerPlugin implements IObjectActionDelegate {
 
@@ -50,17 +49,22 @@ public class SipViewerPlugin implements IObjectActionDelegate {
    */
   public void run(IAction action) {
     try {
-      IStructuredSelection treeSelection = (IStructuredSelection) selection;
-      IResource lResource = (IResource) treeSelection.getFirstElement();
-   
       SipTextViewer lSipTextViewer = new SipTextViewer();
       lSipTextViewer.setParserClassName(SipLogAdapterParser.class.getCanonicalName());
+
       List<String> lFilesURIs = new ArrayList<String>();
-      lFilesURIs.add(lResource.getLocation().toString());
+
+      IStructuredSelection treeSelection = (IStructuredSelection) selection;
+      Iterator<IResource> resourceIter = treeSelection.iterator();
+      while (resourceIter.hasNext()) {
+        IResource resource = (IResource) resourceIter.next();
+        lFilesURIs.add(resource.getLocation().toString());
+      }
+
       lSipTextViewer.setFileNames(lFilesURIs);
 
       MessageConsole console = findConsole("sip-viewer");
-//      console.clearConsole();  // bug with clear console....
+      // console.clearConsole(); // bug with clear console....
       if (console.getDocument() != null) {
         console.getDocument().set("");
       }
@@ -68,7 +72,7 @@ public class SipViewerPlugin implements IObjectActionDelegate {
       String id = IConsoleConstants.ID_CONSOLE_VIEW;
       IConsoleView view = (IConsoleView) page.showView(id);
       view.setScrollLock(true);
-      
+
       view.display(console);
       OutputStream output = console.newOutputStream();
       lSipTextViewer.display(output);

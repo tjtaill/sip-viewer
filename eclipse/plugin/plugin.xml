@@ -19,7 +19,7 @@
                label="Display"
                class="javax.sip.viewer.eclipse.plugins.popup.actions.SipViewerPlugin"
                menubarPath="javax.sip.viewer.eclipse.plugins.menu1/group1"
-               enablesFor="1"
+               enablesFor="+"
                id="javax.sip.viewer.eclipse.plugins.SipViewerPlugin">
          </action>
       </objectContribution>
