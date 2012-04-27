@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class TraceSession implements Comparable<TraceSession>{
+public class TraceSession implements Comparable<TraceSession> {
   private Set<SipMessage> mSipMessageList = new TreeSet<SipMessage>();
   private List<String> mB2BTagTokens = new ArrayList<String>();
   private List<String> mCallIds = new ArrayList<String>();
 
-  private long mTime;
+  private long mTraceStartTime = 0;
 
   public TraceSession() {
     super();
@@ -21,15 +21,29 @@ public class TraceSession implements Comparable<TraceSession>{
   }
 
   public void attach(SipMessage pSipMessage) {
-    if (mSipMessageList.isEmpty()) {
-      mTime = pSipMessage.getTime();
+    for (SipMessage message : mSipMessageList) {
+      if (message.equals(pSipMessage)) {
+        return;
+      }
     }
-    pSipMessage.setDelay(pSipMessage.getTime() - mTime);
+    if (mTraceStartTime == 0) {
+      mTraceStartTime = pSipMessage.getTime();
+    }
+
+    long delay = pSipMessage.getTime() - mTraceStartTime;
+    if (delay <= 0) {
+      mTraceStartTime = pSipMessage.getTime();
+      calculateMessageDelay();
+    } else {
+      pSipMessage.setDelay(delay);
+    }
     mSipMessageList.add(pSipMessage);
   }
 
   public void attachAll(Set<SipMessage> pSipMessages) {
-    mSipMessageList.addAll(pSipMessages);
+    for (SipMessage message : pSipMessages) {
+      attach(message);
+    }
     calculateMessageDelay();
   }
 
@@ -69,21 +83,21 @@ public class TraceSession implements Comparable<TraceSession>{
    * @return the time of the first message
    */
   public long getTime() {
-    return mTime;
+    return mTraceStartTime;
   }
 
   /**
    * @param pDelay
    */
   public void setTime(long pDelay) {
-    mTime = pDelay;
+    mTraceStartTime = pDelay;
   }
 
   /**
    * @see java.lang.Comparable#compareTo(java.lang.Object)
    */
   public int compareTo(TraceSession pTracesSession) {
-    return (int)(this.getTime() - pTracesSession.getTime());
+    return (int) (this.getTime() - pTracesSession.getTime());
   }
 
   /**
@@ -91,7 +105,7 @@ public class TraceSession implements Comparable<TraceSession>{
    */
   public void calculateMessageDelay() {
     for (SipMessage lSipMessage : mSipMessageList) {
-      lSipMessage.setDelay(lSipMessage.getTime() - mTime);
+      lSipMessage.setDelay(lSipMessage.getTime() - mTraceStartTime);
     }
   }
 
