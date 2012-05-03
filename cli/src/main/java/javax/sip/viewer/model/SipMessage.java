@@ -6,8 +6,8 @@ public class SipMessage implements Serializable, Comparable<SipMessage> {
   private String mMessageAsText = "";
   private String mSource = null;
   private String mDestination = null;
-  private long mDelay;
-  private long mTime;
+  private long mDelay = 0;
+  private long mTime = 0;
 
   public void setSource(String pSource) {
     mSource = pSource;
@@ -67,16 +67,6 @@ public class SipMessage implements Serializable, Comparable<SipMessage> {
       }
     }
     return lResult;
-  }
-
-  /**
-   * @see java.lang.Object#equals(java.lang.Object)
-   */
-  public boolean equals(Object obj2) {
-    SipMessage otherMessage = (SipMessage) obj2;
-    // a message is considered the same when the content is equals and the time between message is
-    // less than 50 ms (first retransmit)
-    return otherMessage.mMessageAsText.equals(mMessageAsText) && otherMessage.getTime() - mTime < 50;
   }
 
   /**

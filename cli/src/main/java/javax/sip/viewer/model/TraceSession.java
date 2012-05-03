@@ -22,16 +22,21 @@ public class TraceSession implements Comparable<TraceSession> {
 
   public void attach(SipMessage pSipMessage) {
     for (SipMessage message : mSipMessageList) {
-      if (message.equals(pSipMessage)) {
+      // if the message is the same with a timestamp smaller than typical sip retransmit,
+      // it must be the same message seen from 2 endpoints.
+      // We shall only keep one.
+      if (message.getMessageAsText().equals(pSipMessage.getMessageAsText()) && message.getTime() - pSipMessage.getTime() < 50) {
         return;
       }
     }
-    if (mTraceStartTime == 0) {
+    if (mSipMessageList.isEmpty()) {
       mTraceStartTime = pSipMessage.getTime();
     }
 
     long delay = pSipMessage.getTime() - mTraceStartTime;
-    if (delay <= 0) {
+    if (delay < 0) {
+      // we attach a message that happened earlier than the given start time,
+      // let's re-adjust the delays
       mTraceStartTime = pSipMessage.getTime();
       calculateMessageDelay();
     } else {
