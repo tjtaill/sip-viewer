@@ -39,10 +39,13 @@ public class SipTextFormatter {
   private static final String TIME_COLUMN = "Time";
   private static final String DELAY_COLUMN = "Delay (ms)";
   private static final String SIP_MSG = "SIP/2.0";
-  private static String[] sCallIdFlags = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-                                          "t", "u", "v", "w", "x", "y", "z" };
-  private static Pattern sCallIdPattern = Pattern.compile(".*^Call-ID:[ ]?(.*?)$.*", Pattern.DOTALL | Pattern.MULTILINE);
-  private static final Pattern sContactPattern = Pattern.compile(".*^Contact:\\s*(.*?)\\s*$.*", Pattern.DOTALL | Pattern.MULTILINE);
+  private static String[] sCallIdFlags = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+                                          "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+                                          "w", "x", "y", "z" };
+  private static Pattern sCallIdPattern = Pattern.compile(".*^Call-ID:[ ]?(.*?)$.*",
+                                                          Pattern.DOTALL | Pattern.MULTILINE);
+  private static final Pattern sContactPattern = Pattern.compile(".*^Contact:\\s*(.*?)\\s*$.*",
+                                                                 Pattern.DOTALL | Pattern.MULTILINE);
 
   private static final SimpleDateFormat sDateFormatter = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss SSS");
   private static final SimpleDateFormat sSmallDateFormatter = new SimpleDateFormat("HH:mm:ss.SSS");
@@ -137,9 +140,12 @@ public class SipTextFormatter {
       k++;
       // Message index and time
       lResult.append(String.format("%-" + lNbMsg + "d", lNoMsg++));
-      lResult.append(String.format("%-" + TIME_STR_LENGTH + "s", "  " + sSmallDateFormatter.format(new Date(lSipMessage.getTime()))));
+      lResult.append(String.format("%-" + TIME_STR_LENGTH + "s",
+                                   "  "
+                                     + sSmallDateFormatter.format(new Date(lSipMessage.getTime()))));
 
-      lResult.append(String.format("%-" + (DELAY_STR_LENGTH + mActorsName.get(0).length() / 2) + "s", "  " + lSipMessage.getDelay()));
+      lResult.append(String.format("%-" + (DELAY_STR_LENGTH + mActorsName.get(0).length() / 2)
+                                   + "s", "  " + lSipMessage.getDelay()));
 
       lResult.append(COLUMN_CHAR);
 
@@ -179,7 +185,10 @@ public class SipTextFormatter {
       }
 
       // Building the arrow
-      lResult.append(buildArrow(parseSipFirstLine(lSipMessage.getFirstLine()), lFromID, lToID, lCallIdFlag));
+      lResult.append(buildArrow(parseSipFirstLine(lSipMessage.getFirstLine()),
+                                lFromID,
+                                lToID,
+                                lCallIdFlag));
       lResult.append(COLUMN_CHAR);
 
       // We continue with the lowest index
@@ -272,6 +281,9 @@ public class SipTextFormatter {
       if (!mActors.containsKey(lFrom)) {
         // Add possibly the real uac hidden behind a proxy
         String lContactHost = getContactHost(lSipMessage);
+        if (!lContactHost.contains(":")) {
+          lContactHost += ":5060";
+        }
         if (lContactHost != null && !lContactHost.equals(lFrom)) {
           if (!mActors.containsKey(lContactHost)) {
             mActors.put(lContactHost, new Actor(lActorCount, 0, lContactHost));
@@ -421,7 +433,11 @@ public class SipTextFormatter {
    * @return The actor's name striped
    */
   private String parseActorName(String pName) {
-    return pName.replace("<", "").replace(">", "");
+    String lResult = pName.replace("<", "").replace(">", "");
+    if (!lResult.contains(":")) {
+      lResult += ":5060";
+    }
+    return lResult;
   }
 
   /**
