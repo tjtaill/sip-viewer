@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import javax.sip.viewer.filters.B2BSipTagTokenFilter;
+import javax.sip.viewer.filters.BeginEndTimeFilter;
 import javax.sip.viewer.filters.CallIdFilter;
 import javax.sip.viewer.filters.CallerNameFilter;
 import javax.sip.viewer.filters.CallerPhoneNumberFilter;
@@ -58,6 +59,8 @@ public class SipTextViewer {
   private String mParserClassName;
   @Parameter(names = { "-pb2bt", "--parser-b2b-token-regex" }, description = "if using the default textParser which can correlate many dialogs in a same session based on a token found in from and to tags, this key overrides the regex to match that token (default : s(\\d*)-.*)")
   private String mParserB2BTokenRegex;
+  @Parameter(names = { "-t", "--time" }, description = "Filters the logs by showing only the calls between(inclusive) the beginning time and end time (ex: -t 2012/06/13#09:44:27.264|2012/06/13#09:46:27.264)")
+  private String mTime;
 
   /**
    * @return the showHelp
@@ -133,9 +136,15 @@ public class SipTextViewer {
     if (mDestPhoneNumber != null) {
       lResult = new DestinationPhoneNumberFilter(lResult, mDestPhoneNumber).process();
     }
+    if (mTime != null) {
+      lResult = new BeginEndTimeFilter(lResult,
+                                       mTime.substring(0, mTime.indexOf("|")),
+                                       mTime.substring(mTime.indexOf("|") + 1)).process();
+    }
     if (mErrorOnly) {
       lResult = new ErrorFilter(lResult).process();
     }
+
     // TODO here we should be able to apply many filters
     return lResult;
   }
