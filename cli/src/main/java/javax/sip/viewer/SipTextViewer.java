@@ -62,20 +62,6 @@ public class SipTextViewer {
   @Parameter(names = { "-t", "--time" }, description = "Filters the logs by showing only the calls between(inclusive) the beginning time and end time (ex: -t 2012/06/13#09:44:27.264|2012/06/13#09:46:27.264)")
   private String mTime;
 
-  /**
-   * @return the showHelp
-   */
-  public boolean isShowHelp() {
-    return mShowHelp;
-  }
-
-  /**
-   * @param pShowHelp the showHelp to set
-   */
-  public void setShowHelp(boolean pShowHelp) {
-    mShowHelp = pShowHelp;
-  }
-
   public void display(OutputStream pOut) throws Exception {
     SipLogParser lLogParser = setupParser();
     Writer lWriter = new BufferedWriter(new OutputStreamWriter(pOut));
@@ -149,12 +135,74 @@ public class SipTextViewer {
     return lResult;
   }
 
+  /**
+   * @return the showHelp
+   */
+  public boolean isShowHelp() {
+    return mShowHelp;
+  }
+
+  /**
+   * @param pShowHelp the showHelp to set
+   */
+  public void setShowHelp(boolean pShowHelp) {
+    mShowHelp = pShowHelp;
+  }
+
   public void setFileNames(List<String> pFiles) {
     mFileNames = pFiles;
   }
 
   public void setParserClassName(String pParserClassName) {
     mParserClassName = pParserClassName;
+  }
+
+  public void setB2BSipTagToken(String pB2BSipTagToken) {
+    this.mB2BSipTagToken = pB2BSipTagToken;
+  }
+
+  public void setCallerName(String mCallerName) {
+    this.mCallerName = mCallerName;
+  }
+
+  public void setCallerPhoneNumber(String mCallerPhoneNumber) {
+    this.mCallerPhoneNumber = mCallerPhoneNumber;
+  }
+
+  public void setCallId(String pCallId) {
+    this.mCallId = pCallId;
+  }
+
+  public void setDestPhoneNumber(String pDestPhoneNumber) {
+    this.mDestPhoneNumber = pDestPhoneNumber;
+  }
+
+  public void setErrorOnly(boolean pErrorOnly) {
+    this.mErrorOnly = pErrorOnly;
+  }
+
+  public void setHideSipLog(boolean pHideSipLog) {
+    this.mHideSipLog = pHideSipLog;
+  }
+
+  public void setParserB2BTokenRegex(String pParserB2BTokenRegex) {
+    this.mParserB2BTokenRegex = pParserB2BTokenRegex;
+  }
+
+  public void setResolveIpNames(boolean pResolveIpNames) {
+    this.mResolveIpNames = pResolveIpNames;
+  }
+
+  public void setSessionId(String mSessionId) {
+    this.mSessionId = mSessionId;
+  }
+
+  public void setTime(String pTime) {
+    this.mTime = pTime;
+  }
+
+  public void setVerbose(boolean pVerbose) {
+    this.mVerbose = pVerbose;
   }
 
   /**
