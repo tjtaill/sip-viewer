@@ -20,9 +20,12 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class XmlLogParser extends DefaultHandler implements SipLogParser {
-  private static Pattern sCallIdPattern = Pattern.compile(".*^Call-ID:[ ]?(.*?)$.*", Pattern.DOTALL | Pattern.MULTILINE);
-  private static Pattern sToTagPattern = Pattern.compile(".*^To:[ ]?.*;tag=s(\\d*)-.*?$.*", Pattern.DOTALL | Pattern.MULTILINE);
-  private static Pattern sFromTagPattern = Pattern.compile(".*^From:[ ]?.*;tag=s(\\d*)-.*?$.*", Pattern.DOTALL | Pattern.MULTILINE);
+  private static Pattern sCallIdPattern = Pattern.compile(".*^Call-ID:[ ]?(.*?)$.*",
+                                                          Pattern.DOTALL | Pattern.MULTILINE);
+  private static Pattern sToTagPattern = Pattern.compile(".*^To:[ ]?.*;tag=s(\\d*)-.*?$.*",
+                                                         Pattern.DOTALL | Pattern.MULTILINE);
+  private static Pattern sFromTagPattern = Pattern.compile(".*^From:[ ]?.*;tag=s(\\d*)-.*?$.*",
+                                                           Pattern.DOTALL | Pattern.MULTILINE);
 
   private TraceSessionIndexer mTraceSessionIndexer = new TraceSessionIndexer();
 
@@ -45,7 +48,9 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
       InputStream lPreFile = new ByteArrayInputStream("<?xml version='1.0' encoding='UTF-8'?>\n<messages>\n".getBytes("UTF-8"));
       InputStream lPostFile = new ByteArrayInputStream("</messages>\n".getBytes("UTF-8"));
 
-      InputStream lFormattedStream = new SequenceInputStream(new SequenceInputStream(lPreFile, pInputStream), lPostFile);
+      InputStream lFormattedStream = new SequenceInputStream(new SequenceInputStream(lPreFile,
+                                                                                     pInputStream),
+                                                             lPostFile);
       InputSource inputSource = new InputSource(lFormattedStream);
       inputSource.setEncoding("UTF-8");
       xmlReader.parse(inputSource);
@@ -59,7 +64,9 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
     private String currentTag;
     private SipMessage sipMessage;
 
-    public void startElement(String namespaceURI, String lName, String qName, Attributes attrs) throws SAXException {
+    public void startElement(String namespaceURI, String lName, String qName, Attributes attrs)
+      throws SAXException
+    {
       currentTag = qName;
       if (!qName.equals("message")) {
         return;
@@ -94,7 +101,8 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
         lToTag = lToTagMatcher.group(1);
       }
 
-      mTraceSessionIndexer.indexSipMessage(sipMessage, lToTag, lFromTag, lCallId);
+      String lEventId = null; // subscribe event id correlation not yet supported
+      mTraceSessionIndexer.indexSipMessage(sipMessage, lToTag, lFromTag, lCallId, null);
     }
 
     public void characters(char[] buf, int offset, int len) throws SAXException {

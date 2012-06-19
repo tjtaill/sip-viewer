@@ -15,24 +15,23 @@ import javax.sip.viewer.model.TraceSessionIndexer;
 public class TextLogParser implements SipLogParser {
   private static Pattern sDetailsPattern = Pattern.compile("\\[(.*)\\] (IN|OUT) (.*) --> (.*)");
   private static Pattern sTagPattern = Pattern.compile("s(\\d*)-.*");
-  
+
   private TraceSessionIndexer mTraceSessionIndexer = new TraceSessionIndexer();
 
   private SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
-  
 
   /**
    * @see javax.sip.viewer.parser.SipLogParser#parseLogs(java.io.InputStream)
    */
   public List<TraceSession> parseLogs(InputStream pInputStream) {
-        
+
     Scanner lMessageScanner = new Scanner(pInputStream);
-    
+
     lMessageScanner.useDelimiter(Pattern.compile("-----------------------"));
     while (lMessageScanner.hasNext()) {
-      
+
       String lData = lMessageScanner.next().trim();
-      
+
       if (!lData.isEmpty()) {
         String[] lSplitData = TextLogMessageParser.splitIn2Parts(lData);
         SipMessage lSipMessage = parseMessageDetails(lSplitData[0]);
@@ -40,23 +39,23 @@ public class TextLogParser implements SipLogParser {
         parseMessage(lSipMessage);
       }
     }
-    
+
     return mTraceSessionIndexer.getTraceSessions();
   }
 
   private SipMessage parseMessageDetails(String pDetails) {
     SipMessage lResult = new SipMessage();
-    
+
     if (pDetails.startsWith("[")) {
       StringBuilder lDateStr = new StringBuilder();
       StringBuilder lOrigin = new StringBuilder();
       StringBuilder lDestination = new StringBuilder();
-      
+
       TextLogMessageParser.parseDetails(pDetails, lDateStr, lOrigin, lDestination);
 
       try {
         Date lDate = mDateFormat.parse(lDateStr.toString());
-                
+
         lResult.setTime(lDate.getTime());
         lResult.setSource(lOrigin.toString());
         lResult.setDestination(lDestination.toString());
@@ -75,34 +74,40 @@ public class TextLogParser implements SipLogParser {
    * @param pMessageAsText
    */
   private void parseMessage(SipMessage pSipMessage) {
-        
-    String lAsString = pSipMessage.getMessageAsText();
-    
     StringBuilder lCallId = new StringBuilder();
     StringBuilder lFrom = new StringBuilder();
     StringBuilder lTo = new StringBuilder();
-    TextLogMessageParser.parse(pSipMessage.getMessageAsText(), lCallId, lFrom, lTo);
-    
+    StringBuilder lEvent = new StringBuilder();
+    TextLogMessageParser.parse(pSipMessage.getMessageAsText(), lCallId, lFrom, lTo, lEvent);
+
     // check for B2B dialog correlation tokens
     String lFromTagToken = searchTagToken(lFrom.toString());
     String lToTagToken = searchTagToken(lTo.toString());
-    
+
+    // check for subscribe event id correlation (based on prior callid mapping)
+    String lEventId = searchEventId(lEvent.toString());
+    // String lEventId = "cid_0-22516";
+
     // look for existing session (or create one)
-    mTraceSessionIndexer.indexSipMessage(pSipMessage, lToTagToken, lFromTagToken, lCallId.toString());
+    mTraceSessionIndexer.indexSipMessage(pSipMessage,
+                                         lToTagToken,
+                                         lFromTagToken,
+                                         lCallId.toString(),
+                                         lEventId);
   }
 
   /**
-   * Check within the value of a header the presence of a tag header param matching the configured tag pattern
+   * Check within the value of a header the presence of a tag header param matching the configured
+   * tag pattern
    * 
    * @param pHeaderValue
    * @return
    */
   private String searchTagToken(String pHeaderValue) {
-    
     String lResult = null;
-    
+
     String lTag = pHeaderValue.substring(pHeaderValue.indexOf("tag=") + 4);
-    
+
     if (lTag != null) {
       Matcher lTagMatcher = sTagPattern.matcher(lTag);
       if (lTagMatcher.matches()) {
@@ -112,10 +117,19 @@ public class TextLogParser implements SipLogParser {
     return lResult;
   }
 
-  
+  private String searchEventId(String pHeaderValue) {
+    String lResult = null;
+    if (pHeaderValue.contains("id=")) {
+      lResult = pHeaderValue.substring(pHeaderValue.indexOf("id=") + 3);
+    }
+    return lResult;
+  }
 
   /**
-   * Optionally, the pattern to find a token in the tag parameter of the from and to header to aggregate dialogs in a logical session can be configured. <p>Default is <code>s(\\d*)-.*</code>
+   * Optionally, the pattern to find a token in the tag parameter of the from and to header to
+   * aggregate dialogs in a logical session can be configured.
+   * <p>
+   * Default is <code>s(\\d*)-.*</code>
    * 
    * @param pTagPattern
    */

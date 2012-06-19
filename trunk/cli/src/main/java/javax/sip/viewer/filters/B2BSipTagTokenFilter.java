@@ -3,7 +3,6 @@ package javax.sip.viewer.filters;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sip.viewer.filters.AbstractFilter;
 import javax.sip.viewer.model.TraceSession;
 
 /**
