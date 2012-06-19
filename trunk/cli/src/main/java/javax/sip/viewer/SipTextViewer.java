@@ -83,7 +83,6 @@ public class SipTextViewer {
       }
       lWriter.flush();
     }
-    lWriter.close();
   }
 
   public boolean isFileProvided() {
