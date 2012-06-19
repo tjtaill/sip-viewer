@@ -29,9 +29,17 @@ public class TraceSessionIndexer {
    * @param pCallId
    * @return
    */
-  public void indexSipMessage(SipMessage pSipMessage, String pToTagToken, String pFromTagToken, String pCallId) {
+  public void indexSipMessage(SipMessage pSipMessage,
+                              String pToTagToken,
+                              String pFromTagToken,
+                              String pCallId,
+                              String pEventId)
+  {
     // look for existing session (or create one)
-    List<TraceSession> lTraceSessions = findTraceSessions(pToTagToken, pFromTagToken, pCallId);
+    List<TraceSession> lTraceSessions = findTraceSessions(pToTagToken,
+                                                          pFromTagToken,
+                                                          pCallId,
+                                                          pEventId);
 
     TraceSession lTraceSession;
 
@@ -66,7 +74,11 @@ public class TraceSessionIndexer {
    * @param pCallId
    * @return a TraceSessionList that contains at least 1 session.
    */
-  private List<TraceSession> findTraceSessions(String pToTagToken, String pFromTagToken, String pCallId) {
+  private List<TraceSession> findTraceSessions(String pToTagToken,
+                                               String pFromTagToken,
+                                               String pCallId,
+                                               String pEventId)
+  {
     List<TraceSession> lResult = new ArrayList<TraceSession>();
 
     if (pToTagToken != null && mTraceSessionIndex.containsKey(pToTagToken)) {
@@ -82,6 +94,11 @@ public class TraceSessionIndexer {
     if (pCallId != null && mTraceSessionIndex.containsKey(pCallId)) {
       if (!lResult.contains(mTraceSessionIndex.get(pCallId))) {
         lResult.add(mTraceSessionIndex.get(pCallId));
+      }
+    }
+    if (pEventId != null && mTraceSessionIndex.containsKey(pEventId)) {
+      if (!lResult.contains(mTraceSessionIndex.get(pEventId))) {
+        lResult.add(mTraceSessionIndex.get(pEventId));
       }
     }
 

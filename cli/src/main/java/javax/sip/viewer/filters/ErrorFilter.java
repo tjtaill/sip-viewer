@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.sip.viewer.filters.AbstractFilter;
 import javax.sip.viewer.model.SipMessage;
 import javax.sip.viewer.model.TraceSession;
 
