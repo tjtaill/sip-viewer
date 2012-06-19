@@ -32,35 +32,35 @@ public class SipTextViewer {
   private static final Logger sLogger = Logger.getLogger(PACKAGE_NAME);
 
   @Parameter
-  private List<String> mFileNames;
+  protected List<String> mFileNames;
   @Parameter(names = { "-s", "--index" }, description = "find by indices")
-  private String mSessionId;
+  protected String mSessionId;
   @Parameter(names = { "-ci", "-callId" }, description = "find by call ID")
-  private String mCallId;
+  protected String mCallId;
   @Parameter(names = { "-b2b", "-b2bSipTagToken" }, description = "find by B2B sip tag token")
-  private String mB2BSipTagToken;
+  protected String mB2BSipTagToken;
   @Parameter(names = { "-cn", "-callerName" }, description = "find by caller name")
-  private String mCallerName;
+  protected String mCallerName;
   @Parameter(names = { "-cpn", "-callerPhoneNumber" }, description = "find by caller phone number")
-  private String mCallerPhoneNumber;
+  protected String mCallerPhoneNumber;
   @Parameter(names = { "-dpn", "-destPhoneNumber" }, description = "find by destination phone number")
-  private String mDestPhoneNumber;
+  protected String mDestPhoneNumber;
   @Parameter(names = { "-eo", "--errorOnly" }, description = "display only the sessions with error in the response code (default false")
-  private boolean mErrorOnly = false;
+  protected boolean mErrorOnly = false;
   @Parameter(names = { "-v", "--verbose" }, description = "Verbose diagram mode (default false)")
-  private boolean mVerbose = false;
+  protected boolean mVerbose = false;
   @Parameter(names = { "-hsl", "--hideSipLog" }, description = "Outputs the call stack after the sequence diagram (default true)")
-  private boolean mHideSipLog = false;
+  protected boolean mHideSipLog = false;
   @Parameter(names = { "-h", "--help" }, description = "Displays this help context")
-  private boolean mShowHelp;
+  protected boolean mShowHelp;
   @Parameter(names = { "-rin", "--resolve-ip-name" }, description = "Make a reverse dns query to resolve a pretty name associated with the ip. If reverse dns misses the query, it might delay parsing (default: false)")
-  private boolean mResolveIpNames = false;
+  protected boolean mResolveIpNames = false;
   @Parameter(names = { "-p", "--parser" }, description = "Class to be used to parse the given log files (default is javax.sip.viewer.parser.TextLogParser)")
-  private String mParserClassName;
+  protected String mParserClassName;
   @Parameter(names = { "-pb2bt", "--parser-b2b-token-regex" }, description = "if using the default textParser which can correlate many dialogs in a same session based on a token found in from and to tags, this key overrides the regex to match that token (default : s(\\d*)-.*)")
-  private String mParserB2BTokenRegex;
+  protected String mParserB2BTokenRegex;
   @Parameter(names = { "-t", "--time" }, description = "Filters the logs by showing only the calls between(inclusive) the beginning time and end time (ex: -t 2012/06/13#09:44:27.264|2012/06/13#09:46:27.264)")
-  private String mTime;
+  protected String mTime;
 
   public void display(OutputStream pOut) throws Exception {
     SipLogParser lLogParser = setupParser();
@@ -69,6 +69,7 @@ public class SipTextViewer {
     String[] lFiles = mFileNames.toArray(new String[mFileNames.size()]);
 
     SequenceInputStream sInputStream = new SequenceInputStream(new ListOfFiles(lFiles));
+
     List<TraceSession> lAllSessions = lLogParser.parseLogs(sInputStream);
     Collections.sort(lAllSessions);
     List<TraceSession> lFilteredTSList = applyFilters(lAllSessions);
@@ -89,7 +90,7 @@ public class SipTextViewer {
     return mFileNames != null;
   }
 
-  private SipLogParser setupParser() throws Exception {
+  protected SipLogParser setupParser() throws Exception {
     if (mParserClassName != null) {
       Class<? extends SipLogParser> lClass = (Class<? extends SipLogParser>) Class.forName(mParserClassName);
       return lClass.newInstance();
@@ -124,7 +125,7 @@ public class SipTextViewer {
     }
     if (mTime != null) {
       lResult = new BeginEndTimeFilter(lResult,
-                                       mTime.substring(0, mTime.indexOf("|")),
+                                       mTime.substring(0, mTime.indexOf("\\")),
                                        mTime.substring(mTime.indexOf("|") + 1)).process();
     }
     if (mErrorOnly) {
