@@ -121,6 +121,7 @@ public class TextLogParser implements SipLogParser {
     String lResult = null;
     if (pHeaderValue.contains("id=")) {
       lResult = pHeaderValue.substring(pHeaderValue.indexOf("id=") + 3);
+      lResult.replaceAll("'", "");
     }
     return lResult;
   }
