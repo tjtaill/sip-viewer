@@ -8,6 +8,7 @@ import java.util.TreeSet;
 public class TraceSession implements Comparable<TraceSession> {
   private Set<SipMessage> mSipMessageList = new TreeSet<SipMessage>();
   private List<String> mB2BTagTokens = new ArrayList<String>();
+  private List<String> mFromTags = new ArrayList<String>();
   private List<String> mCallIds = new ArrayList<String>();
 
   private long mTraceStartTime = 0;
@@ -73,6 +74,22 @@ public class TraceSession implements Comparable<TraceSession> {
   }
 
   /**
+   * @return the list of from tags
+   */
+  public List<String> getFromTags() {
+    return this.mFromTags;
+  }
+
+  /**
+   * @param pB2BTagTokens the mB2BTagTokens to set
+   */
+  public void addFromTag(String pFromTag) {
+    if (!mFromTags.contains(pFromTag)) {
+      mFromTags.add(pFromTag);
+    }
+  }
+
+  /**
    * @return the callIds
    */
   public List<String> getCallIds() {
@@ -126,6 +143,7 @@ public class TraceSession implements Comparable<TraceSession> {
     // change all newest session index to point to the old session.
     mCallIds.addAll(pTracesSession.getCallIds());
     mB2BTagTokens.addAll(pTracesSession.getB2BTagTokens());
+    mFromTags.addAll(pTracesSession.getFromTags());
   }
 
 }

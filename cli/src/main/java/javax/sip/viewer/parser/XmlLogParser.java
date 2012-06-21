@@ -22,10 +22,10 @@ import org.xml.sax.helpers.DefaultHandler;
 public class XmlLogParser extends DefaultHandler implements SipLogParser {
   private static Pattern sCallIdPattern = Pattern.compile(".*^Call-ID:[ ]?(.*?)$.*",
                                                           Pattern.DOTALL | Pattern.MULTILINE);
-  private static Pattern sToTagPattern = Pattern.compile(".*^To:[ ]?.*;tag=s(\\d*)-.*?$.*",
-                                                         Pattern.DOTALL | Pattern.MULTILINE);
-  private static Pattern sFromTagPattern = Pattern.compile(".*^From:[ ]?.*;tag=s(\\d*)-.*?$.*",
-                                                           Pattern.DOTALL | Pattern.MULTILINE);
+  private static Pattern sToTagTokenPattern = Pattern.compile(".*^To:[ ]?.*;tag=s(\\d*)-.*?$.*",
+                                                              Pattern.DOTALL | Pattern.MULTILINE);
+  private static Pattern sFromTagTokenPattern = Pattern.compile(".*^From:[ ]?.*;tag=s(\\d*)-.*?$.*",
+                                                                Pattern.DOTALL | Pattern.MULTILINE);
 
   private TraceSessionIndexer mTraceSessionIndexer = new TraceSessionIndexer();
 
@@ -83,26 +83,32 @@ public class XmlLogParser extends DefaultHandler implements SipLogParser {
       }
 
       Matcher lCallIdMatcher = sCallIdPattern.matcher(sipMessage.getMessageAsText());
-      Matcher lToTagMatcher = sToTagPattern.matcher(sipMessage.getMessageAsText());
-      Matcher lFromTagMatcher = sFromTagPattern.matcher(sipMessage.getMessageAsText());
+      Matcher lToTagTokenMatcher = sToTagTokenPattern.matcher(sipMessage.getMessageAsText());
+      Matcher lFromTagTokenMatcher = sFromTagTokenPattern.matcher(sipMessage.getMessageAsText());
       String lCallId = null;
-      String lFromTag = null;
-      String lToTag = null;
+      String lToTagToken = null;
+      String lFromTagToken = null;
 
       // populate variables
       lCallIdMatcher.matches();
       if (lCallIdMatcher.matches()) {
         lCallId = lCallIdMatcher.group(1);
       }
-      if (lFromTagMatcher.matches()) {
-        lFromTag = lFromTagMatcher.group(1);
+      if (lFromTagTokenMatcher.matches()) {
+        lFromTagToken = lFromTagTokenMatcher.group(1);
       }
-      if (lToTagMatcher.matches()) {
-        lToTag = lToTagMatcher.group(1);
+      if (lToTagTokenMatcher.matches()) {
+        lToTagToken = lToTagTokenMatcher.group(1);
       }
 
       String lEventId = null; // subscribe event id correlation not yet supported
-      mTraceSessionIndexer.indexSipMessage(sipMessage, lToTag, lFromTag, lCallId, null);
+      String lFromTag = null; // From Tag extracting not yet supported, we don't care for
+      mTraceSessionIndexer.indexSipMessage(sipMessage,
+                                           lToTagToken,
+                                           lFromTagToken,
+                                           lFromTag,
+                                           lCallId,
+                                           lEventId);
     }
 
     public void characters(char[] buf, int offset, int len) throws SAXException {

@@ -14,7 +14,8 @@ import javax.sip.viewer.model.TraceSessionIndexer;
 
 public class TextLogParser implements SipLogParser {
   private static Pattern sDetailsPattern = Pattern.compile("\\[(.*)\\] (IN|OUT) (.*) --> (.*)");
-  private static Pattern sTagPattern = Pattern.compile("s(\\d*)-.*");
+  private static Pattern sTagTokenPattern = Pattern.compile("s(\\d*)-.*");
+  private static Pattern sTagPattern = Pattern.compile("([^;]*).*");
 
   private TraceSessionIndexer mTraceSessionIndexer = new TraceSessionIndexer();
 
@@ -84,6 +85,8 @@ public class TextLogParser implements SipLogParser {
     String lFromTagToken = searchTagToken(lFrom.toString());
     String lToTagToken = searchTagToken(lTo.toString());
 
+    String lFromTag = searchTag(lFrom.toString());
+
     // check for subscribe event id correlation (based on prior callid mapping)
     String lEventId = searchEventId(lEvent.toString());
     // String lEventId = "cid_0-22516";
@@ -92,6 +95,7 @@ public class TextLogParser implements SipLogParser {
     mTraceSessionIndexer.indexSipMessage(pSipMessage,
                                          lToTagToken,
                                          lFromTagToken,
+                                         lFromTag,
                                          lCallId.toString(),
                                          lEventId);
   }
@@ -104,6 +108,20 @@ public class TextLogParser implements SipLogParser {
    * @return
    */
   private String searchTagToken(String pHeaderValue) {
+    String lResult = null;
+
+    String lTag = pHeaderValue.substring(pHeaderValue.indexOf("tag=") + 4);
+
+    if (lTag != null) {
+      Matcher lTagMatcher = sTagTokenPattern.matcher(lTag);
+      if (lTagMatcher.matches()) {
+        lResult = lTagMatcher.group(1);
+      }
+    }
+    return lResult;
+  }
+
+  private String searchTag(String pHeaderValue) {
     String lResult = null;
 
     String lTag = pHeaderValue.substring(pHeaderValue.indexOf("tag=") + 4);
@@ -135,7 +153,7 @@ public class TextLogParser implements SipLogParser {
    * @param pTagPattern
    */
   public static void setTagPattern(Pattern pTagPattern) {
-    sTagPattern = pTagPattern;
+    sTagTokenPattern = pTagPattern;
   }
 
 }
