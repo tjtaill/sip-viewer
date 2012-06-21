@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>javax.sip</groupId>
 	<artifactId>sip-viewer</artifactId>
-	<version>1.8.3</version>
+	<version>1.8.4</version>
 	<name>sip-viewer</name>
 	<packaging>jar</packaging>
 
