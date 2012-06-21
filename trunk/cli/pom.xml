@@ -7,9 +7,9 @@
 	<name>sip-viewer</name>
 	<packaging>jar</packaging>
 
-	<description>Dealing with a heap of sip logs to pin point a certain call might sometime be a difficult journey. Some interesting tools such as [http://www.sipworkbench.com/ sipworkbench] or [http://sipx-wiki.calivia.com/index.php/Display_SIP_message_flow_using_Sipviewer sipx viewer] already expose some functionalities to extract and analyse call logs.
+	<description>Dealing with a heap of sip logs to pin point a certain call might sometimes be a difficult journey. Some interesting tools such as [http://www.sipworkbench.com/ sipworkbench] or [http://sipx-wiki.calivia.com/index.php/Display_SIP_message_flow_using_Sipviewer sipx viewer] already expose some functionalities to extract and analyse call logs.
 
-However, our requirements were a bit different. We needed a tool able to parse text formatted sip logs on a platform with dozen of `*`NIX servers. The SIP applications are themself responsible to output formatted logs; we did not want to run infinite tcpdump for each application port on each server. Moreover, we leaned for a command line tool that we can operate direcly on the servers without windowing requirements. The idea is to output the extracted call flows as simple ASCII ladders directly in the command prompt.
+However, our requirements were a bit different. We needed a tool able to parse text formatted sip logs on a platform with dozen of `*`NIX servers. The SIP applications are themself responsible to output formatted logs; we did not want to run infinite tcpdump for each application port on each server. Moreover, we opted for a command line tool that can operate direcly on the servers without windowing requirements. The idea is to output the extracted call flows as simple ASCII ladders directly in the command prompt.
 
 Finally, an important feature was to control the parser to not only aggregate according the the call-id header, but to extend our application logic in order to correlate many dialogs linked by a [http://en.wikipedia.org/wiki/Back-to-back_user_agent Back to Back User agent].</description>
 	<url>http://code.google.com/p/sip-viewer/</url>
