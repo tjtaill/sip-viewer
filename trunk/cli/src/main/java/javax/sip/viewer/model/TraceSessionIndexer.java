@@ -32,12 +32,14 @@ public class TraceSessionIndexer {
   public void indexSipMessage(SipMessage pSipMessage,
                               String pToTagToken,
                               String pFromTagToken,
+                              String pFromTag,
                               String pCallId,
                               String pEventId)
   {
     // look for existing session (or create one)
     List<TraceSession> lTraceSessions = findTraceSessions(pToTagToken,
                                                           pFromTagToken,
+                                                          pFromTag,
                                                           pCallId,
                                                           pEventId);
 
@@ -55,13 +57,17 @@ public class TraceSessionIndexer {
     // leverage session's indices
     lTraceSession.addCallId(pCallId);
     mTraceSessionIndex.put(pCallId, lTraceSession);
+    if (pToTagToken != null) {
+      lTraceSession.addB2BTagTokens(pToTagToken);
+      mTraceSessionIndex.put(pToTagToken, lTraceSession);
+    }
     if (pFromTagToken != null) {
       lTraceSession.addB2BTagTokens(pFromTagToken);
       mTraceSessionIndex.put(pFromTagToken, lTraceSession);
     }
-    if (pToTagToken != null) {
-      lTraceSession.addB2BTagTokens(pToTagToken);
-      mTraceSessionIndex.put(pToTagToken, lTraceSession);
+    if (pFromTag != null) {
+      lTraceSession.addFromTag(pFromTag);
+      mTraceSessionIndex.put(pFromTag, lTraceSession);
     }
   }
 
@@ -76,6 +82,7 @@ public class TraceSessionIndexer {
    */
   private List<TraceSession> findTraceSessions(String pToTagToken,
                                                String pFromTagToken,
+                                               String pFromTag,
                                                String pCallId,
                                                String pEventId)
   {
@@ -89,6 +96,11 @@ public class TraceSessionIndexer {
     if (pFromTagToken != null && mTraceSessionIndex.containsKey(pFromTagToken)) {
       if (!lResult.contains(mTraceSessionIndex.get(pFromTagToken))) {
         lResult.add(mTraceSessionIndex.get(pFromTagToken));
+      }
+    }
+    if (pFromTag != null && mTraceSessionIndex.containsKey(pFromTag)) {
+      if (!lResult.contains(mTraceSessionIndex.get(pFromTag))) {
+        lResult.add(mTraceSessionIndex.get(pFromTag));
       }
     }
     if (pCallId != null && mTraceSessionIndex.containsKey(pCallId)) {
@@ -140,6 +152,9 @@ public class TraceSessionIndexer {
     }
     for (String lB2BTagToken : lResult.getB2BTagTokens()) {
       mTraceSessionIndex.put(lB2BTagToken, lResult);
+    }
+    for (String lFromTag : lResult.getFromTags()) {
+      mTraceSessionIndex.put(lFromTag, lResult);
     }
 
     return lResult;

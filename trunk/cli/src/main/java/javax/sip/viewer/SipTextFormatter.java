@@ -91,6 +91,8 @@ public class SipTextFormatter {
     lOutput.append(String.format(SESSION_LINE + "\n"));
     lOutput.append("B2B Tokens: ");
     lOutput.append(Arrays.toString(pTracesSession.getB2BTagTokens().toArray()) + "\n");
+    lOutput.append("From Tags: ");
+    lOutput.append(Arrays.toString(pTracesSession.getFromTags().toArray()) + "\n");
     lOutput.append("CallIds: ");
     lOutput.append(Arrays.toString(pTracesSession.getCallIds().toArray()) + "\n");
     lOutput.append(lHeaders);
