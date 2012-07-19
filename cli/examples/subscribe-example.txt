@@ -1,86 +1,81 @@
-[2012/06/20 17:27:41.953] IN 10.10.23.192:5060 --> 10.10.23.6:13406
+[2012/07/19 14:36:31.383] IN 127.0.0.1:5070 --> 127.0.0.1:13406
 
-INVITE sip:912@10.10.23.6:13406;user=phone;transport=udp SIP/2.0
-Via: SIP/2.0/UDP 10.10.23.192;branch=z9hG4bKBroadWorks.-109343-10.10.23.6V13406-0-98933420-323640002-1340227663190-
-From: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>;tag=323640002-1340227663190-
-To: <sip:912@10.10.23.6:13406;user=phone>
-Call-ID: BW172743190200612-1673140577@10.10.23.192
-CSeq: 98933420 INVITE
-Contact: <sip:10.10.23.192>
-P-Asserted-Identity: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>
-Privacy: none
-Supported: 100rel
-Allow: ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,NOTIFY,UPDATE
-Accept: multipart/mixed,application/media_control+xml,application/sdp
-Max-Forwards: 20
+INVITE sip:911@localhost:13406;transport=udp SIP/2.0
+CSeq: 2 INVITE
+From: "4186919110" <sip:4186919110@142.120.93.23:5070>;tag=s5-8074361057202721169
+To: <sip:911@localhost:13406>
+Max-Forwards: 70
+Call-ID: cid_0-52100
 Content-Type: application/sdp
-Content-Length: 256
+Via: SIP/2.0/UDP 127.0.0.1:5070;branch=z9hG4bK-323730-c724cbb753c0a2993d006846f5b257b4;dispatchkey=sipgear
+Contact: <sip:127.0.0.1:5070;transport=UDP>
+P-Asserted-Identity: "4186919110" <sip:4186919110@142.120.93.23:5070>
+Content-Length: 274
 
 v=0
-o=BroadWorks 132788 1 IN IP4 10.10.29.18
-s=-
-c=IN IP4 10.10.29.18
+o=alice 2890844526 2890844526 IN IP4 host.atlanta.example.com
+s=
+c=IN IP4 host.atlanta.example.com
 t=0 0
-m=audio 65308 RTP/AVP 9 0 8 101
-a=rtpmap:9 G722/8000
+m=audio 49170 RTP/AVP 0 8 97
 a=rtpmap:0 PCMU/8000
 a=rtpmap:8 PCMA/8000
-a=rtpmap:101 telephone-event/8000
-a=fmtp:101 0-15
-a=ptime:20
-a=sendrecv
+a=rtpmap:97 iLBC/8000
+m=video 51372 RTP/AVP 31 32
+a=rtpmap:31 H261/90000
+a=rtpmap:32 MPV/90000
 
 -----------------------
-[2012/06/20 17:27:41.961] OUT 10.10.23.6:13406 --> 10.10.23.6:13306
+[2012/07/19 14:36:31.428] OUT 127.0.0.1:13406 --> 127.0.0.1:13306
 
 SUBSCRIBE sip:4186919110@localhost:13306;transport=udp SIP/2.0
-Call-ID: s6-5734001126860978955@10.10.23.6
+Call-ID: s6-5598691890249553423@127.0.0.1
 CSeq: 2 SUBSCRIBE
-From: <sip:ftth2EsinetProxy.ng911.bell.ca@10.10.23.6:13406>;tag=s6-5734001126860978955
+From: <sip:ftth2EsinetProxy.ng911.bell.ca>;tag=s6-5598691890249553423
 To: <sip:4186919110@localhost:13306>
 Max-Forwards: 70
 Expires: 0
-Event: presence;id=323640002-1340227663190-
-Via: SIP/2.0/UDP 10.10.23.6:13406;branch=z9hG4bK-353938-12af23de54bd8c28699f66b14e919c34;dispatchKey=sipgear
-Contact: <sip:10.10.23.6:13406;transport=udp>
+Event: presence;id=s5-8074361057202721169
+Via: SIP/2.0/UDP 127.0.0.1:13406;branch=z9hG4bK-323730-9264918c4f271ae701216ac040a4b0e8;dispatchKey=sipgear
+Contact: <sip:127.0.0.1:13406;transport=udp>
 Content-Length: 0
 
 -----------------------
-[2012/06/20 17:27:41.973] IN 10.10.23.6:13306 --> 10.10.23.6:13406
+[2012/07/19 14:36:31.449] IN 127.0.0.1:13306 --> 127.0.0.1:13406
 
 SIP/2.0 200 OK
-To: <sip:4186919110@localhost:13306>;tag=s6-7670212746416446992
-Via: SIP/2.0/UDP 10.10.23.6:13406;branch=z9hG4bK-353938-12af23de54bd8c28699f66b14e919c34;dispatchkey=sipgear
+To: <sip:4186919110@localhost:13306>;tag=s7-9147043855556207476
+Via: SIP/2.0/UDP 127.0.0.1:13406;branch=z9hG4bK-323730-9264918c4f271ae701216ac040a4b0e8;dispatchkey=sipgear
 CSeq: 2 SUBSCRIBE
-Call-ID: s6-5734001126860978955@10.10.23.6
-From: <sip:ftth2EsinetProxy.ng911.bell.ca@10.10.23.6:13406>;tag=s6-5734001126860978955
+Call-ID: s6-5598691890249553423@127.0.0.1
+From: <sip:ftth2EsinetProxy.ng911.bell.ca>;tag=s6-5598691890249553423
 Expires: 0
-Contact: <sip:10.10.23.6:13306;transport=udp>
+Contact: <sip:127.0.0.1:13306;transport=udp>
 Content-Length: 0
 
 -----------------------
-[2012/06/20 17:27:42.037] IN 10.10.23.6:13306 --> 10.10.23.6:13406
+[2012/07/19 14:36:31.486] IN 127.0.0.1:13306 --> 127.0.0.1:13406
 
-NOTIFY sip:10.10.23.6:13406;transport=udp SIP/2.0
-Via: SIP/2.0/UDP 10.10.23.6:13306;dispatchkey=sipgear;branch=z9hG4bK-313834-f2dae4fec743c8297f725ec8299f6588
+NOTIFY sip:127.0.0.1:13406;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:13306;dispatchkey=sipgear;branch=z9hG4bK-323730-3a60633140be30169ad97e2d9505de46
 CSeq: 1 NOTIFY
-From: <sip:4186919110@localhost:13306>;tag=s6-7670212746416446992
-To: <sip:ftth2EsinetProxy.ng911.bell.ca@10.10.23.6:13406>;tag=s6-5734001126860978955
-Call-ID: s6-5734001126860978955@10.10.23.6
+From: <sip:4186919110@localhost:13306>;tag=s7-9147043855556207476
+To: <sip:ftth2EsinetProxy.ng911.bell.ca>;tag=s6-5598691890249553423
+Call-ID: s6-5598691890249553423@127.0.0.1
 Max-Forwards: 70
-Contact: <sip:10.10.23.6:13306;transport=udp>
+Contact: <sip:127.0.0.1:13306;transport=udp>
 Subscription-State: Terminated;reason=timeout;expires=0
-Event: presence;id=323640002-1340227663190-
+Event: presence;id=s5-8074361057202721169
 Content-Type: application/pidf+xml
-Content-Length: 1614
+Content-Length: 2128
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<presence xmlns:ns2="urn:ietf:params:xml:ns:pidf:geopriv10:civicAddr" xmlns="urn:ietf:params:xml:ns:pidf" xmlns:ns4="urn:ietf:params:xml:ns:pidf:geopriv10:basicPolicy" xmlns:ns3="urn:ietf:params:xml:ns:pidf:geopriv10" xmlns:ns5="urn:bell-canada:params:xml:ns:pidf:geopriv10:civicAddr:ext">
-    <tuple id="BellCanada_443347157">
+<presence entity="pres:123@examplehost" xmlns:ns2="urn:ietf:params:xml:ns:pidf:geopriv10:civicAddr" xmlns="urn:ietf:params:xml:ns:pidf" xmlns:ns4="urn:ietf:params:xml:ns:pidf:geopriv10:basicPolicy" xmlns:ns3="urn:ietf:params:xml:ns:pidf:geopriv10" xmlns:ns5="urn:bell-canada:params:xml:ns:pidf:geopriv10:civicAddr:ext">
+    <tuple id="abcd123456">
         <status>
             <ns3:geopriv>
                 <ns3:location-info>
-                    <ns2:civicAddress>
+                    <ns2:civicAddress xml:lang="de">
                         <ns2:country>CA</ns2:country>
                         <ns2:A1>QC</ns2:A1>
                         <ns2:A2>COMMUNAUTE URBAINE DE QUEBEC</ns2:A2>
@@ -94,204 +89,148 @@ Content-Length: 1614
                         <ns2:PC>G1V2S7</ns2:PC>
                         <ns2:PCN>QUEBEC</ns2:PCN>
                         <ns2:ADDCODE>QUE</ns2:ADDCODE>
+                        <ns5:LocationType>SUITE</ns5:LocationType>
+                        <ns5:LocationNumber>2321</ns5:LocationNumber>
                     </ns2:civicAddress>
                 </ns3:location-info>
                 <ns3:usage-rules>
-                    <ns4:retransmission-allowed>true</ns4:retransmission-allowed>
-                    <ns4:retention-expiry>2012-06-20T22:27:41.971-04:00</ns4:retention-expiry>
+                    <gp:retransmission-allowed xmlns:cl="urn:ietf:params:xml:ns:pidf:geopriv10:civicAddr" xmlns:bcpcaex="urn:bell-canada:params:xml:ns:pidf:geopriv10:civicAddr:ext" xmlns:gp="urn:ietf:params:xml:ns:pidf:geopriv10">yes</gp:retransmission-allowed>
+                    <gp:retention-expiry xmlns:cl="urn:ietf:params:xml:ns:pidf:geopriv10:civicAddr" xmlns:bcpcaex="urn:bell-canada:params:xml:ns:pidf:geopriv10:civicAddr:ext" xmlns:gp="urn:ietf:params:xml:ns:pidf:geopriv10">2009-11-10T12:00:00Z</gp:retention-expiry>
                 </ns3:usage-rules>
             </ns3:geopriv>
         </status>
-        <timestamp>2012-06-20T17:27:41.971-04:00</timestamp>
+        <timestamp>2009-02-09T12:00:00Z</timestamp>
     </tuple>
 </presence>
 
 -----------------------
-[2012/06/20 17:27:42.044] OUT 10.10.23.6:13406 --> 10.10.23.6:13306
+[2012/07/19 14:36:31.493] OUT 127.0.0.1:13406 --> 127.0.0.1:13306
 
 SIP/2.0 200 OK
-To: <sip:ftth2EsinetProxy.ng911.bell.ca@10.10.23.6:13406>;tag=s6-5734001126860978955
-Via: SIP/2.0/UDP 10.10.23.6:13306;dispatchkey=sipgear;branch=z9hG4bK-313834-f2dae4fec743c8297f725ec8299f6588
+To: <sip:ftth2EsinetProxy.ng911.bell.ca>;tag=s6-5598691890249553423
+Via: SIP/2.0/UDP 127.0.0.1:13306;dispatchkey=sipgear;branch=z9hG4bK-323730-3a60633140be30169ad97e2d9505de46
 CSeq: 1 NOTIFY
-Call-ID: s6-5734001126860978955@10.10.23.6
-From: <sip:4186919110@localhost:13306>;tag=s6-7670212746416446992
+Call-ID: s6-5598691890249553423@127.0.0.1
+From: <sip:4186919110@localhost:13306>;tag=s7-9147043855556207476
 Content-Length: 0
 
 -----------------------
-[2012/06/20 17:27:42.093] OUT 10.10.23.6:13406 --> 10.10.23.6:13416
+[2012/07/19 14:36:31.533] OUT 127.0.0.1:13406 --> 127.0.0.1:13416
 
 INVITE urn:service:sos SIP/2.0
-Via: SIP/2.0/UDP 10.10.23.6:13406;dispatchKey=sipproxy;branch=z9hG4bK6yhn-903131099,SIP/2.0/UDP 10.10.23.192;branch=z9hG4bKBroadWorks.-109343-10.10.23.6V13406-0-98933420-323640002-1340227663190-
-From: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>;tag=323640002-1340227663190-
-To: <sip:912@10.10.23.6:13406;user=phone>
-Call-ID: BW172743190200612-1673140577@10.10.23.192
-CSeq: 98933420 INVITE
-Contact: <sip:10.10.23.192>
-P-Asserted-Identity: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>
-Privacy: none
-Supported: 100rel
-Allow: ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,NOTIFY,UPDATE
-Accept: multipart/mixed,application/media_control+xml,application/sdp
-Max-Forwards: 19
-Route: <sip:esrp@10.10.23.6:13416;lr>
-Geolocation: <cid:+14186919110@hipv.vnslabs.ca>
+CSeq: 2 INVITE
+From: "4186919110" <sip:4186919110@142.120.93.23:5070>;tag=s5-8074361057202721169
+To: <sip:911@localhost:13406>
+Max-Forwards: 69
+Call-ID: cid_0-52100
+Via: SIP/2.0/UDP 127.0.0.1:13406;dispatchKey=sipproxy;branch=z9hG4bK6yhn639782189,SIP/2.0/UDP 127.0.0.1:5070;branch=z9hG4bK-323730-c724cbb753c0a2993d006846f5b257b4;dispatchkey=sipgear
+Contact: <sip:127.0.0.1:5070;transport=UDP>
+P-Asserted-Identity: "4186919110" <sip:4186919110@142.120.93.23:5070>
+Route: <sip:esrp@localhost:13416;lr>
+Geolocation: <cid:4186919110@142.120.93.23>
 Geolocation-Routing: yes
 Content-Type: multipart/mixed;boundary=boundary1
-Content-Length: 2032
+Content-Length: 2560
 
 --boundary1
 Content-Type: application/sdp
 
 v=0
-o=BroadWorks 132788 1 IN IP4 10.10.29.18
-s=-
-c=IN IP4 10.10.29.18
+o=alice 2890844526 2890844526 IN IP4 host.atlanta.example.com
+s=
+c=IN IP4 host.atlanta.example.com
 t=0 0
-m=audio 65308 RTP/AVP 9 0 8 101
-a=rtpmap:9 G722/8000
+m=audio 49170 RTP/AVP 0 8 97
 a=rtpmap:0 PCMU/8000
 a=rtpmap:8 PCMA/8000
-a=rtpmap:101 telephone-event/8000
-a=fmtp:101 0-15
-a=ptime:20
-a=sendrecv
-
+a=rtpmap:97 iLBC/8000
+m=video 51372 RTP/AVP 31 32
+a=rtpmap:31 H261/90000
+a=rtpmap:32 MPV/90000
 --boundary1
 Content-Type: application/pidf+xml
-Content-ID: <cid:+14186919110@hipv.vnslabs.ca>
+Content-ID: <cid:4186919110@142.120.93.23>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<presence xmlns:ns2="urn:bell-canada:params:xml:ns:pidf:geopriv10:civicAddr:ext" xmlns="urn:ietf:params:xml:ns:pidf" xmlns:ns4="urn:ietf:params:xml:ns:pidf:geopriv10:basicPolicy" xmlns:ns3="urn:ietf:params:xml:ns:pidf:geopriv10" xmlns:ns5="urn:ietf:params:xml:ns:pidf:geopriv10:civicAddr">
-    <tuple id="BellCanada_443347157">
+<presence entity="pres:123@examplehost" xmlns:ns2="urn:ietf:params:xml:ns:pidf:geopriv10:civicAddr" xmlns="urn:ietf:params:xml:ns:pidf" xmlns:ns4="urn:ietf:params:xml:ns:pidf:geopriv10:basicPolicy" xmlns:ns3="urn:ietf:params:xml:ns:pidf:geopriv10" xmlns:ns5="urn:bell-canada:params:xml:ns:pidf:geopriv10:civicAddr:ext">
+    <tuple id="abcd123456">
         <status>
             <ns3:geopriv>
                 <ns3:location-info>
-                    <ns5:civicAddress>
-                        <ns5:country>CA</ns5:country>
-                        <ns5:A1>QC</ns5:A1>
-                        <ns5:A2>COMMUNAUTE URBAINE DE QUEBEC</ns5:A2>
-                        <ns5:A3>QUEBEC</ns5:A3>
-                        <ns5:RD>ROCHETTE</ns5:RD>
-                        <ns5:STS>RU</ns5:STS>
-                        <ns5:POD>N</ns5:POD>
-                        <ns5:HNO>860</ns5:HNO>
-                        <ns5:HNS>A</ns5:HNS>
-                        <ns5:LOC>MAISON BLEUE</ns5:LOC>
-                        <ns5:PC>G1V2S7</ns5:PC>
-                        <ns5:PCN>QUEBEC</ns5:PCN>
-                        <ns5:ADDCODE>QUE</ns5:ADDCODE>
-                    </ns5:civicAddress>
+                    <ns2:civicAddress xml:lang="de">
+                        <ns2:country>CA</ns2:country>
+                        <ns2:A1>QC</ns2:A1>
+                        <ns2:A2>COMMUNAUTE URBAINE DE QUEBEC</ns2:A2>
+                        <ns2:A3>QUEBEC</ns2:A3>
+                        <ns2:RD>ROCHETTE</ns2:RD>
+                        <ns2:STS>RU</ns2:STS>
+                        <ns2:POD>N</ns2:POD>
+                        <ns2:HNO>860</ns2:HNO>
+                        <ns2:HNS>A</ns2:HNS>
+                        <ns2:LOC>MAISON BLEUE</ns2:LOC>
+                        <ns2:PC>G1V2S7</ns2:PC>
+                        <ns2:PCN>QUEBEC</ns2:PCN>
+                        <ns2:ADDCODE>QUE</ns2:ADDCODE>
+                        <ns5:LocationType>SUITE</ns5:LocationType>
+                        <ns5:LocationNumber>2321</ns5:LocationNumber>
+                    </ns2:civicAddress>
                 </ns3:location-info>
                 <ns3:usage-rules>
-                    <ns4:retransmission-allowed>true</ns4:retransmission-allowed>
-                    <ns4:retention-expiry>2012-06-20T22:27:41.971-04:00</ns4:retention-expiry>
+                    <gp:retransmission-allowed xmlns:cl="urn:ietf:params:xml:ns:pidf:geopriv10:civicAddr" xmlns:bcpcaex="urn:bell-canada:params:xml:ns:pidf:geopriv10:civicAddr:ext" xmlns:gp="urn:ietf:params:xml:ns:pidf:geopriv10">yes</gp:retransmission-allowed>
+                    <gp:retention-expiry xmlns:cl="urn:ietf:params:xml:ns:pidf:geopriv10:civicAddr" xmlns:bcpcaex="urn:bell-canada:params:xml:ns:pidf:geopriv10:civicAddr:ext" xmlns:gp="urn:ietf:params:xml:ns:pidf:geopriv10">2009-11-10T12:00:00Z</gp:retention-expiry>
                 </ns3:usage-rules>
             </ns3:geopriv>
         </status>
-        <timestamp>2012-06-20T17:27:41.971-04:00</timestamp>
+        <timestamp>2009-02-09T12:00:00Z</timestamp>
     </tuple>
 </presence>
 
 --boundary1--
 
 -----------------------
-[2012/06/20 17:27:42.306] IN 10.10.23.6:13416 --> 10.10.23.6:13406
+[2012/07/19 14:36:31.541] IN 127.0.0.1:13416 --> 127.0.0.1:13406
 
 SIP/2.0 100 Trying
-To: <sip:912@10.10.23.6:13406;user=phone>
-Via: SIP/2.0/UDP 10.10.23.6:13406;dispatchkey=sipproxy;branch=z9hG4bK6yhn-903131099,SIP/2.0/UDP 10.10.23.192;branch=z9hG4bKBroadWorks.-109343-10.10.23.6V13406-0-98933420-323640002-1340227663190-
-CSeq: 98933420 INVITE
-Call-ID: BW172743190200612-1673140577@10.10.23.192
-From: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>;tag=323640002-1340227663190-
+To: <sip:911@localhost:13406>
+Via: SIP/2.0/UDP 127.0.0.1:13406;dispatchkey=sipproxy;branch=z9hG4bK6yhn639782189,SIP/2.0/UDP 127.0.0.1:5070;branch=z9hG4bK-323730-c724cbb753c0a2993d006846f5b257b4;dispatchkey=sipgear
+CSeq: 2 INVITE
+Call-ID: cid_0-52100
+From: "4186919110" <sip:4186919110@142.120.93.23:5070>;tag=s5-8074361057202721169
 Content-Length: 0
 
 -----------------------
-[2012/06/20 17:27:42.308] OUT 10.10.23.6:13406 --> 10.10.23.192:5060
+[2012/07/19 14:36:31.543] OUT 127.0.0.1:13406 --> 127.0.0.1:5070
 
 SIP/2.0 100 Trying
-To: <sip:912@10.10.23.6:13406;user=phone>
-Via: SIP/2.0/UDP 10.10.23.192;branch=z9hG4bKBroadWorks.-109343-10.10.23.6V13406-0-98933420-323640002-1340227663190-
-CSeq: 98933420 INVITE
-Call-ID: BW172743190200612-1673140577@10.10.23.192
-From: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>;tag=323640002-1340227663190-
+To: <sip:911@localhost:13406>
+Via: SIP/2.0/UDP 127.0.0.1:5070;branch=z9hG4bK-323730-c724cbb753c0a2993d006846f5b257b4;dispatchkey=sipgear
+CSeq: 2 INVITE
+Call-ID: cid_0-52100
+From: "4186919110" <sip:4186919110@142.120.93.23:5070>;tag=s5-8074361057202721169
 Content-Length: 0
 
 -----------------------
-[2012/06/20 17:27:44.740] IN 10.10.23.6:13416 --> 10.10.23.6:13406
-
-SIP/2.0 180 Ringing
-To: <sip:912@10.10.23.6:13406;user=phone>;tag=f6133f00
-Via: SIP/2.0/UDP 10.10.23.6:13406;dispatchkey=sipproxy;branch=z9hG4bK6yhn-903131099,SIP/2.0/UDP 10.10.23.192;branch=z9hG4bKBroadWorks.-109343-10.10.23.6V13406-0-98933420-323640002-1340227663190-
-CSeq: 98933420 INVITE
-Call-ID: BW172743190200612-1673140577@10.10.23.192
-From: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>;tag=323640002-1340227663190-
-Contact: "Alice" <sip:Alice@10.10.23.94:5060;transport=udp>
-User-Agent: Jitsi1.0-beta1-0.build.by.SVNWindows 7
-Content-Length: 0
-
------------------------
-[2012/06/20 17:27:44.742] OUT 10.10.23.6:13406 --> 10.10.23.192:5060
-
-SIP/2.0 180 Ringing
-To: <sip:912@10.10.23.6:13406;user=phone>;tag=f6133f00
-Via: SIP/2.0/UDP 10.10.23.192;branch=z9hG4bKBroadWorks.-109343-10.10.23.6V13406-0-98933420-323640002-1340227663190-
-CSeq: 98933420 INVITE
-Call-ID: BW172743190200612-1673140577@10.10.23.192
-From: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>;tag=323640002-1340227663190-
-Contact: "Alice" <sip:Alice@10.10.23.94:5060;transport=udp>
-User-Agent: Jitsi1.0-beta1-0.build.by.SVNWindows 7
-Content-Length: 0
-
------------------------
-[2012/06/20 17:27:47.535] IN 10.10.23.6:13416 --> 10.10.23.6:13406
+[2012/07/19 14:36:31.547] IN 127.0.0.1:13416 --> 127.0.0.1:13406
 
 SIP/2.0 200 OK
-To: <sip:912@10.10.23.6:13406;user=phone>;tag=f6133f00
-Via: SIP/2.0/UDP 10.10.23.6:13406;dispatchkey=sipproxy;branch=z9hG4bK6yhn-903131099,SIP/2.0/UDP 10.10.23.192;branch=z9hG4bKBroadWorks.-109343-10.10.23.6V13406-0-98933420-323640002-1340227663190-
-CSeq: 98933420 INVITE
-Call-ID: BW172743190200612-1673140577@10.10.23.192
-From: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>;tag=323640002-1340227663190-
-Contact: "Alice" <sip:Alice@10.10.23.94:5060;transport=udp>
-User-Agent: Jitsi1.0-beta1-0.build.by.SVNWindows 7
-Content-Type: application/sdp
-Content-Length: 287
-
-v=0
-o=Alice 0 0 IN IP4 10.10.23.94
-s=-
-c=IN IP4 10.10.23.94
-t=0 0
-m=audio 5018 RTP/AVP 9 0 8 101
-a=rtpmap:9 G722/8000
-a=rtpmap:0 PCMU/8000
-a=rtpmap:8 PCMA/8000
-a=rtpmap:101 telephone-event/8000
-a=zrtp-hash:1.10 da21e68ef8ed1f74aa619ca9a87aec75f13eb21523044ca1a74d0419ea410319
+To: <sip:911@localhost:13406>;tag=s8-6723393507635541515
+Via: SIP/2.0/UDP 127.0.0.1:13406;dispatchkey=sipproxy;branch=z9hG4bK6yhn639782189,SIP/2.0/UDP 127.0.0.1:5070;branch=z9hG4bK-323730-c724cbb753c0a2993d006846f5b257b4;dispatchkey=sipgear
+CSeq: 2 INVITE
+Call-ID: cid_0-52100
+From: "4186919110" <sip:4186919110@142.120.93.23:5070>;tag=s5-8074361057202721169
+Contact: <sip:127.0.0.1:13416;transport=udp>
+Content-Length: 0
 
 -----------------------
-[2012/06/20 17:27:47.537] OUT 10.10.23.6:13406 --> 10.10.23.192:5060
+[2012/07/19 14:36:31.548] OUT 127.0.0.1:13406 --> 127.0.0.1:5070
 
 SIP/2.0 200 OK
-To: <sip:912@10.10.23.6:13406;user=phone>;tag=f6133f00
-Via: SIP/2.0/UDP 10.10.23.192;branch=z9hG4bKBroadWorks.-109343-10.10.23.6V13406-0-98933420-323640002-1340227663190-
-CSeq: 98933420 INVITE
-Call-ID: BW172743190200612-1673140577@10.10.23.192
-From: "USER_01 NG_911_QC" <sip:+14186919110@hipv.vnslabs.ca;user=phone>;tag=323640002-1340227663190-
-Contact: "Alice" <sip:Alice@10.10.23.94:5060;transport=udp>
-User-Agent: Jitsi1.0-beta1-0.build.by.SVNWindows 7
-Content-Type: application/sdp
-Content-Length: 287
-
-v=0
-o=Alice 0 0 IN IP4 10.10.23.94
-s=-
-c=IN IP4 10.10.23.94
-t=0 0
-m=audio 5018 RTP/AVP 9 0 8 101
-a=rtpmap:9 G722/8000
-a=rtpmap:0 PCMU/8000
-a=rtpmap:8 PCMA/8000
-a=rtpmap:101 telephone-event/8000
-a=zrtp-hash:1.10 da21e68ef8ed1f74aa619ca9a87aec75f13eb21523044ca1a74d0419ea410319
+To: <sip:911@localhost:13406>;tag=s8-6723393507635541515
+Via: SIP/2.0/UDP 127.0.0.1:5070;branch=z9hG4bK-323730-c724cbb753c0a2993d006846f5b257b4;dispatchkey=sipgear
+CSeq: 2 INVITE
+Call-ID: cid_0-52100
+From: "4186919110" <sip:4186919110@142.120.93.23:5070>;tag=s5-8074361057202721169
+Contact: <sip:127.0.0.1:13416;transport=udp>
+Content-Length: 0
 
 -----------------------
