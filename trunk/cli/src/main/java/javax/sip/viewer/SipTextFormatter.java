@@ -283,7 +283,7 @@ public class SipTextFormatter {
       if (!mActors.containsKey(lFrom)) {
         // Add possibly the real uac hidden behind a proxy
         String lContactHost = getContactHost(lSipMessage);
-        if (!lContactHost.contains(":")) {
+        if (lContactHost != null && !lContactHost.contains(":")) {
           lContactHost += ":5060";
         }
         if (lContactHost != null && !lContactHost.equals(lFrom)) {

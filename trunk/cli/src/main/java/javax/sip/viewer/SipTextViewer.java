@@ -76,12 +76,18 @@ public class SipTextViewer {
 
     lWriter.write(String.format("%d sessions displayed \n\n", lFilteredTSList.size()));
     for (TraceSession lTS : lFilteredTSList) {
-      SipTextFormatter lSipTextFormatter = new SipTextFormatter(mVerbose, mResolveIpNames);
-      lWriter.write(lSipTextFormatter.format(lTS));
-      if (!mHideSipLog) {
-        lWriter.write(lSipTextFormatter.generateCallStack(lTS));
+      try {
+        SipTextFormatter lSipTextFormatter = new SipTextFormatter(mVerbose, mResolveIpNames);
+        lWriter.write(lSipTextFormatter.format(lTS));
+        if (!mHideSipLog) {
+          lWriter.write(lSipTextFormatter.generateCallStack(lTS));
+        }
+      } catch (Exception e) {
+        lWriter.write("Error while parsing session + " + lTS.getCallIds() + "\n");
+        e.printStackTrace();
+      } finally {
+        lWriter.flush();
       }
-      lWriter.flush();
     }
   }
 
