@@ -43,6 +43,11 @@ Finally, an important feature was to control the parser to not only aggregate ac
 			<artifactId>jcommander</artifactId>
 			<version>1.7</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+		</dependency>
 	</dependencies>
 
 

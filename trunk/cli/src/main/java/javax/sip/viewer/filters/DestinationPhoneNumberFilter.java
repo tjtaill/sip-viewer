@@ -1,7 +1,6 @@
 package javax.sip.viewer.filters;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,7 +42,6 @@ public class DestinationPhoneNumberFilter extends AbstractFilter {
   public List<TraceSession> process() {
     List<TraceSession> lResult = new ArrayList<TraceSession>();
     for (TraceSession lTracesSession : mTraceSessions) {
-      System.out.println("TRACE " + new Date(lTracesSession.getTime()));
       for (SipMessage lSipMessage : lTracesSession.getSipMessageList()) {
         String lSipMessageAsText = lSipMessage.getMessageAsText();
         Matcher lMatcher = sToPattern.matcher(lSipMessageAsText);

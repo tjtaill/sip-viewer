@@ -26,11 +26,10 @@ public class TraceSession implements Comparable<TraceSession> {
       // if the message is the same with a timestamp smaller than typical sip retransmit,
       // it must be the same message seen from 2 endpoints.
       // We shall only keep one.
-      if (message.getMessageAsText().equals(pSipMessage.getMessageAsText())
+      if (message.getMessageAsText().equalsIgnoreCase(pSipMessage.getMessageAsText())
           && message.getSource().equals(pSipMessage.getSource())
           && message.getDestination().equals(pSipMessage.getDestination())
           && message.getDirection() != pSipMessage.getDirection())
-      // && Math.abs(message.getTime() - pSipMessage.getTime()) < 50)
       {
         return;
       }
