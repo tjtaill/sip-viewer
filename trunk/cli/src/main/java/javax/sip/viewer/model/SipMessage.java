@@ -8,6 +8,11 @@ public class SipMessage implements Serializable, Comparable<SipMessage> {
   private String mDestination = null;
   private long mDelay = 0;
   private long mTime = 0;
+  private SipMessageDirection direction;
+
+  public SipMessage() {
+    // TODO Auto-generated constructor stub
+  }
 
   public void setSource(String pSource) {
     mSource = pSource;
@@ -53,6 +58,14 @@ public class SipMessage implements Serializable, Comparable<SipMessage> {
     return mTime;
   }
 
+  public void setDirection(SipMessageDirection direction) {
+    this.direction = direction;
+  }
+
+  public SipMessageDirection getDirection() {
+    return direction;
+  }
+
   /**
    * 
    * @see java.lang.Comparable#compareTo(java.lang.Object)
@@ -76,4 +89,5 @@ public class SipMessage implements Serializable, Comparable<SipMessage> {
   public String toString() {
     return "" + hashCode();
   }
+
 }
