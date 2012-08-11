@@ -1,0 +1,235 @@
+[2012/08/10 21:56:37.292] IN 142.180.16.174:12847 --> 142.180.16.174:12846
+
+INVITE sip:4183331111@142.180.16.174:12846;transport=udp SIP/2.0
+CSeq: 2 INVITE
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>
+Max-Forwards: 70
+Call-ID: cid_0-3756
+Via: SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+Contact: <sip:142.180.16.174:12847;transport=UDP>
+P-Asserted-Identity: "CS2K Simulator" <sip:CS2K>
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.798] IN 142.180.16.174:12847 --> 142.180.16.174:12846
+
+INVITE sip:4183331111@142.180.16.174:12846;transport=udp SIP/2.0
+CSeq: 2 INVITE
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>
+Max-Forwards: 70
+Call-ID: cid_0-3756
+Via: SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+Contact: <sip:142.180.16.174:12847;transport=UDP>
+P-Asserted-Identity: "CS2K Simulator" <sip:CS2K>
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.829] OUT 142.180.16.174:12846 --> 142.180.16.174:12848
+
+INVITE sip:4183331111@142.180.16.174:12848;transport=udp SIP/2.0
+CSeq: 2 INVITE
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>
+Max-Forwards: 69
+Call-ID: cid_0-3756
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchKey=sipproxy;bridgeIp=142.180.16.174;bridgePort=12848;branch=z9hG4bK-343634-390a00514a508669d227f3f9c7c68ded,SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+Contact: <sip:142.180.16.174:12847;transport=UDP>
+P-Asserted-Identity: "CS2K Simulator" <sip:CS2K>
+Record-Route: <sip:142.180.16.174:12846;transport=udp;lr>
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.829] OUT 142.180.16.174:12846 --> 142.180.16.174:12848
+
+INVITE sip:4183331111@142.180.16.174:12848;transport=udp SIP/2.0
+CSeq: 2 INVITE
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>
+Max-Forwards: 69
+Call-ID: cid_0-3756
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchKey=sipproxy;bridgeIp=142.180.16.174;bridgePort=12848;branch=z9hG4bK-343634-c0142779194bd8cf98de4d808623c55e,SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+Contact: <sip:142.180.16.174:12847;transport=UDP>
+P-Asserted-Identity: "CS2K Simulator" <sip:CS2K>
+Record-Route: <sip:142.180.16.174:12846;transport=udp;lr>
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.855] IN 142.180.16.174:12848 --> 142.180.16.174:12846
+
+SIP/2.0 100 Trying
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchkey=sipproxy;bridgeip=142.180.16.174;bridgeport=12848;branch=z9hG4bK-343634-390a00514a508669d227f3f9c7c68ded,SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+CSeq: 2 INVITE
+Call-ID: cid_0-3756
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.867] IN 142.180.16.174:12848 --> 142.180.16.174:12846
+
+SIP/2.0 100 Trying
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchkey=sipproxy;bridgeip=142.180.16.174;bridgeport=12848;branch=z9hG4bK-343634-c0142779194bd8cf98de4d808623c55e,SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+CSeq: 2 INVITE
+Call-ID: cid_0-3756
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.875] IN 142.180.16.174:12848 --> 142.180.16.174:12846
+
+SIP/2.0 200 OK
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s9-8379338997398057647
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchkey=sipproxy;bridgeip=142.180.16.174;bridgeport=12848;branch=z9hG4bK-343634-390a00514a508669d227f3f9c7c68ded,SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+Record-Route: <sip:142.180.16.174:12846;transport=udp;lr>
+CSeq: 2 INVITE
+Call-ID: cid_0-3756
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Contact: <sip:142.180.16.174:12848;transport=udp>
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.880] OUT 142.180.16.174:12846 --> 142.180.16.174:12847
+
+SIP/2.0 200 OK
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s9-8379338997398057647
+Via: SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+Record-Route: <sip:142.180.16.174:12846;transport=udp;lr>
+CSeq: 2 INVITE
+Call-ID: cid_0-3756
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Contact: <sip:142.180.16.174:12848;transport=udp>
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.886] OUT 142.180.16.174:12846 --> 142.180.16.174:12848
+
+CANCEL sip:4183331111@142.180.16.174:12848;transport=udp SIP/2.0
+Call-ID: cid_0-3756
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>
+CSeq: 2 CANCEL
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Max-Forwards: 69
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchKey=sipproxy;bridgeIp=142.180.16.174;bridgePort=12848;branch=z9hG4bK-343634-c0142779194bd8cf98de4d808623c55e
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.904] IN 142.180.16.174:12848 --> 142.180.16.174:12846
+
+SIP/2.0 200 OK
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchkey=sipproxy;bridgeip=142.180.16.174;bridgeport=12848;branch=z9hG4bK-343634-c0142779194bd8cf98de4d808623c55e
+CSeq: 2 CANCEL
+Call-ID: cid_0-3756
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.910] IN 142.180.16.174:12848 --> 142.180.16.174:12846
+
+SIP/2.0 487 Request Terminated
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s10-6636927043830913746
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchkey=sipproxy;bridgeip=142.180.16.174;bridgeport=12848;branch=z9hG4bK-343634-c0142779194bd8cf98de4d808623c55e,SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+CSeq: 2 INVITE
+Call-ID: cid_0-3756
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.912] OUT 142.180.16.174:12846 --> 142.180.16.174:12848
+
+ACK sip:4183331111@142.180.16.174:12848;transport=udp SIP/2.0
+Call-ID: cid_0-3756
+Max-Forwards: 69
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s10-6636927043830913746
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchKey=sipproxy;bridgeIp=142.180.16.174;bridgePort=12848;branch=z9hG4bK-343634-c0142779194bd8cf98de4d808623c55e
+CSeq: 2 ACK
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.917] OUT 142.180.16.174:12846 --> 142.180.16.174:12847
+
+SIP/2.0 487 Request Terminated
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s10-6636927043830913746
+Via: SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-f87821fdf137e67fc60528772de03612;dispatchkey=sipgear
+CSeq: 2 INVITE
+Call-ID: cid_0-3756
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.935] IN 142.180.16.174:12847 --> 142.180.16.174:12846
+
+ACK sip:142.180.16.174:12848;transport=udp SIP/2.0
+Call-ID: cid_0-3756
+CSeq: 2 ACK
+Via: SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-4d1c26d9773e82f935849dab8f8567d2;dispatchkey=sipgear
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s9-8379338997398057647
+Max-Forwards: 70
+Route: <sip:142.180.16.174:12846;transport=udp;lr>
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:37.945] OUT 142.180.16.174:12846 --> 142.180.16.174:12848
+
+ACK sip:142.180.16.174:12848;transport=udp SIP/2.0
+Call-ID: cid_0-3756
+CSeq: 2 ACK
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchKey=sipproxy;bridgeIp=142.180.16.174;bridgePort=12848;branch=s7-8858005961962021805-cid_0-3756-2-ack-142.180.16.174-12846343634,SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-4d1c26d9773e82f935849dab8f8567d2;dispatchkey=sipgear
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s9-8379338997398057647
+Max-Forwards: 69
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:38.019] IN 142.180.16.174:12847 --> 142.180.16.174:12846
+
+BYE sip:142.180.16.174:12848;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-d8626b2b540e1300b3b2ecbfa3b6e360;dispatchkey=sipgear
+CSeq: 3 BYE
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s9-8379338997398057647
+Call-ID: cid_0-3756
+Max-Forwards: 70
+Route: <sip:142.180.16.174:12846;transport=udp;lr>
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:38.036] OUT 142.180.16.174:12846 --> 142.180.16.174:12848
+
+BYE sip:142.180.16.174:12848;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchKey=sipproxy;bridgeIp=142.180.16.174;bridgePort=12848;branch=z9hG4bK-343634-37b49394e82fa65e7c45dd319fa77015,SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-d8626b2b540e1300b3b2ecbfa3b6e360;dispatchkey=sipgear
+CSeq: 3 BYE
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s9-8379338997398057647
+Call-ID: cid_0-3756
+Max-Forwards: 69
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:38.051] IN 142.180.16.174:12848 --> 142.180.16.174:12846
+
+SIP/2.0 200 OK
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s9-8379338997398057647
+Via: SIP/2.0/UDP 142.180.16.174:12846;dispatchkey=sipproxy;bridgeip=142.180.16.174;bridgeport=12848;branch=z9hG4bK-343634-37b49394e82fa65e7c45dd319fa77015,SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-d8626b2b540e1300b3b2ecbfa3b6e360;dispatchkey=sipgear
+CSeq: 3 BYE
+Call-ID: cid_0-3756
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Content-Length: 0
+
+-----------------------
+[2012/08/10 21:56:38.054] OUT 142.180.16.174:12846 --> 142.180.16.174:12847
+
+SIP/2.0 200 OK
+To: "ConferiaProxy" <sip:4183331111@142.180.16.174:12846>;tag=s9-8379338997398057647
+Via: SIP/2.0/UDP 142.180.16.174:12847;branch=z9hG4bK-343634-d8626b2b540e1300b3b2ecbfa3b6e360;dispatchkey=sipgear
+CSeq: 3 BYE
+Call-ID: cid_0-3756
+From: "CS2K Simulator" <sip:CS2K>;tag=s7-8858005961962021805
+Content-Length: 0
+
+-----------------------
