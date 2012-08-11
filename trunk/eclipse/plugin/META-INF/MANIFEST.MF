@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: sip-viewer-plugin
 Bundle-SymbolicName: javax.sip.viewer.eclipse.plugins; singleton:=true
-Bundle-Version: 1.8.4
+Bundle-Version: 1.8.5
 Bundle-Activator: javax.sip.viewer.eclipse.plugins.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -13,4 +13,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: lib/jcommander-1.7.jar,
  .,
- lib/sip-viewer-1.8.4.jar
+ lib/sip-viewer-1.8.5.jar
