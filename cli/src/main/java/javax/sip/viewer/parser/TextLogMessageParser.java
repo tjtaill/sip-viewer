@@ -251,11 +251,13 @@ public class TextLogMessageParser {
    * @param pDate out
    * @param pOrigin out
    * @param pDestination out
+   * @param lDirection
    */
   public static void parseDetails(String pDetails,
                                   StringBuilder pDate,
                                   StringBuilder pOrigin,
-                                  StringBuilder pDestination)
+                                  StringBuilder pDestination,
+                                  StringBuilder pDirection)
   {
     int state = STATE_DEFAULT;
 
@@ -279,30 +281,39 @@ public class TextLogMessageParser {
       case STATE_INOUT:
         if (c == ' ')
           continue;
-        else if (c == 'I')
+        else if (c == 'I') {
           state = STATE_IN_N;
-        else if (c == 'O')
+          pDirection.append(c);
+        } else if (c == 'O') {
           state = STATE_OUT_U;
-        else
+          pDirection.append(c);
+        } else {
           throw new RuntimeException("Expected IN or OUT, found unexpected char " + c);
+        }
         break;
       case STATE_IN_N:
-        if (c == 'N')
+        if (c == 'N') {
           state = STATE_ORIGIN;
-        else
+          pDirection.append(c);
+        } else {
           throw new RuntimeException("Expected IN, found unexpected char " + c);
+        }
         break;
       case STATE_OUT_U:
-        if (c == 'U')
+        if (c == 'U') {
           state = STATE_OUT_T;
-        else
+          pDirection.append(c);
+        } else {
           throw new RuntimeException("Expected OUT, found unexpected char " + c);
+        }
         break;
       case STATE_OUT_T:
-        if (c == 'T')
+        if (c == 'T') {
           state = STATE_ORIGIN;
-        else
+          pDirection.append(c);
+        } else {
           throw new RuntimeException("Expected OUT, found unexpected char " + c);
+        }
         break;
 
       // -- origin

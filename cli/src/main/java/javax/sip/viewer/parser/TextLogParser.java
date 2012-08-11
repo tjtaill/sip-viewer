@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.sip.viewer.model.SipMessage;
+import javax.sip.viewer.model.SipMessageDirection;
 import javax.sip.viewer.model.TraceSession;
 import javax.sip.viewer.model.TraceSessionIndexer;
 
@@ -51,8 +52,9 @@ public class TextLogParser implements SipLogParser {
       StringBuilder lDateStr = new StringBuilder();
       StringBuilder lOrigin = new StringBuilder();
       StringBuilder lDestination = new StringBuilder();
+      StringBuilder lDirection = new StringBuilder();
 
-      TextLogMessageParser.parseDetails(pDetails, lDateStr, lOrigin, lDestination);
+      TextLogMessageParser.parseDetails(pDetails, lDateStr, lOrigin, lDestination, lDirection);
 
       try {
         Date lDate = mDateFormat.parse(lDateStr.toString());
@@ -60,6 +62,7 @@ public class TextLogParser implements SipLogParser {
         lResult.setTime(lDate.getTime());
         lResult.setSource(lOrigin.toString());
         lResult.setDestination(lDestination.toString());
+        lResult.setDirection(SipMessageDirection.valueOf(lDirection.toString().toUpperCase()));
       } catch (Exception e) {
         throw new RuntimeException(pDetails + " is not having the right format", e);
       }

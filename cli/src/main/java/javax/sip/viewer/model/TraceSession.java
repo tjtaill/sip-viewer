@@ -29,7 +29,8 @@ public class TraceSession implements Comparable<TraceSession> {
       if (message.getMessageAsText().equals(pSipMessage.getMessageAsText())
           && message.getSource().equals(pSipMessage.getSource())
           && message.getDestination().equals(pSipMessage.getDestination())
-          && Math.abs(message.getTime() - pSipMessage.getTime()) < 50)
+          && message.getDirection() != pSipMessage.getDirection())
+      // && Math.abs(message.getTime() - pSipMessage.getTime()) < 50)
       {
         return;
       }
