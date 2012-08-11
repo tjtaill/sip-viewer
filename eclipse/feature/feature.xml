@@ -2,7 +2,7 @@
 <feature
       id="sip_viewer_feature"
       label="Sip-viewer-feature"
-      version="1.8.4">
+      version="1.8.5">
 
    <description url="https://sip-viewer.googlecode.com">
       [Enter Feature Description here.]
@@ -24,7 +24,7 @@
          id="javax.sip.viewer.eclipse.plugins"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.8.5"
          unpack="false"/>
 
 </feature>
