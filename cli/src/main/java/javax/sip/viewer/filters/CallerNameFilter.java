@@ -52,6 +52,7 @@ public class CallerNameFilter extends AbstractFilter {
           if (lCallerName.contains(mCallerName.toUpperCase()) && !lResult.contains(lTracesSession))
           {
             lResult.add(lTracesSession);
+            break;
           }
         }
       }
