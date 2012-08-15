@@ -47,6 +47,7 @@ public class ErrorFilter extends AbstractFilter {
           Integer lResponseCode = Integer.parseInt(mResponseTag.split(" ")[1]);
           if (lResponseCode >= 400) {
             lResult.add(lTracesSession);
+            break;
           }
         }
       }
