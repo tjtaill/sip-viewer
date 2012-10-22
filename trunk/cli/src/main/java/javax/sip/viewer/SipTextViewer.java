@@ -17,6 +17,7 @@ import javax.sip.viewer.filters.CallerNameFilter;
 import javax.sip.viewer.filters.CallerPhoneNumberFilter;
 import javax.sip.viewer.filters.DestinationPhoneNumberFilter;
 import javax.sip.viewer.filters.ErrorFilter;
+import javax.sip.viewer.filters.InviteSesionFilter;
 import javax.sip.viewer.filters.SessionIdFilter;
 import javax.sip.viewer.model.TraceSession;
 import javax.sip.viewer.parser.SipLogParser;
@@ -47,6 +48,8 @@ public class SipTextViewer {
   protected String mDestPhoneNumber;
   @Parameter(names = { "-eo", "--errorOnly" }, description = "display only the sessions with error in the response code (default false")
   protected boolean mErrorOnly = false;
+  @Parameter(names = { "-io", "--inviteSessionOnly" }, description = "display only the sessions containing invites (default false")
+  protected boolean mInviteSessionsOnly = false;
   @Parameter(names = { "-v", "--verbose" }, description = "Verbose diagram mode (default false)")
   protected boolean mVerbose = false;
   @Parameter(names = { "-hsl", "--hideSipLog" }, description = "Outputs the call stack after the sequence diagram (default true)")
@@ -110,6 +113,9 @@ public class SipTextViewer {
 
   private List<TraceSession> applyFilters(List<TraceSession> pTraceSessions) {
     List<TraceSession> lResult = pTraceSessions;
+    if (mInviteSessionsOnly) {
+      lResult = new InviteSesionFilter(lResult).process();
+    }
     if (mSessionId != null) {
       lResult = new SessionIdFilter(lResult, mSessionId).process();
     }
