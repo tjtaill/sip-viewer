@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component jdk="1.8" jdk_type="JavaSDK">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<levels>
+		<level name="jcommander-1.30" value="project"/>
+		<level name="antlr-4.5-complete" value="project"/>
+		<level name="commons-lang3-3.4" value="project"/>
+	</levels>
+</component>
