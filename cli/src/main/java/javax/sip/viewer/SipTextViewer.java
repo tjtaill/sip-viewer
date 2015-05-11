@@ -20,8 +20,10 @@ import javax.sip.viewer.filters.ErrorFilter;
 import javax.sip.viewer.filters.InviteSesionFilter;
 import javax.sip.viewer.filters.SessionIdFilter;
 import javax.sip.viewer.model.TraceSession;
+import javax.sip.viewer.parser.SipAddressParser;
 import javax.sip.viewer.parser.SipLogParser;
 import javax.sip.viewer.parser.TextLogParser;
+import javax.sip.viewer.parser.XsLogSipParser;
 import javax.sip.viewer.utils.ListOfFiles;
 
 import com.beust.jcommander.JCommander;
@@ -106,7 +108,8 @@ public class SipTextViewer {
       if (mParserB2BTokenRegex != null) {
         TextLogParser.setTagPattern(Pattern.compile(mParserB2BTokenRegex));
       }
-      return new TextLogParser();
+      // return new TextLogParser();
+      return new XsLogSipParser();
     }
 
   }
@@ -225,6 +228,8 @@ public class SipTextViewer {
    * @throws Exception
    */
   public static void main(String[] args) throws Exception {
+    // System.err.close();
+
     SipTextViewer lTF = new SipTextViewer();
 
     // Parsing command-line arguments

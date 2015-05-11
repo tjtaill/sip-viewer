@@ -1,0 +1,1282 @@
+2015.04.08 08:26:07:257 EDT | Info       | Sip | +15146986600 | callhalf-356
+
+	$ new CHSS > +15146986600 >  > callhalf-356
+
+2015.04.08 08:26:07:258 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 661 Bytes IN from 10.9.39.11:5050
+INVITE sip:6986610@10.9.39.33 SIP/2.0
+Via: SIP/2.0/UDP 10.9.39.11:5050;branch=z9hG4bK-8804-1-0
+From: sipp <sip:5146986600@10.9.39.33>;tag=1
+To: sut <sip:6986610@10.9.39.33>
+Call-ID: 1-8804@10.9.39.11
+CSeq: 1 INVITE
+Allow: ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,NOTIFY,UPDATE
+Contact: <sip:5146986604@10.9.39.11:5050>
+Max-Forwards: 70
+Subject: Performance Test
+Supported: 100rel
+Route: <sip:10.9.39.33:5060;lr;call=orig>,<sip:10.9.39.11:5040;lr>
+Content-Type: application/sdp
+Content-Length:   130
+
+v=0
+o=user1 53655765 2353687637 IN IP4 127.0.0.1
+s=-
+c=IN IP4 10.9.39.11
+t=0 0
+m=audio 6001 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+
+
+2015.04.08 08:26:07:258 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 227 Bytes OUT to 10.9.39.11:5050
+SIP/2.0 100 Trying
+Via:SIP/2.0/UDP 10.9.39.11:5050;branch=z9hG4bK-8804-1-0
+From:"sipp"<sip:5146986600@10.9.39.33>;tag=1
+To:"sut"<sip:6986610@10.9.39.33>
+Call-ID:1-8804@10.9.39.11
+CSeq:1 INVITE
+Content-Length:0
+
+
+
+2015.04.08 08:26:07:259 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.sip.SipInviteEvent
+
+2015.04.08 08:26:07:259 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 1  old State: IDLE  new State: INVITING
+
+2015.04.08 08:26:07:259 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Transforming Event: com.broadsoft.events.sip.SipInviteEvent
+
+2015.04.08 08:26:07:260 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: IDLE  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:260 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Initial setting of SDP type to OFFER
+
+2015.04.08 08:26:07:260 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.iwp.ConnectRequestEvent {SipEndpoint.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:260 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	old State: IDLE  new State: ALERTING
+
+2015.04.08 08:26:07:261 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.InvitationEvent {CHCallManager.callhalf-356,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:261 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: IDLE  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:261 EDT | Debug      | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Added entry to callServiceEventHandlerMap
+	Key: callhalf-356:0:0
+	Handler: com.broadsoft.apm.callp.components.TranslationManagerCallImpl
+
+2015.04.08 08:26:07:261 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Event: com.broadsoft.events.callhalf.InvitationEvent
+	Consumed by: com.broadsoft.services.translation.TranslationServiceOrigInstance
+
+2015.04.08 08:26:07:262 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Service Event: com.broadsoft.events.callhalf.TranslationResultEvent
+
+2015.04.08 08:26:07:263 EDT | Info       | CallP | Service | TranslationManager | +15146986600 | South_as86 | callhalf-356:0
+
+	Network Device Selected: 6986610@10.9.39.38
+
+2015.04.08 08:26:07:263 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Event: com.broadsoft.events.callhalf.TranslationResultEvent
+	Consumed by: com.broadsoft.apm.callp.components.TranslationManagerCallImpl
+
+2015.04.08 08:26:07:263 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:1
+
+	Transforming Event: com.broadsoft.events.iwp.ConnectRequestEvent {CHCallService.callhalf-356:0,SipEndpoint.callhalf-356:1}
+
+2015.04.08 08:26:07:264 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:1
+
+	call: 1  old State: IDLE  new State: INVITING
+
+2015.04.08 08:26:07:264 EDT | Info       | Sip | +15146986600 | callhalf-356:1
+
+	udp 754 Bytes OUT to 10.9.39.38:5060
+INVITE sip:6986610@10.9.39.38;user=phone SIP/2.0
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.38V5060-0-209670672-457307381-1428495967263-
+From:"john0 south"<sip:+15146986600@10.9.39.33;user=phone>;tag=457307381-1428495967263-
+To:<sip:6986610@10.9.39.38;user=phone>
+Call-ID:BW082607263080415313993216@10.9.39.33
+CSeq:209670672 INVITE
+Contact:<sip:10.9.39.33:5060>
+P-Asserted-Identity:"john0 south"<sip:+15146986600@10.9.39.33;user=phone>
+Privacy:none
+Allow:ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,NOTIFY
+Supported:
+Max-Forwards:10
+Content-Type:application/sdp
+Content-Length:121
+
+v=0
+o=BroadWorks 146 1 IN IP4 127.0.0.1
+s=-
+c=IN IP4 10.9.39.11
+t=0 0
+m=audio 6001 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+
+
+2015.04.08 08:26:07:272 EDT | Info       | Sip | +15146986600 | callhalf-356:1
+
+	udp 645 Bytes IN from 10.9.39.38:59993
+SIP/2.0 302 Moved temporarily
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.38V5060-0-209670672-457307381-1428495967263-
+From:"john0 south"<sip:+15146986600@10.9.39.33;user=phone>;tag=457307381-1428495967263-
+To:<sip:6986610@10.9.39.38;user=phone>;tag=1124056605-1428495967268
+Call-ID:BW082607263080415313993216@10.9.39.33
+CSeq:209670672 INVITE
+Contact:<sip:+15146986610@10.9.39.33:5060;user=phone;net-ind=IntraAS>;q=0.5;group-id="South_as86";ton=PUBLIC;cat=PRIVATE;ct=LO,<sip:+15146986610@10.9.39.37:5060;user=phone;net-ind=IntraAS>;q=0.25;group-id="South_as86";ton=PUBLIC;cat=PRIVATE;ct=LO
+Content-Length:0
+
+
+
+2015.04.08 08:26:07:272 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:1
+
+	Processing SipEvent: com.broadsoft.events.sip.Sip300RedirectionEvent
+
+2015.04.08 08:26:07:272 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:1
+
+	call: 1  old State: INVITING  new State: RELEASED
+
+2015.04.08 08:26:07:273 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:1
+
+	Transforming Event: com.broadsoft.events.sip.Sip300RedirectionEvent
+
+2015.04.08 08:26:07:273 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Service Event: com.broadsoft.events.callhalf.RedirectionEvent
+
+2015.04.08 08:26:07:273 EDT | Info       | Sip | +15146986600 | callhalf-356:1
+
+	udp 427 Bytes OUT to 10.9.39.38:5060
+ACK sip:6986610@10.9.39.38;user=phone SIP/2.0
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.38V5060-0-209670672-457307381-1428495967263-
+From:"john0 south"<sip:+15146986600@10.9.39.33;user=phone>;tag=457307381-1428495967263-
+To:<sip:6986610@10.9.39.38;user=phone>;tag=1124056605-1428495967268
+Call-ID:BW082607263080415313993216@10.9.39.33
+CSeq:209670672 ACK
+Max-Forwards:10
+Content-Length:0
+
+
+
+2015.04.08 08:26:07:273 EDT | Debug      | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Removed entry from callServiceEventHandlerMap
+	Key: callhalf-356:0:0
+	Handler: com.broadsoft.apm.callp.components.TranslationManagerCallImpl
+
+2015.04.08 08:26:07:273 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Address = 6986610 , Call Type = Network
+
+2015.04.08 08:26:07:273 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Event: com.broadsoft.events.callhalf.RedirectionEvent
+	Consumed by: com.broadsoft.apm.callp.components.TranslationManagerCallImpl
+
+2015.04.08 08:26:07:273 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.apm.asservicemanagement.ResumeEvent
+
+2015.04.08 08:26:07:273 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Resuming Event: com.broadsoft.events.callhalf.InvitationEvent {CHCallManager.callhalf-356,CHCall.callhalf-356:0}
+	After Service Instance: com.broadsoft.services.translation.TranslationServiceOrigInstance
+
+2015.04.08 08:26:07:274 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	old State: IDLE  new State: ALERTING
+
+2015.04.08 08:26:07:274 EDT | Info       | Sip | +15146986610 | callhalf-357
+
+	$ new CHSS > +15146986610 > callhalf-356:0 > callhalf-357
+
+2015.04.08 08:26:07:274 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.TerminationEvent : callhalf-356:0 {CHCall.callhalf-356:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:274 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.callhalf.InvitationEvent {CHCall.callhalf-356:0,CHCall.callhalf-357:0}
+
+2015.04.08 08:26:07:274 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - old State: IDLE  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:274 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	old State: IDLE  new State: ALERTING
+
+2015.04.08 08:26:07:275 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.InvitationEvent {CHCall.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:275 EDT | Info       | CallP | Service | Network Routing | +15146986610 | PSTN | callhalf-357:0
+
+	Network Device Selected: +15146986610@10.9.39.33
+
+2015.04.08 08:26:07:275 EDT | Info       | CallP | SIP Endpoint | +15146986610 | callhalf-357:0
+
+	old State: IDLE  new State: ALERTING
+
+2015.04.08 08:26:07:275 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - old State: IDLE  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:275 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Transforming Event: com.broadsoft.events.iwp.ConnectRequestEvent {CHCallManager.callhalf-357,SipEndpoint.callhalf-357:0}
+
+2015.04.08 08:26:07:276 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	call: 1  old State: IDLE  new State: INVITING
+
+2015.04.08 08:26:07:276 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.AccountingInfoEvent {SipEndpoint.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:276 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.callhalf.AccountingInfoEvent {CHCallManager.callhalf-357,CHCall.callhalf-357:0}
+
+2015.04.08 08:26:07:276 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.LinkRemoteCallEvent : callhalf-357:0 {CHCall.callhalf-357:0,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:276 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.AccountingInfoEvent {CHCall.callhalf-357:0,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:276 EDT | Info       | Sip | +15146986610 | callhalf-357:0
+
+	udp 1068 Bytes OUT to 10.9.39.11:5040
+INVITE sip:+15146986610@10.9.39.33;user=phone;net-ind=IntraAS SIP/2.0
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.11V5040-0-209670679-844679828-1428495967276-
+From:"john0 south"<sip:5146986600@10.9.39.33;user=phone>;tag=844679828-1428495967276-
+To:<sip:+15146986610@10.9.39.33;user=phone;net-ind=IntraAS>
+Call-ID:BW082607276080415-480358345@10.9.39.33
+CSeq:209670679 INVITE
+Contact:<sip:10.9.39.33:5060>
+P-Asserted-Identity:"john0 south"<sip:5146986600@10.9.39.33>,"john0 south"<tel:+15146986600>
+Privacy:none
+Route:<sip:10.9.39.11:5040;lr>
+P-Charging-Vector:icid-value="1-8804@10.9.39.11+BW082607260080415-1604378966@10.9.39.33"
+Supported:100rel
+Allow:ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,UPDATE,NOTIFY
+Accept:multipart/mixed,application/media_control+xml,application/sdp,application/x-broadworks-call-center+xml
+Max-Forwards:10
+Content-Type:application/sdp
+Content-Length:121
+
+v=0
+o=BroadWorks 146 1 IN IP4 127.0.0.1
+s=-
+c=IN IP4 10.9.39.11
+t=0 0
+m=audio 6001 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+
+
+2015.04.08 08:26:07:279 EDT | Info       | Sip | +15146986610 | callhalf-357:0
+
+	udp 638 Bytes IN from 10.9.39.11:60351
+SIP/2.0 183 Session Progress
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.11V5040-0-209670679-844679828-1428495967276-
+From:"john0 south"<sip:5146986600@10.9.39.33;user=phone>;tag=844679828-1428495967276-
+To:<sip:+15146986610@10.9.39.33;user=phone;net-ind=IntraAS>;tag=1
+Call-ID:BW082607276080415-480358345@10.9.39.33
+CSeq:209670679 INVITE
+Require: 100rel
+Rseq: 1001
+Contact: <sip:10.9.39.11:5040;transport=UDP>
+Content-Type: application/sdp
+Content-Length:   130
+
+v=0
+o=user1 53655765 2353687637 IN IP4 127.0.0.1
+s=-
+c=IN IP4 10.9.39.11
+t=0 0
+m=audio 6000 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+
+
+2015.04.08 08:26:07:279 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.sip.Sip100InfoEvent
+
+2015.04.08 08:26:07:279 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	call: 1  old State: INVITING  new State: INVITING
+
+2015.04.08 08:26:07:279 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Transforming Event: com.broadsoft.events.sip.Sip100InfoEvent
+
+2015.04.08 08:26:07:280 EDT | Debug      | CallP | SIP Endpoint
+
+	 Creating new dialogId 6 for received internalSCID 1
+
+2015.04.08 08:26:07:280 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId null)
+
+2015.04.08 08:26:07:280 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Setting Controlling Connection to DialogId of event : 6
+
+2015.04.08 08:26:07:280 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Initial setting of SDP type to ANSWER
+
+2015.04.08 08:26:07:280 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ANSWER  new State: NEGOTIATING_WAITING_FOR_ACK
+
+2015.04.08 08:26:07:280 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {SipEndpoint.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:280 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {CHCallManager.callhalf-357,CHCall.callhalf-357:0}
+
+2015.04.08 08:26:07:280 EDT | Debug      | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId null)
+
+2015.04.08 08:26:07:280 EDT | Debug      | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Setting Controlling Connection to DialogId of event : 6
+
+2015.04.08 08:26:07:280 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ANSWER  new State: NEGOTIATING_WAITING_FOR_ACK
+
+2015.04.08 08:26:07:280 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {CHCall.callhalf-357:0,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:280 EDT | Debug      | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId null)
+
+2015.04.08 08:26:07:280 EDT | Debug      | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Setting Controlling Connection to DialogId of event : 6
+
+2015.04.08 08:26:07:280 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ANSWER  new State: NEGOTIATING_WAITING_FOR_ACK
+
+2015.04.08 08:26:07:281 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {CHCall.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:281 EDT | Info       | CallP | Service | Ringback | +15146986600 | South_as86 | callhalf-356
+
+	Processing in Ringback Service
+
+2015.04.08 08:26:07:281 EDT | Info       | CallP | Service | Ringback | +15146986600 | South_as86 | callhalf-356
+
+	Data Added - callhalf-356:0
+
+2015.04.08 08:26:07:281 EDT | Info       | CallP | Service | Ringback | +15146986600 | South_as86 | callhalf-356
+
+	callhalf-356:0 - old State: IDLE Old Dialog Id: null  new State: REMOTE_RINGBACK new Dialog Id: 6
+
+2015.04.08 08:26:07:281 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId null)
+
+2015.04.08 08:26:07:281 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Setting Controlling Connection to DialogId of event : 6
+
+2015.04.08 08:26:07:281 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ANSWER  new State: NEGOTIATING_WAITING_FOR_ACK
+
+2015.04.08 08:26:07:281 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Transforming Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {CHCallManager.callhalf-356,SipEndpoint.callhalf-356:0}
+
+2015.04.08 08:26:07:281 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 1  old State: INVITING  new State: INVITING+
+
+2015.04.08 08:26:07:282 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 650 Bytes OUT to 10.9.39.11:5050
+SIP/2.0 183 Session Progress
+Via:SIP/2.0/UDP 10.9.39.11:5050;branch=z9hG4bK-8804-1-0
+From:"sipp"<sip:5146986600@10.9.39.33>;tag=1
+To:"sut"<sip:6986610@10.9.39.33>;tag=66680278-1428495967281
+Call-ID:1-8804@10.9.39.11
+CSeq:1 INVITE
+Allow:ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,UPDATE,NOTIFY
+Supported:
+Contact:<sip:10.9.39.33:5060>
+Session:Media
+RSeq:209670680
+P-Asserted-Identity:<sip:6986610@10.9.39.33;user=phone>
+Privacy:none
+Require:100rel
+Content-Type:application/sdp
+Content-Length:121
+
+v=0
+o=BroadWorks 147 1 IN IP4 127.0.0.1
+s=-
+c=IN IP4 10.9.39.11
+t=0 0
+m=audio 6000 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+
+
+2015.04.08 08:26:07:286 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 459 Bytes IN from 10.9.39.11:5050
+PRACK sip:6986610@10.9.39.33 SIP/2.0
+Via: SIP/2.0/UDP 10.9.39.11:5050;branch=z9hG4bK-8804-1-3
+From: sipp <sip:5146986600@10.9.39.33>;tag=1
+To: sut <sip:6986610@10.9.39.33>;tag=66680278-1428495967281
+Call-ID: 1-8804@10.9.39.11
+CSeq: 2 PRACK
+RAck: 209670680 1 INVITE
+Allow:ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,NOTIFY,UPDATE
+Contact: <sip:5146986604@10.9.39.11:5050>
+Max-Forwards: 70
+Subject: Performance Test
+Content-Length: 0
+
+
+
+2015.04.08 08:26:07:286 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.sip.SipPrackEvent
+
+2015.04.08 08:26:07:286 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 1  old State: INVITING+  new State: INVITING
+
+2015.04.08 08:26:07:286 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 1  old State: INVITING  new State: INVITING+
+
+2015.04.08 08:26:07:286 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Transforming Event: com.broadsoft.events.sip.SipPrackEvent
+
+2015.04.08 08:26:07:286 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:286 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseEvent {SipEndpoint.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:286 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseEvent {CHCallManager.callhalf-356,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:286 EDT | Debug      | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:286 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseEvent {CHCall.callhalf-356:0,CHCall.callhalf-357:0}
+
+2015.04.08 08:26:07:286 EDT | Debug      | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:286 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseEvent {CHCall.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:286 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:286 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Transforming Event: com.broadsoft.events.callhalf.AlertingResponseEvent {CHCallManager.callhalf-357,SipEndpoint.callhalf-357:0}
+
+2015.04.08 08:26:07:287 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	call: 1  old State: INVITING  new State: INVITING+
+
+2015.04.08 08:26:07:287 EDT | Info       | Sip | +15146986610 | callhalf-357:0
+
+	udp 460 Bytes OUT to 10.9.39.11:5040
+PRACK sip:10.9.39.11:5040;transport=UDP SIP/2.0
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.11V5040-0-209670680-844679828-1428495967276-
+From:"john0 south"<sip:5146986600@10.9.39.33;user=phone>;tag=844679828-1428495967276-
+To:<sip:+15146986610@10.9.39.33;user=phone;net-ind=IntraAS>;tag=1
+Call-ID:BW082607276080415-480358345@10.9.39.33
+CSeq:209670680 PRACK
+RAck:1001 209670679 INVITE
+Max-Forwards:10
+Content-Length:0
+
+
+
+2015.04.08 08:26:07:289 EDT | Info       | Sip | +15146986610 | callhalf-357:0
+
+	udp 429 Bytes IN from 10.9.39.11:60351
+SIP/2.0 200 OK
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.11V5040-0-209670680-844679828-1428495967276-
+From:"john0 south"<sip:5146986600@10.9.39.33;user=phone>;tag=844679828-1428495967276-
+To:<sip:+15146986610@10.9.39.33;user=phone;net-ind=IntraAS>;tag=1
+Call-ID:BW082607276080415-480358345@10.9.39.33
+CSeq:209670680 PRACK
+Contact: <sip:10.9.39.11:5040;transport=UDP>
+Content-Length: 0
+
+
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	call: 1  old State: INVITING+  new State: INVITING
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Transforming Event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:289 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ACK  new State: CONNECTED
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {SipEndpoint.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.apm.connectionmanagement.ConnectionNotificationEvent {SipEndpoint.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {CHCallManager.callhalf-357,CHCall.callhalf-357:0}
+
+2015.04.08 08:26:07:289 EDT | Debug      | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ACK  new State: CONNECTED
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.apm.connectionmanagement.ConnectionNotificationEvent
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.apm.connectionmanagement.ConnectionNotificationEvent {CHCall.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:289 EDT | Info       | Sip | +15146986610 | callhalf-357:0
+
+	udp 655 Bytes IN from 10.9.39.11:60351
+UPDATE sip:+15146986608@10.9.39.33 SIP/2.0
+Via: SIP/2.0/UDP 10.9.39.11:5040
+From: <sip:+15146986610@10.9.39.33;user=phone;net-ind=IntraAS>;tag=1
+To: "john0 south"<sip:5146986600@10.9.39.33;user=phone>;tag=844679828-1428495967276-
+Call-ID:BW082607276080415-480358345@10.9.39.33
+CSeq: 3 UPDATE
+Allow:ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,NOTIFY,UPDATE
+Contact: <sip:10.9.39.11:5040;transport=UDP>
+Max-Forwards: 70
+Subject: Performance Test
+Content-Type: application/sdp
+Content-Length:   130
+
+v=0
+o=user1 53655765 2353687638 IN IP4 127.0.0.1
+s=-
+c=IN IP4 10.9.39.11
+t=0 0
+m=audio 6000 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+
+
+2015.04.08 08:26:07:289 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.sip.SipUpdateEvent
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	call: 1  old State: INVITING  new State: INVITING+
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Transforming Event: com.broadsoft.events.sip.SipUpdateEvent
+
+2015.04.08 08:26:07:290 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - old State: CONNECTED  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:290 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Initial setting of SDP type to OFFER
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.ReconnectEvent {SipEndpoint.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.callhalf.ReconnectEvent {CHCallManager.callhalf-357,CHCall.callhalf-357:0}
+
+2015.04.08 08:26:07:290 EDT | Debug      | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - old State: CONNECTED  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:290 EDT | Info       | Sip | +15146986610 | callhalf-357:0
+
+	udp 476 Bytes IN from 10.9.39.11:60351
+SIP/2.0 183 Session Progress
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.11V5040-0-209670679-844679828-1428495967276-
+From: "john0 south"<sip:5146986600@10.9.39.33;user=phone>;tag=844679828-1428495967276-
+To: <sip:+15146986610@10.9.39.33;user=phone;net-ind=IntraAS>;tag=1
+Call-ID:BW082607276080415-480358345@10.9.39.33
+CSeq: 209670679 INVITE
+Require: 100rel
+Rseq: 1002
+Contact: <sip:10.9.39.11:5040;transport=UDP>
+Content-Length: 0
+
+
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.sip.Sip100InfoEvent
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	call: 1  old State: INVITING+  new State: INVITING+
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Transforming Event: com.broadsoft.events.sip.Sip100InfoEvent
+
+2015.04.08 08:26:07:290 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {SipEndpoint.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {CHCallManager.callhalf-357,CHCall.callhalf-357:0}
+
+2015.04.08 08:26:07:290 EDT | Debug      | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {CHCall.callhalf-357:0,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:290 EDT | Debug      | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ACK  new State: CONNECTED
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.apm.connectionmanagement.ConnectionNotificationEvent
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {CHCall.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.apm.connectionmanagement.ConnectionNotificationEvent {CHCall.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:290 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ACK  new State: CONNECTED
+
+2015.04.08 08:26:07:290 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Transforming Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {CHCallManager.callhalf-356,SipEndpoint.callhalf-356:0}
+
+2015.04.08 08:26:07:291 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 1  old State: INVITING+  new State: INVITING
+
+2015.04.08 08:26:07:291 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 249 Bytes OUT to 10.9.39.11:5050
+SIP/2.0 200 OK
+Via:SIP/2.0/UDP 10.9.39.11:5050;branch=z9hG4bK-8804-1-3
+From:"sipp"<sip:5146986600@10.9.39.33>;tag=1
+To:"sut"<sip:6986610@10.9.39.33>;tag=66680278-1428495967281
+Call-ID:1-8804@10.9.39.11
+CSeq:2 PRACK
+Content-Length:0
+
+
+
+2015.04.08 08:26:07:291 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.apm.connectionmanagement.ConnectionNotificationEvent {SipEndpoint.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:291 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.ReconnectEvent {CHCall.callhalf-357:0,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:291 EDT | Debug      | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:291 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: CONNECTED  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:291 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.ReconnectEvent {CHCall.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:291 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:291 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: CONNECTED  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:291 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Transforming Event: com.broadsoft.events.callhalf.ReconnectEvent {CHCallManager.callhalf-356,SipEndpoint.callhalf-356:0}
+
+2015.04.08 08:26:07:291 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 1  old State: INVITING  new State: INVITING+
+
+2015.04.08 08:26:07:291 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 545 Bytes OUT to 10.9.39.11:5050
+UPDATE sip:5146986604@10.9.39.11:5050 SIP/2.0
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.11V5050-0-209670670-66680278-1428495967281
+From:"sut"<sip:6986610@10.9.39.33>;tag=66680278-1428495967281
+To:"sipp"<sip:5146986600@10.9.39.33>;tag=1
+Call-ID:1-8804@10.9.39.11
+CSeq:209670670 UPDATE
+Contact:<sip:10.9.39.33:5060>
+Max-Forwards:10
+Content-Type:application/sdp
+Content-Length:121
+
+v=0
+o=BroadWorks 147 2 IN IP4 127.0.0.1
+s=-
+c=IN IP4 10.9.39.11
+t=0 0
+m=audio 6000 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+
+
+2015.04.08 08:26:07:291 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {CHCall.callhalf-357:0,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:291 EDT | Debug      | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:292 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {CHCall.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:292 EDT | Debug      | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Added entry to callManagerServiceEventHandlerMap
+	Key: callhalf-356:1
+	Handler: com.broadsoft.apm.mediamanagement.MediaManager
+
+2015.04.08 08:26:07:292 EDT | Debug      | CallP | Media Manager | MSS Router | +15146986600 | South_as86 | callhalf-356
+
+	new Media Request: com.broadsoft.events.mcp.MediaRequestEvent (CreateConn)
+
+2015.04.08 08:26:07:292 EDT | Info       | CallP | Media Manager | MSS Router | +15146986600 | South_as86 | callhalf-356
+
+	Routing Media Request to: immediate = /192.168.13.42, ultimate  = 192.168.13.42
+
+2015.04.08 08:26:07:292 EDT | Debug      | CallP | Media Manager | Media IVR | +15146986600 | South_as86 | callhalf-356
+
+	old State: IDLE  new State: WAITING_FOR_RESOURCES
+
+2015.04.08 08:26:07:292 EDT | Info       | CallP | Service | Ringback | +15146986600 | South_as86 | callhalf-356
+
+	callhalf-356:0 - old State: REMOTE_RINGBACK Old Dialog Id: 6  new State: MS_RINGBACK new Dialog Id: 6
+
+2015.04.08 08:26:07:292 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable
+	Consumed by: com.broadsoft.services.ringback.RingbackServiceInstance
+
+2015.04.08 08:26:07:292 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Transforming Event: com.broadsoft.events.mcp.MediaRequestEvent (CreateConn) {CHCallManagerService.callhalf-356,SipMediaEndpoint.callhalf-356:2}
+	Source: callhalf-356
+
+2015.04.08 08:26:07:292 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Connection UA0 - old State: IDLE  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:292 EDT | Debug      | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	No toAgentKey, so computing value using ultimateDestination: ivr@192.168.13.42
+
+2015.04.08 08:26:07:293 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	UA0: call: 1  old State: IDLE  new State: INVITING
+
+2015.04.08 08:26:07:293 EDT | Debug      | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	UA0: Pegging bwMediaCommandsTransmitted
+
+2015.04.08 08:26:07:293 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseEvent {CHCallManager.callhalf-356,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:293 EDT | Debug      | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:293 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseEvent {CHCall.callhalf-356:0,CHCall.callhalf-357:0}
+
+2015.04.08 08:26:07:293 EDT | Debug      | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:293 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseEvent {CHCall.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:293 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:293 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Transforming Event: com.broadsoft.events.callhalf.AlertingResponseEvent {CHCallManager.callhalf-357,SipEndpoint.callhalf-357:0}
+
+2015.04.08 08:26:07:293 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 553 Bytes IN from 10.9.39.11:5050
+SIP/2.0 200 OK
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.11V5050-0-209670670-66680278-1428495967281
+From:"sut"<sip:6986610@10.9.39.33>;tag=66680278-1428495967281
+To:"sipp"<sip:5146986600@10.9.39.33>;tag=1;tag=1
+Call-ID:1-8804@10.9.39.11
+CSeq:209670670 UPDATE
+Contact: <sip:10.9.39.11:5050;transport=UDP>
+Content-Type: application/sdp
+Content-Length: 136
+
+v=0
+o=user1 53655766 2353687638 IN IP4 127.0.0.1
+s=-
+c=IN IP4 10.9.39.11
+t=0 0
+m=audio 6001 RTP/AVP 0 8
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+
+
+2015.04.08 08:26:07:293 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:293 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	call: 1  old State: INVITING+  new State: INVITING+
+
+2015.04.08 08:26:07:294 EDT | Info       | Sip | +15146986610 | callhalf-357:0
+
+	udp 460 Bytes OUT to 10.9.39.11:5040
+PRACK sip:10.9.39.11:5040;transport=UDP SIP/2.0
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.11V5040-0-209670681-844679828-1428495967276-
+From:"john0 south"<sip:5146986600@10.9.39.33;user=phone>;tag=844679828-1428495967276-
+To:<sip:+15146986610@10.9.39.33;user=phone;net-ind=IntraAS>;tag=1
+Call-ID:BW082607276080415-480358345@10.9.39.33
+CSeq:209670681 PRACK
+RAck:1002 209670679 INVITE
+Max-Forwards:10
+Content-Length:0
+
+
+
+2015.04.08 08:26:07:294 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 1  old State: INVITING+  new State: INVITING
+
+2015.04.08 08:26:07:294 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Transforming Event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:294 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:294 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ANSWER  new State: NEGOTIATING_WAITING_FOR_ACK
+
+2015.04.08 08:26:07:294 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Initial setting of SDP type to ANSWER
+
+2015.04.08 08:26:07:294 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.ConnectedEvent {SipEndpoint.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:294 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Event Consumed by Media Manager: com.broadsoft.events.callhalf.ConnectedEvent
+
+2015.04.08 08:26:07:295 EDT | Info       | Sip | +15146986610 | callhalf-357:0
+
+	udp 429 Bytes IN from 10.9.39.11:60351
+SIP/2.0 200 OK
+Via:SIP/2.0/UDP 10.9.39.33;branch=z9hG4bKBroadWorks.1909s14-10.9.39.11V5040-0-209670681-844679828-1428495967276-
+From:"john0 south"<sip:5146986600@10.9.39.33;user=phone>;tag=844679828-1428495967276-
+To:<sip:+15146986610@10.9.39.33;user=phone;net-ind=IntraAS>;tag=1
+Call-ID:BW082607276080415-480358345@10.9.39.33
+CSeq:209670681 PRACK
+Contact: <sip:10.9.39.11:5040;transport=UDP>
+Content-Length: 0
+
+
+
+2015.04.08 08:26:07:295 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:295 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	call: 1  old State: INVITING+  new State: INVITING+
+
+2015.04.08 08:26:07:295 EDT | Info       | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Transforming Event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:295 EDT | Debug      | CallP | SIP Endpoint | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:295 EDT | Info       | CallP | Call Manager | +15146986610 | PSTN | callhalf-357
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {SipEndpoint.callhalf-357:0,CHCallManager.callhalf-357}
+
+2015.04.08 08:26:07:295 EDT | Info       | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {CHCallManager.callhalf-357,CHCall.callhalf-357:0}
+
+2015.04.08 08:26:07:295 EDT | Debug      | CallP | Call | +15146986610 | PSTN | callhalf-357:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:295 EDT | Info       | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {CHCall.callhalf-357:0,CHCall.callhalf-356:0}
+
+2015.04.08 08:26:07:295 EDT | Debug      | CallP | Call | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 6 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:295 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {CHCall.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:295 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent
+	Consumed by: com.broadsoft.services.ringback.RingbackServiceInstance
+
+2015.04.08 08:26:07:312 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Processing event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:313 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	UA0: call: 1  old State: INVITING  new State: ACCEPTING
+
+2015.04.08 08:26:07:313 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Transforming event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:313 EDT | Debug      | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Pegging bwMediaNotificationsReceived
+
+2015.04.08 08:26:07:313 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	UA0: call: 1  old State: ACCEPTING  new State: ACTIVE
+
+2015.04.08 08:26:07:313 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Connection UA0 - old State: NEGOTIATING_WAITING_FOR_ANSWER  new State: CONNECTED
+
+2015.04.08 08:26:07:313 EDT | Debug      | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Connection UA0 - Initial setting of SDP type to ANSWER
+
+2015.04.08 08:26:07:313 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Service Event: com.broadsoft.events.mcp.MediaResponseEvent (ConnCreated)
+
+2015.04.08 08:26:07:313 EDT | Info       | CallP | Media Manager | Media IVR | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.mcp.MediaResponseEvent (ConnCreated) {SipMediaEndpoint.callhalf-356:2,CHCallManagerService.callhalf-356}
+	Source: callhalf-356:2
+
+2015.04.08 08:26:07:313 EDT | Debug      | CallP | Media Manager | Media IVR | +15146986600 | South_as86 | callhalf-356
+
+	old State: WAITING_FOR_RESOURCES  new State: ACTIVE
+
+2015.04.08 08:26:07:313 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Event: com.broadsoft.events.mcp.MediaResponseEvent (ConnCreated)
+	Consumed by: com.broadsoft.apm.mediamanagement.MediaManager
+
+2015.04.08 08:26:07:313 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {CHCall.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:314 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 7 (Controlling Connection DialogId 6)
+
+2015.04.08 08:26:07:314 EDT | Debug      | CallP | SIP Endpoint
+
+	Switching connection to process event with dialogId 7
+
+2015.04.08 08:26:07:314 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: IDLE  new State: NEGOTIATING_WAITING_FOR_ANSWER
+
+2015.04.08 08:26:07:314 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 7 (Controlling Connection DialogId 7)
+
+2015.04.08 08:26:07:314 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ANSWER  new State: NEGOTIATING_WAITING_FOR_ACK
+
+2015.04.08 08:26:07:314 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Transforming Event: com.broadsoft.events.callhalf.AlertingEvent - Reliable {CHCallManager.callhalf-356,SipEndpoint.callhalf-356:0}
+
+2015.04.08 08:26:07:314 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	New Controlling Call: 2
+
+2015.04.08 08:26:07:314 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 2  old State: INVITING  new State: INVITING+
+
+2015.04.08 08:26:07:314 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 648 Bytes OUT to 10.9.39.11:5050
+SIP/2.0 180 Ringing
+Via:SIP/2.0/UDP 10.9.39.11:5050;branch=z9hG4bK-8804-1-0
+From:"sipp"<sip:5146986600@10.9.39.33>;tag=1
+To:"sut"<sip:6986610@10.9.39.33>;tag=1062178320-1428495967314
+Call-ID:1-8804@10.9.39.11
+CSeq:1 INVITE
+Supported:
+Contact:<sip:10.9.39.33:5060>
+RSeq:209670697
+P-Asserted-Identity:<sip:6986610@10.9.39.33;user=phone>
+Privacy:none
+Require:100rel
+Allow:ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,UPDATE,NOTIFY
+Content-Type:application/sdp
+Content-Length:141
+
+v=0
+o=BroadWorks 148 1 IN IP4 192.168.13.42
+s=-
+c=IN IP4 192.168.13.42
+t=0 0
+m=audio 12028 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+a=ptime:20
+
+
+2015.04.08 08:26:07:315 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 461 Bytes IN from 10.9.39.11:5050
+PRACK sip:6986610@10.9.39.33 SIP/2.0
+Via: SIP/2.0/UDP 10.9.39.11:5050;branch=z9hG4bK-8804-1-8
+From: sipp <sip:5146986600@10.9.39.33>;tag=1
+To: sut <sip:6986610@10.9.39.33>;tag=1062178320-1428495967314
+Call-ID: 1-8804@10.9.39.11
+CSeq: 3 PRACK
+RAck: 209670697 1 INVITE
+Allow:ACK,BYE,CANCEL,INFO,INVITE,OPTIONS,PRACK,REFER,NOTIFY,UPDATE
+Contact: <sip:5146986604@10.9.39.11:5050>
+Max-Forwards: 70
+Subject: Performance Test
+Content-Length: 0
+
+
+
+2015.04.08 08:26:07:315 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Processing Event: com.broadsoft.events.sip.SipPrackEvent
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 2  old State: INVITING+  new State: INVITING
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 2  old State: INVITING  new State: INVITING+
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Transforming Event: com.broadsoft.events.sip.SipPrackEvent
+
+2015.04.08 08:26:07:316 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 7 (Controlling Connection DialogId 7)
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseEvent {SipEndpoint.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Event Consumed by Media Manager: com.broadsoft.events.callhalf.AlertingResponseEvent
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {CHCall.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:316 EDT | Debug      | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - Processing event with dialogId 7 (Controlling Connection DialogId 7)
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Connection - old State: NEGOTIATING_WAITING_FOR_ACK  new State: CONNECTED
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	Transforming Event: com.broadsoft.events.callhalf.AlertingResponseAckEvent {CHCallManager.callhalf-356,SipEndpoint.callhalf-356:0}
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | SIP Endpoint | +15146986600 | South_as86 | callhalf-356:0
+
+	call: 2  old State: INVITING+  new State: INVITING
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | Call Manager | +15146986600 | South_as86 | callhalf-356
+
+	Processing Event: com.broadsoft.apm.connectionmanagement.ConnectionNotificationEvent {SipEndpoint.callhalf-356:0,CHCallManager.callhalf-356}
+
+2015.04.08 08:26:07:316 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Transforming Event: com.broadsoft.events.mcp.MediaRequestEvent (Play - -1) {CHCallManagerService.callhalf-356,SipMediaEndpoint.callhalf-356:2}
+	Source: callhalf-356
+
+2015.04.08 08:26:07:316 EDT | Info       | Sip | +15146986600 | callhalf-356:0
+
+	udp 251 Bytes OUT to 10.9.39.11:5050
+SIP/2.0 200 OK
+Via:SIP/2.0/UDP 10.9.39.11:5050;branch=z9hG4bK-8804-1-8
+From:"sipp"<sip:5146986600@10.9.39.33>;tag=1
+To:"sut"<sip:6986610@10.9.39.33>;tag=1062178320-1428495967314
+Call-ID:1-8804@10.9.39.11
+CSeq:3 PRACK
+Content-Length:0
+
+
+
+2015.04.08 08:26:07:317 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	UA0: call: 1  old State: ACTIVE  new State: ACTIVE+
+
+2015.04.08 08:26:07:317 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Changing state from STATE_IDLE to STATE_TIMED_PLAY
+
+2015.04.08 08:26:07:317 EDT | Debug      | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	UA0: Pegging bwMediaCommandsTransmitted
+
+2015.04.08 08:26:07:364 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Processing event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:364 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	UA0: call: 1  old State: ACTIVE+  new State: ACTIVE
+
+2015.04.08 08:26:07:365 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Transforming event: com.broadsoft.events.sip.Sip200SuccessEvent
+
+2015.04.08 08:26:07:365 EDT | Debug      | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Got positive INFO response, consuming
+
+2015.04.08 08:26:07:365 EDT | Info       | CallP | SIP Media Endpoint | +15146986600 | South_as86 | callhalf-356:2
+
+	Transformer Consumed Event: com.broadsoft.events.sip.Sip200SuccessEvent
+
