@@ -80,15 +80,20 @@ public class SipMessageListener extends XsLogBaseListener {
         String toAddress = matcher.find() ? matcher.group(1) : null;
         toAddress = SipAddressParser.parseIpOrDns(toAddress);
         toAddress = toAddress.contains(":") ? toAddress : toAddress + ":5060";
-        switch (messageType) {
-            case REQUEST:
-                destination = toAddress;
+        switch(direction) {
+            case IN:
+                switch (messageType) {
+                    case REQUEST:
+                        destination = toAddress;
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            case RESPONSE:
-                source = toAddress;
+            default:
                 break;
         }
-    }
+   }
 
     @Override
     public void enterFrom(@NotNull XsLogParser.FromContext ctx) {
@@ -100,33 +105,61 @@ public class SipMessageListener extends XsLogBaseListener {
         String fromAddress = matcher.find() ? matcher.group(1) : null;
         fromAddress = SipAddressParser.parseIpOrDns(fromAddress);
         fromAddress = fromAddress.contains(":") ? fromAddress : fromAddress + ":5060";
-        switch (messageType) {
-            case REQUEST:
-                source = fromAddress;
+        switch(direction) {
+            case OUT:
+                switch (messageType) {
+                    case RESPONSE:
+                        source = fromAddress;
+                        break;
+                    default:
+                        break;
+                }
                 break;
             default:
                 break;
         }
+
     }
+
 
     @Override
     public void enterVia(@NotNull XsLogParser.ViaContext ctx) {
-        switch (messageType) {
-            case RESPONSE:
-                String via = ctx.VIA().getText();
-                Matcher matcher = ipPattern.matcher( via );
-                destination = matcher.find() ? matcher.group(1) : null;
-                destination = destination.contains(":") ? destination : destination + ":5060";
+
+        switch(direction) {
+            case IN:
+                switch (messageType) {
+                    case RESPONSE:
+                        String via = ctx.VIA().getText();
+                        Matcher matcher = ipPattern.matcher(via);
+                        destination = matcher.find() ? matcher.group(1) : null;
+                        destination = destination.contains(":") ? destination : destination + ":5060";
+                        break;
+                    default:
+                        break;
+                }
                 break;
             default:
                 break;
         }
     }
 
+
     @Override
     public void enterDirectionLine(@NotNull XsLogParser.DirectionLineContext ctx) {
-        direction = ctx.DIRECTION_LINE().getText().contains("IN") ? SipMessageDirection.IN :
+        String directionLine = ctx.DIRECTION_LINE().getText();
+        direction = directionLine.contains("IN") ? SipMessageDirection.IN :
                 SipMessageDirection.OUT;
+        Matcher matcher = ipPattern.matcher(directionLine);
+        String loc = matcher.find() ? matcher.group(1) : null;
+        loc = loc.contains(":") ? loc : loc + ":5060";
+        switch(direction) {
+            case IN:
+                source = loc;
+                break;
+            case OUT:
+                destination = loc;
+                break;
+        }
     }
 
     @Override
@@ -136,12 +169,17 @@ public class SipMessageListener extends XsLogBaseListener {
 
     @Override
     public void enterContact(@NotNull XsLogParser.ContactContext ctx) {
-        String contact = ctx.CONTACT().getText();
+        switch(direction) {
+            case OUT:
+                String contact = ctx.CONTACT().getText();
+                Matcher matcher = ipPattern.matcher( contact );
+                source = matcher.find() ? matcher.group(1) : source;
+                source = source.contains(":") ? source : source + ":5060";
+                break;
+            default:
+                break;
+        }
 
-        Matcher matcher = sipUrlPattern.matcher(contact);
-        String fromAddress = matcher.find() ? matcher.group(1) : null;
-        fromAddress = SipAddressParser.parseIpOrDns( fromAddress );
-        source = fromAddress;
     }
 
     @Override
