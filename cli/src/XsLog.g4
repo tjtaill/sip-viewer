@@ -67,7 +67,19 @@ sipHeader : via
        | callInfo
        | accept
        | recordRoute
-          ;
+       | pServerUser
+       | pAccessNetworkInfo
+       | pChargingVector
+       | pChargingFunctionAddresses
+       | remotePartyId
+       | userAgent
+       | event
+       | acceptLanguage
+       | allowEvents
+       | reason
+       | server
+       | expires
+       ;
 
 via : VIA;
 VIA : 'Via:' .*? NEWLINE;
@@ -96,23 +108,56 @@ CONTENT_TYPE : 'Content-Type:'.*? NEWLINE;
 contentLength : CONTENT_LENGTH;
 CONTENT_LENGTH : 'Content-Length:' .*? NEWLINE;
 require : REQUIRE;
-REQUIRE : 'Require' .*? NEWLINE;
+REQUIRE : 'Require:' .*? NEWLINE;
 rseq : RSEQ;
-RSEQ : 'RSeq' .*? NEWLINE;
+RSEQ : 'RSeq:' .*? NEWLINE;
 rack : RACK;
-RACK : 'RAck' .*? NEWLINE;
+RACK : 'RAck:' .*? NEWLINE;
 session : SESSION;
-SESSION : 'Session' .*? NEWLINE;
+SESSION : 'Session:' .*? NEWLINE;
 privacy : PRIVACY;
-PRIVACY : 'Privacy' .*? NEWLINE;
+PRIVACY : 'Privacy:' .*? NEWLINE;
 pAssertedId : P_ASSERTED_ID;
 P_ASSERTED_ID : 'P-Asserted-Identity' .*? NEWLINE;
 callInfo : CALL_INFO;
-CALL_INFO : 'Call-Info' .*? NEWLINE;
+CALL_INFO : 'Call-Info:' .*? NEWLINE;
 accept : ACCEPT;
-ACCEPT : 'Accept' .*? NEWLINE;
+ACCEPT : 'Accept:' .*? NEWLINE;
 recordRoute : RECORD_ROUTE;
-RECORD_ROUTE : 'Record-Route' .*? NEWLINE;
+RECORD_ROUTE : 'Record-Route:' .*? NEWLINE;
+P_SERVER_USER : 'P-Served-User:' .*? NEWLINE;
+pServerUser : P_SERVER_USER;
+P_ACCESS_NETWORK_INFO : 'P-Access-Network-Info:' .*? NEWLINE;
+pAccessNetworkInfo : P_ACCESS_NETWORK_INFO;
+P_CHARGING_VECTOR : 'P-Charging-Vector:' .*? NEWLINE;
+pChargingVector : P_CHARGING_VECTOR;
+P_CHARGING_FUNCTION_ADDRESSES : 'P-Charging-Function-Addresses:' .*? NEWLINE;
+pChargingFunctionAddresses : P_CHARGING_FUNCTION_ADDRESSES;
+
+REMOTE_PARTY_ID : 'Remote-Party-ID:' .*? NEWLINE;
+remotePartyId : REMOTE_PARTY_ID;
+
+USER_AGENT : 'User-Agent:' .*? NEWLINE;
+userAgent : USER_AGENT;
+
+EVENT : 'Event:' .*? NEWLINE;
+event : EVENT;
+
+ACCEPT_LANGUAGE : 'Accept-Language:' .*? NEWLINE;
+acceptLanguage : ACCEPT_LANGUAGE;
+
+ALLOW_EVENTS : 'Allow-Events:' .*? NEWLINE;
+allowEvents : ALLOW_EVENTS;
+
+REASON : 'Reason:' .*? NEWLINE;
+reason : REASON;
+
+SERVER : 'Server:' .*? NEWLINE;
+server : SERVER;
+
+EXPIRES : 'Expires:' .*? NEWLINE;
+expires : EXPIRES;
+
 
 
 sdp : sdpLine+;

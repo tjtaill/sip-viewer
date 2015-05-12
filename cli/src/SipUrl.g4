@@ -11,7 +11,7 @@ COLON : ':';
 
 phoneNumber : PHONE_NUMBER;
 
-PHONE_NUMBER : (DIGIT | '+' | '-')+;
+PHONE_NUMBER : (DIGIT | '+' | '-' | '*')+;
 
 DIGIT : [0-9];
 
