@@ -67,7 +67,7 @@ sipHeader : via
        | callInfo
        | accept
        | recordRoute
-       | pServerUser
+       | pServedUser
        | pAccessNetworkInfo
        | pChargingVector
        | pChargingFunctionAddresses
@@ -125,8 +125,8 @@ accept : ACCEPT;
 ACCEPT : 'Accept:' .*? NEWLINE;
 recordRoute : RECORD_ROUTE;
 RECORD_ROUTE : 'Record-Route:' .*? NEWLINE;
-P_SERVER_USER : 'P-Served-User:' .*? NEWLINE;
-pServerUser : P_SERVER_USER;
+P_SERVED_USER : 'P-Served-User:' .*? NEWLINE;
+pServedUser : P_SERVED_USER;
 P_ACCESS_NETWORK_INFO : 'P-Access-Network-Info:' .*? NEWLINE;
 pAccessNetworkInfo : P_ACCESS_NETWORK_INFO;
 P_CHARGING_VECTOR : 'P-Charging-Vector:' .*? NEWLINE;
