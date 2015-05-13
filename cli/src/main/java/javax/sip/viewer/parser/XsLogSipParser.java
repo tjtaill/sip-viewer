@@ -13,6 +13,11 @@ import java.util.List;
 
 
 public class XsLogSipParser implements SipLogParser {
+    private final String xsAddress;
+
+    public XsLogSipParser(String xsAddress) {
+        this.xsAddress = xsAddress;
+    }
 
 
     @Override
@@ -33,7 +38,7 @@ public class XsLogSipParser implements SipLogParser {
 
             ParseTreeWalker walker = new ParseTreeWalker();
 
-            walker.walk( new SipMessageListener(traceSessionIndexer), tree);
+            walker.walk( new SipMessageListener(traceSessionIndexer, xsAddress), tree);
 
 
         } catch (IOException e) {

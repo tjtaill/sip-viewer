@@ -14,11 +14,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SipMessageListener extends XsLogBaseListener {
+    private final String xsAddress;
     private final TraceSessionIndexer traceSessionIndexer;
     private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss:SSS");
     private static Pattern tagPattern = Pattern.compile(";tag=([\\d-]+)");
     private static Pattern sipUrlPattern = Pattern.compile("\\<sip:(.*?)\\>");
-    private static Pattern ipPattern = Pattern.compile("(\\d{1,3}.\\d{1,3}.\\d{1,3}.\\d{1,3}:?\\d{0,5})");
+    private static Pattern ipPattern = Pattern.compile("(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}:?\\d{0,5})");
     private Date date;
     private SipMessageDirection direction;
     private String sipMessageText;
@@ -28,13 +29,17 @@ public class SipMessageListener extends XsLogBaseListener {
     private String destination;
     private String source;
     private MessageType messageType;
+    // this is to make sure that messages that have similar time
+    // are sequenced in parsed order
+    private long timeJitter = 0;
 
     private enum MessageType {
         REQUEST,
         RESPONSE
     }
 
-    public SipMessageListener(TraceSessionIndexer traceSessionIndexer) {
+    public SipMessageListener(TraceSessionIndexer traceSessionIndexer, String xsAddress) {
+        this.xsAddress = xsAddress;
         this.traceSessionIndexer = traceSessionIndexer;
     }
 
@@ -75,24 +80,6 @@ public class SipMessageListener extends XsLogBaseListener {
         String to = ctx.TO().getText();
         Matcher matcher = tagPattern.matcher(to);
         toTag = matcher.find() ? matcher.group(1) : null;
-
-        matcher = sipUrlPattern.matcher(to);
-        String toAddress = matcher.find() ? matcher.group(1) : null;
-        toAddress = SipAddressParser.parseIpOrDns(toAddress);
-        toAddress = toAddress.contains(":") ? toAddress : toAddress + ":5060";
-        switch(direction) {
-            case IN:
-                switch (messageType) {
-                    case REQUEST:
-                        destination = toAddress;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
-        }
    }
 
     @Override
@@ -101,48 +88,7 @@ public class SipMessageListener extends XsLogBaseListener {
         Matcher matcher = tagPattern.matcher(from);
         fromTag = matcher.find() ? matcher.group(1) : null;
 
-        matcher = sipUrlPattern.matcher(from);
-        String fromAddress = matcher.find() ? matcher.group(1) : null;
-        fromAddress = SipAddressParser.parseIpOrDns(fromAddress);
-        fromAddress = fromAddress.contains(":") ? fromAddress : fromAddress + ":5060";
-        switch(direction) {
-            case OUT:
-                switch (messageType) {
-                    case RESPONSE:
-                        source = fromAddress;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
-        }
-
     }
-
-
-    @Override
-    public void enterVia(@NotNull XsLogParser.ViaContext ctx) {
-
-        switch(direction) {
-            case IN:
-                switch (messageType) {
-                    case RESPONSE:
-                        String via = ctx.VIA().getText();
-                        Matcher matcher = ipPattern.matcher(via);
-                        destination = matcher.find() ? matcher.group(1) : null;
-                        destination = destination.contains(":") ? destination : destination + ":5060";
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
 
     @Override
     public void enterDirectionLine(@NotNull XsLogParser.DirectionLineContext ctx) {
@@ -155,8 +101,10 @@ public class SipMessageListener extends XsLogBaseListener {
         switch(direction) {
             case IN:
                 source = loc;
+                destination = xsAddress;
                 break;
             case OUT:
+                source = xsAddress;
                 destination = loc;
                 break;
         }
@@ -167,20 +115,7 @@ public class SipMessageListener extends XsLogBaseListener {
         callId = ctx.CALL_ID().getText().split(":", 2)[1];
     }
 
-    @Override
-    public void enterContact(@NotNull XsLogParser.ContactContext ctx) {
-        switch(direction) {
-            case OUT:
-                String contact = ctx.CONTACT().getText();
-                Matcher matcher = ipPattern.matcher( contact );
-                source = matcher.find() ? matcher.group(1) : source;
-                source = source.contains(":") ? source : source + ":5060";
-                break;
-            default:
-                break;
-        }
 
-    }
 
     @Override
     public void exitSipMessage(@NotNull XsLogParser.SipMessageContext ctx) {
@@ -190,7 +125,7 @@ public class SipMessageListener extends XsLogBaseListener {
         sipMessage.setSource(source);
         sipMessage.setDirection(direction);
         sipMessage.setDestination(destination);
-        sipMessage.setTime( date.getTime() );
+        sipMessage.setTime( date.getTime() + timeJitter++ );
 
         traceSessionIndexer.indexSipMessage(sipMessage, toTag, fromTag, null, callId, null);
     }

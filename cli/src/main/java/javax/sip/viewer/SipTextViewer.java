@@ -66,6 +66,8 @@ public class SipTextViewer {
   protected String mParserB2BTokenRegex;
   @Parameter(names = { "-t", "--time" }, description = "Filters the logs by showing only the calls between(inclusive) the beginning time and end time (ex: -t 2012/06/13#09:44:27.264|2012/06/13#09:46:27.264)")
   protected String mTime;
+  @Parameter(names ={"-xs", "--xs-address"}, description = "IP and PORT of the XS example -xs 10.9.55.21:5060")
+  protected String xsAddress = "10.9.55.21:5060";
 
   public void display(OutputStream pOut) throws Exception {
     SipLogParser lLogParser = setupParser();
@@ -109,7 +111,7 @@ public class SipTextViewer {
         TextLogParser.setTagPattern(Pattern.compile(mParserB2BTokenRegex));
       }
       // return new TextLogParser();
-      return new XsLogSipParser();
+      return new XsLogSipParser(xsAddress);
     }
 
   }
