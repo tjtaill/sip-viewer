@@ -230,7 +230,7 @@ public class SipTextViewer {
    * @throws Exception
    */
   public static void main(String[] args) throws Exception {
-    // System.err.close();
+    System.err.close();
 
     SipTextViewer lTF = new SipTextViewer();
 

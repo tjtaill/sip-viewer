@@ -70,12 +70,6 @@ public class SipMessageListener extends XsLogBaseListener {
     }
 
     @Override
-    public void enterSipMessage(@NotNull XsLogParser.SipMessageContext ctx) {
-        String sipMessageText = ctx.getText();
-        System.out.println(sipMessageText);
-    }
-
-    @Override
     public void enterTo(@NotNull XsLogParser.ToContext ctx) {
         String to = ctx.TO().getText();
         Matcher matcher = tagPattern.matcher(to);
