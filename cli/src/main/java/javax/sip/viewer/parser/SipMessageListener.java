@@ -29,9 +29,7 @@ public class SipMessageListener extends XsLogBaseListener {
     private String destination;
     private String source;
     private MessageType messageType;
-    // this is to make sure that messages that have similar time
-    // are sequenced in parsed order
-    private long timeJitter = 0;
+
 
     private enum MessageType {
         REQUEST,
@@ -119,7 +117,7 @@ public class SipMessageListener extends XsLogBaseListener {
         sipMessage.setSource(source);
         sipMessage.setDirection(direction);
         sipMessage.setDestination(destination);
-        sipMessage.setTime( date.getTime() + timeJitter++ );
+        sipMessage.setTime( date.getTime() );
 
         traceSessionIndexer.indexSipMessage(sipMessage, toTag, fromTag, null, callId, null);
     }

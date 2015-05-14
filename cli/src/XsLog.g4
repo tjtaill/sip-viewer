@@ -79,6 +79,8 @@ sipHeader : via
        | reason
        | server
        | expires
+       | pNokiaSiemensSessionInfo
+       | pComSessionInfo
        ;
 
 via : VIA;
@@ -157,6 +159,13 @@ server : SERVER;
 
 EXPIRES : 'Expires:' .*? NEWLINE;
 expires : EXPIRES;
+
+P_NOKIASIEMENS_SESSION_INFO : 'P-NokiaSiemens.Session-Info:' .*? NEWLINE;
+pNokiaSiemensSessionInfo : P_NOKIASIEMENS_SESSION_INFO;
+
+P_COM_SESSION_INFO : 'P-Com.Session-Info:' .*? NEWLINE;
+pComSessionInfo : P_COM_SESSION_INFO;
+
 
 
 

@@ -48,7 +48,7 @@ public class SipTextFormatter {
                                                                  Pattern.DOTALL | Pattern.MULTILINE);
 
   private static final SimpleDateFormat sDateFormatter = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss SSS");
-  private static final SimpleDateFormat sSmallDateFormatter = new SimpleDateFormat("HH:mm:ss.SSS");
+  private static final SimpleDateFormat sSmallDateFormatter = new SimpleDateFormat("HH:mm:ss:SSS");
   private static Map<String, String> sHostNameCache = new HashMap<String, String>();
   private static Map<Integer, String> sEmptyArrowCache = new HashMap<Integer, String>();
   private Map<String, String> mCallIdFlag;
